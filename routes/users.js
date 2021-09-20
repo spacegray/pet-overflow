@@ -33,7 +33,7 @@ router.post('/login', asyncHandler(async (req,res,next) => {
     const user = await db.User.findOne({where: {email}});
     const passwordMatch = await bcrypt.compare(
         password,
-        user.hashedPassword
+        user.hashedPassword.toString(),
     );
     if (passwordMatch) {
         // loginUser(req,res,user);

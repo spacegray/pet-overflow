@@ -20,7 +20,7 @@ module.exports = {
             },
             hashedPassword: {
                 allowNull: false,
-                type: Sequelize.STRING
+                type: Sequelize.STRING.BINARY
             },
             createdAt: {
                 allowNull: false,
