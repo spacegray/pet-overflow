@@ -6,7 +6,7 @@ const { loginUser, logoutUser } = require("../auth");
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/', asyncHandler(async (req, res, next) => {
+router.get('/', asyncHandler(async (req,res) => {
     console.log('hello from user router');
     const users = await db.User.findAll({
         attributes: ['userName', 'email']
@@ -15,7 +15,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
     res.send('hi');
 }));
 
-router.post('/register', asyncHandler(async (req,res,next) => {
+router.post('/register', asyncHandler(async (req,res) => {
     const { userName, email, password } = req.body;
     const user = db.User.build({
         userName,
@@ -28,7 +28,7 @@ router.post('/register', asyncHandler(async (req,res,next) => {
     loginUser(req, res, user);
 }));
 
-router.post('/login', asyncHandler(async (req,res,next) => {
+router.post('/login', asyncHandler(async (req,res) => {
     const { email, password } = req.body;
     const user = await db.User.findOne({where: {email}});
     const passwordMatch = await bcrypt.compare(
