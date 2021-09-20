@@ -1,8 +1,9 @@
-const { asyncHandler } = require('./utils');
 const express = require('express');
+const bcrypt = require('bcryptjs');
+const db = require('../db/models');
+const { asyncHandler } = require('./utils');
 const { loginUser, logoutUser } = require("../auth");
 const router = express.Router();
-const db = require('../db/models');
 
 /* GET users listing. */
 router.get('/', asyncHandler(async (req, res, next) => {
@@ -14,19 +15,33 @@ router.get('/', asyncHandler(async (req, res, next) => {
     res.send('hi');
 }));
 
+router.post('/register', asyncHandler(async (req,res,next) => {
+    const { userName, email, password } = req.body;
+    const user = db.User.build({
+        userName,
+        email,
+        password,
+    });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.hashedPassword = hashedPassword;
+    await user.save();
+    loginUser(req, res, user);
+}));
+
 router.post('/login', asyncHandler(async (req,res,next) => {
     const { email, password } = req.body;
     const user = await db.User.findOne({where: {email}});
-    const passwordMatch = password === user.hashedPassword;
+    const passwordMatch = await bcrypt.compare(
+        password,
+        user.hashedPassword
+    );
     if (passwordMatch) {
-        loginUser(req,res,user);
+        // loginUser(req,res,user);
         console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
-        return res.redirect('/');
+        loginUser(req, res, user);
     } else {
         console.log(`Login unsuccessful`);
     }
 }));
-
-
 
 module.exports = router;
