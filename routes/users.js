@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const { asyncHandler } = require('./utils');
+const express = require('express');
+const router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/', asyncHandler(async (req, res, next) => {
+    console.log('hello from user router');
+}));
 
 module.exports = router;
