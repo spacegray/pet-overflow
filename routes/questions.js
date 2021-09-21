@@ -12,17 +12,14 @@ router.get('/', asyncHandler(async (req,res) => {
 
 router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
     //const questionId = parseInt(req.params.id, 10);
-    const questions = await Question.findByPk(req.params.id);
+    // const questions = await Question.findByPk(req.params.id);
+  const questions = await Question.findAll({
+    where: { id: req.params.id }
+  });
     res.render("questionsContent", { questions });
-    //res.json({ questions });
   })
 );
 
-router.get("/questions/hello",
-  asyncHandler(async (req, res) => {
-    res.send("hello");
-  })
-);
 
 
 module.exports = router;
