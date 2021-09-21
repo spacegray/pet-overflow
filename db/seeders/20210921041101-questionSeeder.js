@@ -14,6 +14,7 @@ module.exports = {
     */
 return queryInterface.bulkInsert('Questions', [
   {
+    title: "I have a dog question",
     votes: 0,
     views: 0,
     content: "I just got a new puppy and I'm not sure what to feed him. Which brand is best for a German Shepherd?",
@@ -22,6 +23,7 @@ return queryInterface.bulkInsert('Questions', [
     updatedAt: new Date(),
   },
   {
+    title: "Training a cat",
     votes: 0,
     views: 0,
     content: "How can I train my cat to jump 5 feet???",
@@ -30,6 +32,7 @@ return queryInterface.bulkInsert('Questions', [
     updatedAt: new Date(),
   },
   {
+    title: "How do I play with a cat?",
     votes: 0,
     views: 0,
     content: "How do I play with a cat? I've only had dogs. Please help.",
@@ -38,6 +41,7 @@ return queryInterface.bulkInsert('Questions', [
     updatedAt: new Date(),
   },
   {
+    title: "Bunny question",
     votes: 0,
     views: 0,
     content: "I will be getting my first bunny soon. What should I expect?",
@@ -46,6 +50,7 @@ return queryInterface.bulkInsert('Questions', [
     updatedAt: new Date(),
   },
   {
+    title: "Can Parrots read?",
     votes: 0,
     views: 0,
     content: "How can I teach my parrot to read?",
