@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const db = require('../db/models');
-const { csrfProtection, asyncHandler } = require('./utils');
+const {  asyncHandler } = require('./utils');
 const { loginUser, logoutUser } = require("../auth");
 const router = express.Router();
 
@@ -14,6 +14,12 @@ router.get('/', asyncHandler(async (req,res) => {
     users.forEach(user => console.log(user.userName, user.email));
     res.send('hi');
 }));
+
+router.get('/register', asyncHandler(async(req, res) => {
+  
+    res.render('user-registration') 
+    
+}))
 
 router.post('/register', asyncHandler(async (req,res) => {
     const { userName, email, password } = req.body;

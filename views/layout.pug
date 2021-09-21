@@ -3,16 +3,16 @@ html
   head
       block head
         title="Pet Overflow"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
-      if user.authenticated 
-        span(class='nav-bar-text px-4') Welcome to PetOverflow #{user.userName}!
-        form(class='form-inline pr-4' action='/user/logout' method='post')
+        link(rel='stylesheet' href='./public/stylesheets/reset.css')
+
+        span(class='nav-bar-text px-4') Welcome to PetOverflow!
+        form(class='form-inline pr-4' action='/users/logout' method='post')
           button(class='btn btn-sm btn-warning' type='submit') Logout 
-      else 
+  
         span(class='navbar-text px-4')
-          a(class='btn btn-sm btn-dar mr-2' href='/user/login') Login 
-          a(class='btn btn-sm btn-dark' href='/user/register') Register 
-          a(class='btn btn-sm demo' href='/user/0') Demo Login
+          a(class='btn btn-sm btn-dark mr-2' href='/users/login') Login 
+          a(class='btn btn-sm btn-dark' href='/users/register') Register 
+          a(class='btn btn-sm demo' href='/users/0') Demo Login
 
   body
     block content

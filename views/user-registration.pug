@@ -1,0 +1,23 @@
+extends layout.pug
+
+block content
+
+  form(action='/users/register' method='post')
+
+
+    label(for="userName") Username 
+    input(type="text", name="userName")
+    label(for="email") Email
+    input(type="text", name="email")
+    label(for="password") Password 
+    input(type="password", name="password")
+    label(for="confirmedPassword") Confirm Password
+    input(type="password", name="confirmedPassword")
+
+    
+    div(class='py-4')
+      button(type='submit' class='btn btn-primary') Register
+      a(href='/' class='btn btn-warning ml-2') Cancel
+  div
+    p: a(href='/users/login') Already have an account?
+    p: a(href='/users/Demo') Login as a Demo User
