@@ -26,7 +26,10 @@ router.get("/newQuestion", asyncHandler(async (req, res) => {
 );
 
 router.post("/newQuestion", asyncHandler(async (req, res) => {
-  const {content, userId} = req.body;
+  const {content} = req.body;
+  const {
+    userId
+  } = req.session.auth;
   await Question.create({
     content,
     userId
