@@ -40,7 +40,6 @@ router.post('/register', asyncHandler(async (req,res) => {
     loginUser(req, res, user);
 }));
 
-<<<<<<< HEAD
 router.get('/login', asyncHandler(async (req, res) => {
     console.log("did this work")
     res.render('user-login', {
@@ -48,9 +47,7 @@ router.get('/login', asyncHandler(async (req, res) => {
     });
   }));
 
-=======
 // LOGIN
->>>>>>> main
 router.post('/login', asyncHandler(async (req,res) => {
     const { email, password } = req.body;
     const user = await db.User.findOne({where: {email}});
