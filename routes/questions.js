@@ -25,6 +25,17 @@ router.get("/newQuestion", asyncHandler(async (req, res) => {
 })
 );
 
+router.post("/newQuestion", asyncHandler(async (req, res) => {
+  const {content, userId} = req.body;
+  await Question.create({
+    content,
+    userId
+  });
+res.redirect('/')
+})
+);
+
+
 
 
 module.exports = router;
