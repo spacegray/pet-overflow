@@ -1,7 +1,8 @@
 h2 Questions
-button(type="submit" class="newQuestionBtn") Ask Question
+form(action="/questions/newQuestion" method="get")
+    input(type="submit" value="Ask Question")
+
 each question in questions
     ul
         li
             a(href=`/questions/${question.id}`) #{question.content}
-script(src="/javascripts/askquestion.js" type="module" defer)
