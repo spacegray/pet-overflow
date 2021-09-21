@@ -28,6 +28,13 @@ router.post('/register', asyncHandler(async (req,res) => {
     loginUser(req, res, user);
 }));
 
+router.get('/login', asyncHandler(async (req, res) => {
+    console.log("did this work")
+    res.render('user-login', {
+      title: 'Login',
+    });
+  }));
+
 router.post('/login', asyncHandler(async (req,res) => {
     const { email, password } = req.body;
     const user = await db.User.findOne({where: {email}});
@@ -43,5 +50,6 @@ router.post('/login', asyncHandler(async (req,res) => {
         console.log(`Login unsuccessful`);
     }
 }));
+
 
 module.exports = router;
