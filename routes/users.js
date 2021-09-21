@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const db = require("../db/models");
+const { check, validationResult } = require("express-validator");
 
 const {
     asyncHandler
@@ -13,7 +14,90 @@ const {
 
 const router = express.Router();
 
-/* GET users listing. */
+/// VALIDATORS
+const userValidators = [
+    check("userName")
+    .exists({
+        checkFalsy: true
+    })
+    .withMessage("Please provide a value for First Name")
+    .isLength({
+        max: 30
+    })
+    .withMessage("First Name must not be more than 30 characters long")
+    .custom((value) => {
+        return db.User.findOne({
+            where: {
+                userName: value
+            }
+        }).then(
+            (user) => {
+                if (user) {
+                    return Promise.reject(
+                        "That username is already in use by another account"
+                    );
+                }
+                return true;
+            }
+        );
+    }),
+    check("email")
+    .exists({
+        checkFalsy: true
+    })
+    .withMessage("Please provide a value for Email Address")
+    .isLength({
+        max: 50
+    })
+    .withMessage("Email Address must not be more than 50 characters long")
+    .isEmail()
+    .withMessage("Email Address is not a valid email")
+    .custom((value) => {
+        return db.User.findOne({
+            where: {
+                email: value
+            }
+        }).then(
+            (user) => {
+                if (user) {
+                    return Promise.reject(
+                        "The email is already in use by another account"
+                    );
+                }
+                return true;
+            }
+        );
+    }),
+    check("password")
+    .exists({
+        checkFalsy: true
+    })
+    .withMessage("Please provide a value for Password")
+    .isLength({
+        max: 50
+    })
+    .withMessage("Password must not be more than 50 characters long"),
+    check("confirmPassword")
+    .exists({
+        checkFalsy: true
+    })
+    .withMessage("Please provide a value for Confirm Password")
+    .isLength({
+        max: 50
+    })
+    .withMessage("Confirm Password must not be more than 50 characters long")
+    .custom((value, {
+        req
+    }) => {
+        if (value !== req.body.password) {
+            throw new Error("Confirm Password does not match Password");
+        }
+        return true;
+    }),
+];
+////////////////////////////////////////////////////////////////////////////////
+
+// LIST USERS
 router.get('/', asyncHandler(async (req, res) => {
     const users = await db.User.findAll({
         attributes: ['userName']
@@ -22,7 +106,6 @@ router.get('/', asyncHandler(async (req, res) => {
         users
     });
 }));
-// LIST USERS
 // router.get(
 //   "/",
 //   asyncHandler(async (req, res) => {
@@ -61,26 +144,37 @@ router.get(
 
 router.post(
     "/register",
+    userValidators,
     asyncHandler(async (req, res) => {
+
         const {
             userName,
             email,
             password,
             confirmedPassword
         } = req.body;
-        if (confirmedPassword === password) {
-            const user = db.User.build({
-                userName,
-                email,
-                password,
-            });
+
+        const user = db.User.build({
+            userName,
+            email,
+            password,
+        });
+
+        const validatorErrors = validationResult(req);
+
+        if (validatorErrors.isEmpty()) {
             const hashedPassword = await bcrypt.hash(password, 10);
             user.hashedPassword = hashedPassword;
             await user.save();
             loginUser(req, res, user);
-            res.redirect('/');
+            res.redirect("/");
         } else {
-            res.redirect('/users/register');
+            const errors = validatorErrors.array().map((error) => error.msg);
+            res.render("user-registration", {
+                title: "Register",
+                user,
+                errors,
+            });
         }
     })
 );
