@@ -3,17 +3,18 @@ const bcrypt = require("bcryptjs");
 const db = require("../db/models");
 const { check, validationResult } = require("express-validator");
 
-const {
-    asyncHandler
-} = require("./utils");
+const { asyncHandler } = require("./utils");
 
-const {
-    loginUser,
-    logoutUser
-} = require("../auth");
+const { loginUser, logoutUser } = require("../auth");
 
 const router = express.Router();
 
+/* GET users listing. */
+router.get(
+    "/",
+    asyncHandler(async (req, res) => {
+})
+);
 /// VALIDATORS
 const userValidators = [
     check("userName")
@@ -100,11 +101,12 @@ const userValidators = [
 // LIST USERS
 router.get('/', asyncHandler(async (req, res) => {
     const users = await db.User.findAll({
-        attributes: ['userName']
+      attributes: ["userName"],
     });
     res.json({
-        users
+      users,
     });
+// LIST USERS
 }));
 // router.get(
 //   "/",
@@ -120,26 +122,26 @@ router.get('/', asyncHandler(async (req, res) => {
 
 // USER INFO
 router.get(
-    "/:id(\\d+)",
-    asyncHandler(async (req, res) => {
-        const userId = parseInt(req.params.id, 10);
-        const user = await db.User.findByPk(userId);
+  "/:id(\\d+)",
+  asyncHandler(async (req, res) => {
+    const userId = parseInt(req.params.id, 10);
+    const user = await db.User.findByPk(userId);
 
-        // WE WILL LATER CHECK PERSMISSIONS DURING AUTHORIZATION PHASE
-        // checkPermissions(book, res.locals.user);
+    // WE WILL LATER CHECK PERSMISSIONS DURING AUTHORIZATION PHASE
+    // checkPermissions(book, res.locals.user);
 
-        res.render("user-id", {
-            user
-        });
-    })
+    res.render("user-id", {
+      user,
+    });
+  })
 );
 
 // REGISTER
 router.get(
-    "/register",
-    asyncHandler(async (req, res) => {
-        res.render("user-registration");
-    })
+  "/register",
+  asyncHandler(async (req, res) => {
+    res.render("user-registration");
+  })
 );
 
 router.post(
@@ -181,40 +183,46 @@ router.post(
 
 // LOGIN
 router.get(
-    "/login",
-    asyncHandler(async (req, res) => {
-        console.log("did this work");
-        res.render("user-login", {
-            title: "Login",
-        });
-    })
+  "/login",
+  asyncHandler(async (req, res) => {
+    console.log("did this work");
+    res.render("user-login", {
+      title: "Login",
+    });
+  })
 );
 
 router.post(
-    "/login",
-    asyncHandler(async (req, res) => {
-        const {
-            email,
-            password
-        } = req.body;
-        const user = await db.User.findOne({
-            where: {
-                email
-            }
-        });
-        const passwordMatch = await bcrypt.compare(
-            password,
-            user.hashedPassword.toString(),
-        );
-        if (passwordMatch) {
-            // loginUser(req,res,user);
-            console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
-            loginUser(req, res, user);
-            res.redirect('/');
-        } else {
-            console.log(`Login unsuccessful`);
-        }
-    })
+  "/login",
+  asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+    const user = await db.User.findOne({
+      where: {
+        email,
+      },
+    });
+    const passwordMatch = await bcrypt.compare(
+      password,
+      user.hashedPassword.toString()
+    );
+    if (passwordMatch) {
+      // loginUser(req,res,user);
+      console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
+      loginUser(req, res, user);
+      res.redirect("/");
+    } else {
+      console.log(`Login unsuccessful`);
+    }
+  })
+);
+
+router.get(
+  "/logout",
+  asyncHandler(async (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/users/login')
+    });
+  })
 );
 
 module.exports = router;
