@@ -40,6 +40,13 @@ router.post('/register', asyncHandler(async (req,res) => {
     loginUser(req, res, user);
 }));
 
+router.get('/login', asyncHandler(async (req, res) => {
+    console.log("did this work")
+    res.render('user-login', {
+      title: 'Login',
+    });
+  }));
+
 // LOGIN
 router.post('/login', asyncHandler(async (req,res) => {
     const { email, password } = req.body;
@@ -56,5 +63,6 @@ router.post('/login', asyncHandler(async (req,res) => {
         console.log(`Login unsuccessful`);
     }
 }));
+
 
 module.exports = router;
