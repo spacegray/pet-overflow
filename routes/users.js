@@ -5,7 +5,7 @@ const {  asyncHandler } = require('./utils');
 const { loginUser, logoutUser } = require("../auth");
 const router = express.Router();
 
-/* GET users listing. */
+// LIST USERS
 router.get('/', asyncHandler(async (req,res) => {
     console.log('hello from user router');
     const users = await db.User.findAll({
@@ -15,12 +15,18 @@ router.get('/', asyncHandler(async (req,res) => {
     res.send('hi');
 }));
 
-router.get('/register', asyncHandler(async(req, res) => {
-  
-    res.render('user-registration') 
-    
-}))
+// USER INFO
+router.get('/:id(\\d+)', asyncHandler(async (req,res) => {
+    const userId = parseInt(req.params.id, 10);
+    const user = await db.User.findByPk(userId);
 
+    // WE WILL LATER CHECK PERSMISSIONS DURING AUTHORIZATION PHASE
+    // checkPermissions(book, res.locals.user);
+
+    res.render('user-id', {user,});
+}));
+
+// REGISTER
 router.post('/register', asyncHandler(async (req,res) => {
     const { userName, email, password } = req.body;
     const user = db.User.build({
@@ -34,6 +40,14 @@ router.post('/register', asyncHandler(async (req,res) => {
     loginUser(req, res, user);
 }));
 
+router.get('/login', asyncHandler(async (req, res) => {
+    console.log("did this work")
+    res.render('user-login', {
+      title: 'Login',
+    });
+  }));
+
+// LOGIN
 router.post('/login', asyncHandler(async (req,res) => {
     const { email, password } = req.body;
     const user = await db.User.findOne({where: {email}});
@@ -49,5 +63,6 @@ router.post('/login', asyncHandler(async (req,res) => {
         console.log(`Login unsuccessful`);
     }
 }));
+
 
 module.exports = router;
