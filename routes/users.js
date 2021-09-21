@@ -7,12 +7,10 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/', asyncHandler(async (req,res) => {
-    console.log('hello from user router');
     const users = await db.User.findAll({
-        attributes: ['userName', 'email']
+        attributes: ['userName']
     });
-    users.forEach(user => console.log(user.userName, user.email));
-    res.send('hi');
+    res.json({ users });
 }));
 
 router.post('/register', asyncHandler(async (req,res) => {
