@@ -1,0 +1,16 @@
+html
+    head
+    body
+    h2 Ask A Question
+    form(method="post" action="/questions/newQuestion")
+        div
+          label(for="title") Title
+          input(type="text" id="title" name="title")
+        div
+          label(for="content") Body
+          textarea(id="content" name="content")
+        div
+          label(for="tags") Tags
+          input(type="text" id="tags" name="tags")
+        div
+          button(type='submit') Submit

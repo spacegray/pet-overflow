@@ -20,6 +20,25 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
   })
 );
 
+router.get("/newQuestion", asyncHandler(async (req, res) => {
+  res.render("questionForm");
+})
+);
+
+router.post("/newQuestion", asyncHandler(async (req, res) => {
+  const {content} = req.body;
+  const {
+    userId
+  } = req.session.auth;
+  await Question.create({
+    content,
+    userId
+  });
+res.redirect('/')
+})
+);
+
+
 
 
 module.exports = router;
