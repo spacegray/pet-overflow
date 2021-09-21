@@ -10,12 +10,11 @@ router.get('/', asyncHandler(async (req,res) => {
     res.render("questions", { questions })
 }));
 
-router.get("/questions/:id(\\d+)", asyncHandler(async (req, res) => {
+router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
     //const questionId = parseInt(req.params.id, 10);
     const questions = await Question.findByPk(req.params.id);
-    //res.render("questions", { questions });
+    res.render("questionsContent", { questions });
     //res.json({ questions });
-    res.send("hello");
   })
 );
 
