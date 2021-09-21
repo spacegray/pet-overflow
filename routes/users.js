@@ -5,18 +5,25 @@ const { asyncHandler } = require("./utils");
 const { loginUser, logoutUser } = require("../auth");
 const router = express.Router();
 
-// LIST USERS
-router.get(
-  "/",
-  asyncHandler(async (req, res) => {
-    console.log("hello from user router");
+/* GET users listing. */
+router.get('/', asyncHandler(async (req,res) => {
     const users = await db.User.findAll({
-      attributes: ["userName", "email"],
+        attributes: ['userName']
     });
-    users.forEach((user) => console.log(user.userName, user.email));
-    res.send("hi");
-  })
-);
+    res.json({ users });
+}));
+// LIST USERS
+// router.get(
+//   "/",
+//   asyncHandler(async (req, res) => {
+//     console.log("hello from user router");
+//     const users = await db.User.findAll({
+//       attributes: ["userName", "email"],
+//     });
+//     users.forEach((user) => console.log(user.userName, user.email));
+//     res.send("hi");
+//   })
+// );
 
 // USER INFO
 router.get(
