@@ -7,12 +7,12 @@ html
 
         span(class='nav-bar-text px-4') Welcome to PetOverflow!
         form(class='form-inline pr-4' action='/users/logout' method='post')
-          button(class='btn btn-sm btn-warning' type='submit') Logout 
-  
+          a(class='logout-button' href='/users/login') Logout
+
         span(class='navbar-text px-4')
-          a(class='btn btn-sm btn-dark mr-2' href='/users/login') Login 
-          a(class='btn btn-sm btn-dark' href='/users/register') Register 
-          a(class='btn btn-sm demo' href='/users/0') Demo Login
+          a(class='btn btn-sm btn-dark mr-2' href='/users/login') Login
+          a(class='btn btn-sm btn-dark' href='/users/register') Register
+          a(class='btn btn-sm demo' href='/questions') Demo Login
 
   body
     block content
