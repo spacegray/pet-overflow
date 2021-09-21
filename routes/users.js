@@ -65,18 +65,23 @@ router.post(
         const {
             userName,
             email,
-            password
-        } = req.body;
-        const user = db.User.build({
-            userName,
-            email,
             password,
-        });
-        const hashedPassword = await bcrypt.hash(password, 10);
-        user.hashedPassword = hashedPassword;
-        await user.save();
-        loginUser(req, res, user);
-        res.redirect('/');
+            confirmedPassword
+        } = req.body;
+        if (confirmedPassword === password) {
+            const user = db.User.build({
+                userName,
+                email,
+                password,
+            });
+            const hashedPassword = await bcrypt.hash(password, 10);
+            user.hashedPassword = hashedPassword;
+            await user.save();
+            loginUser(req, res, user);
+            res.redirect('/');
+        } else {
+            res.redirect('/users/register');
+        }
     })
 );
 
