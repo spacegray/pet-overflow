@@ -35,11 +35,13 @@ const store = new SequelizeStore({
 app.use(
     session({
         name: 'pet-overflow.sid',
+        store,
         secret: sessionSecret,
         saveUninitialized: false,
         resave: false,
     })
 );
+app.use(restoreUser);
 
 // create Session table if it doesn't already exist
 store.sync();
