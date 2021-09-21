@@ -10,6 +10,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
+    "connect-pg-simple": "^7.0.0",
     "connect-session-sequelize": "^7.0.4",
     "cookie-parser": "~1.4.4",
     "csrf": "^3.1.0",
