@@ -20,6 +20,11 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
   })
 );
 
+router.get("/newQuestion", asyncHandler(async (req, res) => {
+  res.render("questionForm");
+})
+);
+
 
 
 module.exports = router;

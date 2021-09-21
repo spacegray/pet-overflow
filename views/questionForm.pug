@@ -1,0 +1,12 @@
+h2 Ask A Question
+form(method="post" action="/newQuestion")
+  label(for="title") Title
+  input(type="text" id="title" name="title")
+div
+  label(for="body") Body
+  textarea(id="body" name="body")
+div
+  label(for="tags") Tags
+  input(type="text" id="tags" name="tags")
+div
+  input(type="submit" value="Ask Question")
