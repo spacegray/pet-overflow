@@ -2,7 +2,17 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
+        title="Pet Overflow"
+        link(rel='stylesheet' href='./public/stylesheets/reset.css')
+
+        span(class='nav-bar-text px-4') Welcome to PetOverflow!
+        form(class='form-inline pr-4' action='/users/logout' method='post')
+          button(class='btn btn-sm btn-warning' type='submit') Logout 
+  
+        span(class='navbar-text px-4')
+          a(class='btn btn-sm btn-dark mr-2' href='/users/login') Login 
+          a(class='btn btn-sm btn-dark' href='/users/register') Register 
+          a(class='btn btn-sm demo' href='/users/0') Demo Login
+
   body
     block content
