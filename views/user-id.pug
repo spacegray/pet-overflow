@@ -1,0 +1,21 @@
+extends layout.pug
+
+block content
+  div(user-info)
+    table(class='user-info-table')
+      thead(class='user-thead')
+        tr
+          th User Information
+      tbody
+          tr
+            td= 'Username'
+            td= user.userName
+          tr
+            td(td-label)= 'Email'
+            td= user.email
+          tr
+            td(td-label)= 'Password'
+            td= user.hashedPassword
+          tr
+            td(td-label)= 'Create Date'
+            td= user.createdAt
