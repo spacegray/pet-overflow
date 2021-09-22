@@ -1,13 +1,17 @@
 var express = require('express');
+const { check, validationResult } = require("express-validator");
+const { asyncHandler } = require("./utils");
+const db = require('../db/models');
 var router = express.Router();
-const db = require('../db/models')
 
 /* GET home page. */
-router.get('/', async function(req, res) {
-     const user = await db.User.findAll({
-        attributes: ['userName', 'email']
-    });
-  res.render('index');
-});
+router.get('/', asyncHandler( async (req, res) => {
+    let user = {};
+    if (req.session.auth) {
+        const {userId} = req.session.auth;
+        user = await db.User.findByPk(userId);
+    }
+    res.render('index', user);
+}));
 
 module.exports = router;

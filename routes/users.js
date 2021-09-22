@@ -1,19 +1,24 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const db = require("../db/models");
-const { check, validationResult } = require("express-validator");
+const {
+    check,
+    validationResult
+} = require("express-validator");
 
 const { csrfProtection, asyncHandler } = require("./utils");
 
-const { loginUser, logoutUser } = require("../auth");
+const {
+    loginUser,
+    logoutUser
+} = require("../auth");
 
 const router = express.Router();
 
 /* GET users listing. */
 router.get(
     "/",
-    asyncHandler(async (req, res) => {
-})
+    asyncHandler(async (req, res) => {})
 );
 /// VALIDATORS
 const userValidators = [
@@ -101,12 +106,12 @@ const userValidators = [
 // LIST USERS
 router.get('/', asyncHandler(async (req, res) => {
     const users = await db.User.findAll({
-      attributes: ["userName"],
+        attributes: ["userName"],
     });
     res.json({
-      users,
+        users,
     });
-// LIST USERS
+    // LIST USERS
 }));
 // router.get(
 //   "/",
@@ -122,18 +127,18 @@ router.get('/', asyncHandler(async (req, res) => {
 
 // USER INFO
 router.get(
-  "/:id(\\d+)",
-  asyncHandler(async (req, res) => {
-    const userId = parseInt(req.params.id, 10);
-    const user = await db.User.findByPk(userId);
+    "/:id(\\d+)",
+    asyncHandler(async (req, res) => {
+        const userId = parseInt(req.params.id, 10);
+        const user = await db.User.findByPk(userId);
 
-    // WE WILL LATER CHECK PERSMISSIONS DURING AUTHORIZATION PHASE
-    // checkPermissions(book, res.locals.user);
+        // WE WILL LATER CHECK PERSMISSIONS DURING AUTHORIZATION PHASE
+        // checkPermissions(book, res.locals.user);
 
-    res.render("user-id", {
-      user,
-    });
-  })
+        res.render("user-id", {
+            user,
+        });
+    })
 );
 
 // REGISTER
@@ -158,7 +163,7 @@ router.post("/register", csrfProtection, userValidators, asyncHandler(async (req
       user.hashedPassword = hashedPassword;
       await user.save();
       loginUser(req, res, user);
-      res.redirect("/");
+	return req.session.save(() => res.redirect('/'));
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("user-registration", {
@@ -196,7 +201,7 @@ router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
       // loginUser(req,res,user);
       console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
       loginUser(req, res, user);
-      res.redirect("/");
+	return req.session.save(() => res.redirect('/'));
       //csrfToken: req.csrfToken(),
     } else {
       console.log(`Login unsuccessful`);

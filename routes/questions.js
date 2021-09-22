@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const db = require("../db/models");
+const { requireAuth } = require('../auth');
 const { csrfProtection, asyncHandler } = require("./utils");
 const { Question } = db;
 const router = express.Router();
@@ -33,7 +34,7 @@ router.post("/newQuestion", asyncHandler(async (req, res) => {
       content,
       userId,
     });
-    res.redirect("/");
+    res.redirect("/questions");
   })
 );
 
