@@ -19,9 +19,6 @@ router.get(
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId);
 
-    // const question = await Question.findAll({
-    //   where: { id: req.params.id },
-    // });
     console.log(question.views);
     question.views++;
     question.save();
