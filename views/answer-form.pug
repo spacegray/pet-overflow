@@ -1,0 +1,11 @@
+html
+    head
+    body
+    h2 Answer A Question
+    form(method="post" action=`/questions/${questionId}`)
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div
+          label(for="content") Body
+          textarea(id="content" name="content")
+        div
+          button(type='submit') Submit
