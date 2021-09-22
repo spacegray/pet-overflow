@@ -138,7 +138,7 @@ router.get(
 
 // REGISTER
 router.get("/register", csrfProtection, asyncHandler(async (req, res) => {
-    res.render("user-registration");
+    res.render("user-registration", { csrfToken: req.csrfToken() });
   })
 );
 
@@ -165,6 +165,7 @@ router.post("/register", csrfProtection, userValidators, asyncHandler(async (req
         title: "Register",
         user,
         errors,
+        csrfToken: req.csrfToken(),
       });
     }
   })
@@ -175,6 +176,7 @@ router.get("/login", csrfProtection, asyncHandler(async (req, res) => {
     console.log("did this work");
     res.render("user-login", {
       title: "Login",
+      csrfToken: req.csrfToken(),
     });
   })
 );
@@ -195,6 +197,7 @@ router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
       console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
       loginUser(req, res, user);
       res.redirect("/");
+      //csrfToken: req.csrfToken(),
     } else {
       console.log(`Login unsuccessful`);
     }
