@@ -4,6 +4,7 @@ extends layout.pug
 
 block content
   form(action='/users/login' method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
     label(for = "email") Email
     input(type = "text", name = "email")
     label(for = "password") Password
@@ -12,4 +13,4 @@ block content
       button(type='submit' class='login_button') Login
       a(href='/' class='cancel-button') Cancel
   div
-    p: a(href='/register') Don't have an account?
+    p: a(href='/users/register') Don't have an account?

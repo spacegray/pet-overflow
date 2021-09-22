@@ -3,6 +3,7 @@ html
     body
     h2 Ask A Question
     form(method="post" action="/questions/newQuestion")
+        input(type='hidden' name='_csrf' value=csrfToken)
         div
           label(for="title") Title
           input(type="text" id="title" name="title")
