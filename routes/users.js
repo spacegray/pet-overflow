@@ -207,9 +207,19 @@ router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
 router.get(
   "/logout",
   asyncHandler(async (req, res) => {
-    req.session.destroy(() => {
-        res.redirect('/users/login')
-    });
+    logoutUser(req, res)
+    res.redirect('/users/login')
+  })
+);
+
+router.get(
+  "/demo",
+  asyncHandler(async (req, res) => {
+    const user = await db.User.findByPk(1);
+    console.log(user)
+    loginUser(req, res, user);
+    const questions = await db.Question.findAll();
+    res.render("questions", {questions});
   })
 );
 
