@@ -219,9 +219,8 @@ router.post(
 router.get(
   "/logout",
   asyncHandler(async (req, res) => {
-    req.session.destroy(() => {
-        res.redirect('/users/login')
-    });
+    logoutUser(req, res)
+    res.redirect('/users/login')
   })
 );
 
