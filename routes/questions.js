@@ -21,11 +21,11 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
 );
 
 router.get("/newQuestion", csrfProtection, asyncHandler(async (req, res) => {
-    res.render("questionForm");
+    res.render("questionForm", {csrfToken: req.csrfToken()});
   })
 );
 
-router.post("/newQuestion", csrfProtection, asyncHandler(async (req, res) => {
+router.post("/newQuestion", asyncHandler(async (req, res) => {
     const { title, content } = req.body;
     const { userId } = req.session.auth;
     await Question.create({
