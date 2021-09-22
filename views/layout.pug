@@ -6,8 +6,11 @@ html
         link(rel='stylesheet' href='./public/stylesheets/reset.css')
 
         span(class='nav-bar-text px-4') Welcome to PetOverflow!
-        form(class='form-inline pr-4' action='/users/logout' method='post')
-          a(class='logout-button' href='/users/logout') Logout
+        if user
+          form(class='form-inline pr-4' action='/users/logout' method='post')
+            a(class='logout-button' href='/users/logout') Logout
+        else
+          br
 
         span(class='navbar-text px-4')
           a(class='btn btn-sm btn-dark mr-2' href='/users/login') Login

@@ -6,7 +6,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', asyncHandler( async (req, res) => {
-    res.render('index', { user: req.session.auth });
+    let user = {};
+    if (req.session.auth) {
+        const {userId} = req.session.auth;
+        user = await db.User.findByPk(userId);
+    }
+    res.render('index', user);
 }));
 
 module.exports = router;

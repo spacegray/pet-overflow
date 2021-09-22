@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const db = require("../db/models");
+const { requireAuth } = require('../auth');
 const { asyncHandler } = require("./utils");
 const { Question } = db;
 const router = express.Router();
@@ -28,6 +29,7 @@ router.get(
 
 router.get(
   "/newQuestion",
+    requireAuth,
   asyncHandler(async (req, res) => {
     res.render("questionForm");
   })
@@ -35,6 +37,7 @@ router.get(
 
 router.post(
   "/newQuestion",
+    requireAuth,
   asyncHandler(async (req, res) => {
     const { title, content } = req.body;
     const { userId } = req.session.auth;
@@ -43,7 +46,7 @@ router.post(
       content,
       userId,
     });
-    res.redirect("/");
+    res.redirect("/questions");
   })
 );
 
