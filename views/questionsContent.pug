@@ -6,6 +6,8 @@ form(action=`/questions/${questionId}/answer` method="get")
   input(type="submit" value="Answer Question")
 form(action=`/questions/${questionId}/vote` method="post")
   input(type="submit" value="Upvote")
+form(action=`/questions/${questionId}/downvote` method="post")
+  input(type="submit" value="Downvote")
 
 div
   p=question.votes
@@ -18,3 +20,5 @@ div
         p=answer.votes
         form(action=`/answer/${answer.id}/vote` method="post")
           input(type="submit" value="Upvote")
+        form(action=`/answer/${answer.id}/downvote` method="post")
+          input(type="submit" value="Downvote")

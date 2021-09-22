@@ -35,6 +35,28 @@ router.post(
 );
 
 router.post(
+    "/questions/:id(\\d+)/downvote",
+    asyncHandler(async (req, res) => {
+        const { userId } = req.session.auth;
+        const questionId = parseInt(req.params.id, 10);
+        const hasVoted = await Vote.findOne({
+            where: { userId, questionId }
+        });
+        const question = await Question.findByPk(questionId);
+        if (hasVoted) {
+            console.log(`UNVOTING`);
+            await hasVoted.destroy();
+            question.votes--;
+            question.save();
+            return req.session.save( () =>
+                res.redirect(`/questions/${questionId}/`));
+        }
+        console.log('\nYOU ALREADY DOWNVOTED\n');
+        res.redirect(`/questions/${questionId}`);
+    })
+);
+
+router.post(
     "/answer/:id(\\d+)/vote",
     asyncHandler(async (req, res) => {
         const { userId } = req.session.auth;
@@ -57,6 +79,29 @@ router.post(
                 res.redirect(`/questions/${questionId}/`));
         }
         console.log('\nYOU ALREADY VOTED\n');
+        res.redirect(`/questions/${questionId}`);
+    })
+);
+
+router.post(
+    "/answer/:id(\\d+)/downvote",
+    asyncHandler(async (req, res) => {
+        const { userId } = req.session.auth;
+        const answerId = parseInt(req.params.id, 10);
+        const hasVoted = await Vote.findOne({
+            where: { userId, answerId }
+        });
+        const answer = await Answer.findByPk(answerId);
+        const questionId = answer.questionId;
+        if (hasVoted) {
+            console.log(`UNVOTING`);
+            await hasVoted.destroy();
+            answer.votes--;
+            answer.save();
+            return req.session.save( () =>
+                res.redirect(`/questions/${questionId}/`));
+        }
+        console.log('\nYOU ALREADY DOWNVOTED\n');
         res.redirect(`/questions/${questionId}`);
     })
 );
