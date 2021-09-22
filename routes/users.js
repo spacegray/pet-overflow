@@ -225,4 +225,15 @@ router.get(
   })
 );
 
+router.get(
+  "/demo",
+  asyncHandler(async (req, res) => {
+    const user = await db.User.findByPk(1);
+    console.log(user)
+    loginUser(req, res, user);
+    const questions = await db.Question.findAll();
+    res.render("questions", {questions});
+  })
+);
+
 module.exports = router;
