@@ -1,6 +1,5 @@
 html
 body
-script(src='/javascripts/questions.js' type='module' defer)
 h2=question.title
 div Views: #{question.views} Votes: #{question.votes}
 p=question.content
@@ -18,4 +17,4 @@ form(method="post" action=`/questions/${questionId}`)
     div
       textarea(id="content" name="content" class="contentAnswer")
     div
-      button(type='submit') Post Your Answer
+      button(type='submit' class="button") Post Your Answer
