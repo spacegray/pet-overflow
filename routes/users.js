@@ -180,7 +180,7 @@ router.post(
             user.hashedPassword = hashedPassword;
             await user.save();
             loginUser(req, res, user);
-            res.redirect("/");
+            return req.session.save(() => res.redirect('/'));
         } else {
             const errors = validatorErrors.array().map((error) => error.msg);
             res.render("user-registration", {
@@ -220,7 +220,7 @@ router.post(
         );
         if (passwordMatch) {
             loginUser(req, res, user);
-            res.redirect("/");
+            return req.session.save(() => res.redirect('/'));
         } else {
             console.log(`Login unsuccessful`);
         }
