@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const db = require("../db/models");
 const { check, validationResult } = require("express-validator");
 
-const { asyncHandler } = require("./utils");
+const { csrfProtection, asyncHandler } = require("./utils");
 
 const { loginUser, logoutUser } = require("../auth");
 
@@ -137,54 +137,41 @@ router.get(
 );
 
 // REGISTER
-router.get(
-  "/register",
-  asyncHandler(async (req, res) => {
+router.get("/register", csrfProtection, asyncHandler(async (req, res) => {
     res.render("user-registration");
   })
 );
 
-router.post(
-    "/register",
-    userValidators,
-    asyncHandler(async (req, res) => {
+router.post("/register", csrfProtection, userValidators, asyncHandler(async (req, res) => {
+    const { userName, email, password, confirmedPassword } = req.body;
 
-        const {
-            userName,
-            email,
-            password,
-            confirmedPassword
-        } = req.body;
+    const user = db.User.build({
+      userName,
+      email,
+      password,
+    });
 
-        const user = db.User.build({
-            userName,
-            email,
-            password,
-        });
+    const validatorErrors = validationResult(req);
 
-        const validatorErrors = validationResult(req);
-
-        if (validatorErrors.isEmpty()) {
-            const hashedPassword = await bcrypt.hash(password, 10);
-            user.hashedPassword = hashedPassword;
-            await user.save();
-            loginUser(req, res, user);
-            res.redirect("/");
-        } else {
-            const errors = validatorErrors.array().map((error) => error.msg);
-            res.render("user-registration", {
-                title: "Register",
-                user,
-                errors,
-            });
-        }
-    })
+    if (validatorErrors.isEmpty()) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      user.hashedPassword = hashedPassword;
+      await user.save();
+      loginUser(req, res, user);
+      res.redirect("/");
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render("user-registration", {
+        title: "Register",
+        user,
+        errors,
+      });
+    }
+  })
 );
 
 // LOGIN
-router.get(
-  "/login",
-  asyncHandler(async (req, res) => {
+router.get("/login", csrfProtection, asyncHandler(async (req, res) => {
     console.log("did this work");
     res.render("user-login", {
       title: "Login",
@@ -192,9 +179,7 @@ router.get(
   })
 );
 
-router.post(
-  "/login",
-  asyncHandler(async (req, res) => {
+router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
     const { email, password } = req.body;
     const user = await db.User.findOne({
       where: {
