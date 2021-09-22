@@ -1,12 +1,13 @@
+link(rel="stylesheet" href="/stylesheets/index.css")
 h2 Question
     p=question.title
     p=question.content
-    p=question.views 
+    p=question.views
 form(action=`/questions/${questionId}/answer` method="get")
     input(type="submit" value="Answer Question")
 
-    div 
-        each answer in answers  
-            ul 
-                li       
+    div
+        each answer in answers
+            ul
+                li
                     p=answer.content
