@@ -5,14 +5,14 @@ html
         title="Pet Overflow"
         link(rel='stylesheet' href='./public/stylesheets/reset.css')
 
-        span(class='nav-bar-text px-4') Welcome to PetOverflow!
-        form(class='form-inline pr-4' action='/users/logout' method='post')
+        span(class='nav-bar-text') Welcome to PetOverflow!
+        form(class='form-inline' action='/users/logout' method='post')
           a(class='logout-button' href='/users/login') Logout
 
-        span(class='navbar-text px-4')
-          a(class='btn btn-sm btn-dark mr-2' href='/users/login') Login
-          a(class='btn btn-sm btn-dark' href='/users/register') Register
-          a(class='btn btn-sm demo' href='/questions') Demo Login
+        span(class='navbar-text buttons')
+          a(class='btn-login' href='/users/login') Login
+          a(class='btn-register' href='/users/register') Register
+          a(class='btn-demo' href='/questions') Demo Login
 
   body
     block content
