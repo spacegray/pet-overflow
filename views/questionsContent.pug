@@ -10,7 +10,7 @@ form(action=`/questions/${questionId}/downvote` method="post")
   input(type="submit" value="Downvote")
 
 div
-  p=question.votes
+  p(id='votes')=question.votes
 
 div
   each answer in answers
