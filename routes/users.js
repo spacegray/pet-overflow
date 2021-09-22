@@ -196,7 +196,6 @@ router.post(
 router.get(
     "/login",
     asyncHandler(async (req, res) => {
-        console.log("did this work");
         res.render("user-login", {
             title: "Login",
         });
