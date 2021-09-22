@@ -192,6 +192,13 @@ router.get(
   })
 );
 
+router.get("/users/register", asyncHandler (async (req, res) => {
+  req.render("user-registration", {
+    title: "Sign up", 
+  });
+})
+)
+
 router.post(
   "/login",
   asyncHandler(async (req, res) => {
