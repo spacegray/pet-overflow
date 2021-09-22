@@ -1,10 +1,9 @@
 html
 body
 script(src='/javascripts/questions.js' type='module' defer)
-div Question
-    p=question.title
-    p=question.content
-    p=question.views
+h2=question.title
+div Views: #{question.views} Votes: #{question.views}
+p=question.content
 
     div 
         each answer in answers  
