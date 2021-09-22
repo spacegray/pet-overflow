@@ -10,6 +10,7 @@ const router = express.Router();
 
 router.post(
     "/questions/:id(\\d+)/vote",
+    requireAuth,
     asyncHandler(async (req, res) => {
         const { userId } = req.session.auth;
         const questionId = parseInt(req.params.id, 10);
@@ -34,16 +35,29 @@ router.post(
 );
 
 router.post(
-    "/answers/:id(\\d+)/vote",
+    "/answer/:id(\\d+)/vote",
     asyncHandler(async (req, res) => {
-        if (!req.session.vote) {
-            const { userId } = req.session.auth;
-            const answerId = parseInt(req.params.id, 10);
-            const answer = await Answer.findByPk(answerId);
+        const { userId } = req.session.auth;
+        const answerId = parseInt(req.params.id, 10);
+        const hasVoted = await Vote.findOne({
+            where: { userId, answerId }
+        });
+        const answer = await Answer.findByPk(answerId);
+        const questionId = answer.questionId;
+        if (!hasVoted) {
+            console.log(`VOTING FOR QUESTION ${answerId}`);
+            await Vote.create({
+                userId,
+                answerId,
+                questionId,
+            });
             answer.votes++;
             answer.save();
-            res.redirect(`/questions/${questionId}`);
+            return req.session.save( () =>
+                res.redirect(`/questions/${questionId}/`));
         }
+        console.log('\nYOU ALREADY VOTED\n');
+        res.redirect(`/questions/${questionId}`);
     })
 );
 

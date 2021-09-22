@@ -15,3 +15,6 @@ div
     ul
       li
         p=answer.content
+        p=answer.votes
+        form(action=`/answer/${answer.id}/vote` method="post")
+          input(type="submit" value="Upvote")
