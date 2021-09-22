@@ -1,12 +1,22 @@
+html
+body
+script(src='/javascripts/questions.js' type='module' defer)
 h2 Question
     p=question.title
     p=question.content
-    p=question.views 
-form(action=`/questions/${questionId}/answer` method="get")
-    input(type="submit" value="Answer Question")
+    p=question.views
 
     div 
         each answer in answers  
             ul 
                 li       
                     p=answer.content
+
+form(method="post" action=`/questions/${questionId}`)
+    input(type='hidden' name='_csrf' value=csrfToken)
+    div
+      label(for="content") Your Answer
+    div
+      textarea(id="content" name="content")
+    div
+      button(type='submit') Post Your Answer

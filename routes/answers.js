@@ -27,13 +27,13 @@ router.post(
   })
 );
 
-router.get(
-  "/:id(\\d+)/answer",
-  asyncHandler(async (req, res) => {
-    const questionId = parseInt(req.params.id, 10);
-    res.render("answer-form", { questionId });
-  })
-);
+// router.get(
+//   "/:id(\\d+)/answer",
+//   asyncHandler(async (req, res) => {
+//     const questionId = parseInt(req.params.id, 10);
+//     res.render("answer-form", { questionId });
+//   })
+// );
 
 // const questions = await db.Question.findAll();
 // res.render("questions", { questions });
