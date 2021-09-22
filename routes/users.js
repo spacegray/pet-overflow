@@ -6,7 +6,10 @@ const {
     validationResult
 } = require("express-validator");
 
-const { csrfProtection, asyncHandler } = require("./utils");
+const {
+    csrfProtection,
+    asyncHandler
+} = require("./utils");
 
 const {
     loginUser,
@@ -143,89 +146,97 @@ router.get(
 
 // REGISTER
 router.get("/register", csrfProtection, asyncHandler(async (req, res) => {
-    res.render("user-registration", { csrfToken: req.csrfToken() });
-  })
-);
+    res.render("user-registration", {
+        csrfToken: req.csrfToken()
+    });
+}));
 
 router.post("/register", csrfProtection, userValidators, asyncHandler(async (req, res) => {
-    const { userName, email, password, confirmedPassword } = req.body;
+    const {
+        userName,
+        email,
+        password,
+        confirmedPassword
+    } = req.body;
 
     const user = db.User.build({
-      userName,
-      email,
-      password,
+        userName,
+        email,
+        password,
     });
 
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
-      const hashedPassword = await bcrypt.hash(password, 10);
-      user.hashedPassword = hashedPassword;
-      await user.save();
-      loginUser(req, res, user);
-	return req.session.save(() => res.redirect('/'));
+        const hashedPassword = await bcrypt.hash(password, 10);
+        user.hashedPassword = hashedPassword;
+        await user.save();
+        loginUser(req, res, user);
+        return req.session.save(() => res.redirect('/'));
     } else {
-      const errors = validatorErrors.array().map((error) => error.msg);
-      res.render("user-registration", {
-        title: "Register",
-        user,
-        errors,
-        csrfToken: req.csrfToken(),
-      });
+        const errors = validatorErrors.array().map((error) => error.msg);
+        res.render("user-registration", {
+            title: "Register",
+            user,
+            errors,
+            csrfToken: req.csrfToken(),
+        });
     }
-  })
-);
+}));
 
 // LOGIN
 router.get("/login", csrfProtection, asyncHandler(async (req, res) => {
     console.log("did this work");
     res.render("user-login", {
-      title: "Login",
-      csrfToken: req.csrfToken(),
+        title: "Login",
+        csrfToken: req.csrfToken(),
     });
-  })
-);
+}));
 
 router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
-    const { email, password } = req.body;
-    const user = await db.User.findOne({
-      where: {
+    const {
         email,
-      },
+        password
+    } = req.body;
+    const user = await db.User.findOne({
+        where: {
+            email,
+        },
     });
     const passwordMatch = await bcrypt.compare(
-      password,
-      user.hashedPassword.toString()
+        password,
+        user.hashedPassword.toString()
     );
     if (passwordMatch) {
-      // loginUser(req,res,user);
-      console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
-      loginUser(req, res, user);
-	return req.session.save(() => res.redirect('/'));
-      //csrfToken: req.csrfToken(),
+        // loginUser(req,res,user);
+        console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
+        loginUser(req, res, user);
+        return req.session.save(() => res.redirect('/'));
+        //csrfToken: req.csrfToken(),
     } else {
-      console.log(`Login unsuccessful`);
+        console.log(`Login unsuccessful`);
     }
-  })
+}));
+
+router.get(
+    "/logout",
+    asyncHandler(async (req, res) => {
+        logoutUser(req, res)
+        res.redirect('/users/login')
+    })
 );
 
 router.get(
-  "/logout",
-  asyncHandler(async (req, res) => {
-    logoutUser(req, res)
-    res.redirect('/users/login')
-  })
-);
-
-router.get(
-  "/demo",
-  asyncHandler(async (req, res) => {
-    const user = await db.User.findByPk(1);
-    console.log(user)
-    loginUser(req, res, user);
-    const questions = await db.Question.findAll();
-    res.render("questions", {questions});
-  })
+    "/demo",
+    asyncHandler(async (req, res) => {
+        const user = await db.User.findByPk(1);
+        console.log(user)
+        loginUser(req, res, user);
+        const questions = await db.Question.findAll();
+        res.render("questions", {
+            questions
+        });
+    })
 );
 
 module.exports = router;

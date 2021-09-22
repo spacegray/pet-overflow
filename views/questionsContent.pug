@@ -1,12 +1,24 @@
 h2 Question
-    p=question.title
-    p=question.content
-    p=question.views 
+  p=question.title
+  p=question.content
+  p=question.views
 form(action=`/questions/${questionId}/answer` method="get")
-    input(type="submit" value="Answer Question")
+  input(type="submit" value="Answer Question")
+form(action=`/questions/${questionId}/vote` method="post")
+  input(type="submit" value="Upvote")
+form(action=`/questions/${questionId}/downvote` method="post")
+  input(type="submit" value="Downvote")
 
-    div 
-        each answer in answers  
-            ul 
-                li       
-                    p=answer.content
+div
+  p(id='votes')=question.votes
+
+div
+  each answer in answers
+    ul
+      li
+        p=answer.content
+        p=answer.votes
+        form(action=`/answer/${answer.id}/vote` method="post")
+          input(type="submit" value="Upvote")
+        form(action=`/answer/${answer.id}/downvote` method="post")
+          input(type="submit" value="Downvote")

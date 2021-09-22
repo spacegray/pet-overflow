@@ -5,7 +5,6 @@ const loginUser = (req, res, user) => {
     req.session.auth = {
         userId: user.id,
     };
-    console.log(req.session.auth);
 };
 
 const logoutUser = (req, res) => {
@@ -26,11 +25,6 @@ const restoreUser = async (req, res, next) => {
         const {
             userId
         } = req.session.auth;
-
-        console.log('\n');
-        console.log(`User ID: ${userId}`);
-        console.log('\n');
-
         try {
             const user = await db.User.findByPk(userId);
 
