@@ -1,12 +1,17 @@
 h2 Question
-    p=question.title
-    p=question.content
-    p=question.views 
+  p=question.title
+  p=question.content
+  p=question.views
 form(action=`/questions/${questionId}/answer` method="get")
-    input(type="submit" value="Answer Question")
+  input(type="submit" value="Answer Question")
+form(action=`/questions/${questionId}/vote` method="post")
+  input(type="submit" value="Upvote")
 
-    div 
-        each answer in answers  
-            ul 
-                li       
-                    p=answer.content
+div
+  p=question.votes
+
+div
+  each answer in answers
+    ul
+      li
+        p=answer.content
