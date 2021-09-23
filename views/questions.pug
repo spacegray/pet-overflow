@@ -4,10 +4,10 @@ block content
         body
         head 
             h2 All Questions
+            form(action="/questions/newQuestion" method="get")
+                input(type="submit" value="Ask Question")
             div(class='page-container')
                 div(class='mid-panel')
-                    form(action="/questions/newQuestion" method="get")
-                        input(type="submit" value="Ask Question")
                         <div>
                 div(class='left-panel')
                 div(class='right-panel')

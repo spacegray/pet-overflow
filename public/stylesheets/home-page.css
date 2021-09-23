@@ -1,33 +1,39 @@
-.body{
 
+h2 {
+  justify-content: center;
 }
 .page-container {
-    display: flex;
-    width: 100%;
-    height: auto;
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: center;
 }
-.nav_bar{
-display: flex;
-flex-direction: row;
-height: 100px;
-width: 100%;
+
+.nav_bar {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: 100%;
 }
 
 #logo {
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
 
-.navbar_text_buttons{
-    align-content: flex-end;
+.navbar_text_buttons {
+  align-content: flex-end;
 }
 
 .mid-panel {
-    display: flex;
-    background-color: aqua;
-    width: 40%;
-    height: auto;
-
+  display: flex;
+  background-color: #ddecf0;
+  width: 40%;
+  height: auto;
+  justify-content: center;
 }
 .question-preview-box {
-
+  display: flex;
+  border: 5px solid grey;
+  height: 100px;
+  width: 100%;
 }
