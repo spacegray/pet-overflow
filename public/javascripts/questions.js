@@ -1,7 +1,7 @@
 window.addEventListener("load", ()=> {
     console.log("hello from QUESTIONS!");
 
-    // FETCH UP VOTE ROUTE
+    // QUESTION FETCH UP VOTE ROUTE
     const UP_VOTE = document.getElementById('vote-button');
     const VOTE_COUNT = document.getElementById('qVotes');
     UP_VOTE.addEventListener('click', async(e) => {
@@ -18,7 +18,7 @@ window.addEventListener("load", ()=> {
         VOTE_COUNT.innerText = `Votes: ${votes}`;
     });
 
-    // FETCH UP DOWN ROUTE
+    // QUESTION FETCH UP DOWN ROUTE
     const DOWN_VOTE = document.getElementById('vote-down-button');
     DOWN_VOTE.addEventListener('click', async(e) => {
         e.preventDefault();
@@ -32,6 +32,31 @@ window.addEventListener("load", ()=> {
         const result = await res.json();
         const votes = result.question.votes;
         VOTE_COUNT.innerText = `Votes: ${votes}`;
+    });
+
+    // ANSWER FETCH UP DOWN ROUTE
+    const aDOWN_VOTEs = document.getElementsByClassName('answer-down-button');
+    Object.values(aDOWN_VOTEs).forEach((button) => {
+        button.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const aId = button.value;
+
+            /////////////////////////////////////////////////
+            /////// WOAH DADDY WATCH OUT HERE MY DUDE ///////
+            /////////////////////////////////////////////////
+            const aVOTE_COUNT = document.getElementById(`aVote-${aId}`);
+
+            const res = await fetch(`/answer/${aId}/downvote`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const result = await res.json();
+            const votes = result.answer.votes;
+            aVOTE_COUNT.innerText = votes;
+
+        });
     });
 
 });

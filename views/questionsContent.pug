@@ -18,10 +18,10 @@ div
     ul
       li
         p=answer.content
-        p=answer.votes
-        button(id="answer-vote-button" type='button')
+        div(id=`aVote-${answer.id}`) Votes: #{answer.votes}
+        button(value=answer.id class="answer-vote-button" type='button')
           p='UP VOTE'
-        button(id="answer-down-button" type='button')
+        button(value=answer.id class="answer-down-button" type='button')
           p='DOWN VOTE'
 
 form(method="post" action=`/questions/${questionId}`)
