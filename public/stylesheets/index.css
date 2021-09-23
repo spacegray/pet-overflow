@@ -7,4 +7,12 @@
     width: 30px;
     border: none;
 }
+
+#votes {
+    color: #686262;
+}
+
+.questionContent {
+    color: black;
+}
 /* this is a test */

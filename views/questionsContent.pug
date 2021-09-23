@@ -8,7 +8,8 @@ form(action=`/questions` method="get")
 hr
 form(action=`/questions/${questionId}/vote` method="post")
   input(type="image" src="/images/upvote.png" class="votesBtn" value="Upvote" alt="submit")
-div #{question.votes} #{question.content}
+div#votes #{question.votes}
+  span.questionContent #{question.content}
 form(action=`/questions/${questionId}/downvote` method="post")
   input(type="image" src="/images/downvote.png" class="votesBtn" value="Downvote" alt="submit")
 hr
