@@ -1,14 +1,22 @@
-html
-body
 h2=question.title
 div Views: #{question.views} Votes: #{question.votes}
 p=question.content
 
-    div 
-        each answer in answers  
-            ul 
-                li       
-                    p=answer.content
+form(action=`/questions/${questionId}/vote` method="post")
+  input(type="submit" value="Upvote")
+form(action=`/questions/${questionId}/downvote` method="post")
+  input(type="submit" value="Downvote")
+
+div
+  each answer in answers
+    ul
+      li
+        p=answer.content
+        p=answer.votes
+        form(action=`/answer/${answer.id}/vote` method="post")
+          input(type="submit" value="Upvote")
+        form(action=`/answer/${answer.id}/downvote` method="post")
+          input(type="submit" value="Downvote")
 
 form(method="post" action=`/questions/${questionId}`)
     input(type='hidden' name='_csrf' value=csrfToken)
