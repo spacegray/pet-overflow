@@ -1,3 +1,6 @@
+head
+  script(src="/javascripts/questions.js" type="module" defer)
+
 link(rel="stylesheet" href="/stylesheets/index.css")
 h2=question.title
 div Asked 3 months ago Viewed #{question.views} times
@@ -16,6 +19,16 @@ hr
 br
 div Answers
 div
+  div Views: #{question.views}
+  div(id="qVotes") Votes: #{question.votes}
+p=question.content
+
+button(id="vote-button" type='button')
+  p='UP VOTE'
+button(id="vote-down-button" type='button')
+  p='DOWN VOTE'
+
+div
   each answer in answers
     ul.answerList
       li
@@ -26,6 +39,12 @@ div
           form(action=`/answer/${answer.id}/downvote` method="post")
             input(type="image" src="/images/downvote.png" class="votesBtn" value="Downvote" alt="submit")
           hr
+        p=answer.content
+        div(id=`aVote-${answer.id}`) Votes: #{answer.votes}
+        button(value=answer.id class="answer-vote-button" type='button')
+          p='UP VOTE'
+        button(value=answer.id class="answer-down-button" type='button')
+          p='DOWN VOTE'
 
 form(method="post" action=`/questions/${questionId}`)
     input(type='hidden' name='_csrf' value=csrfToken)

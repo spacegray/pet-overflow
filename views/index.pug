@@ -9,6 +9,6 @@ append head
 block content
   h1= title
   if user
-    p Welcome #{user.userName}!
+    p(id="welcome") Welcome #{user.userName}!
   else
-    p Welcome! Log in please.
+    p(id="welcome") Welcome To Pet Overflow!
