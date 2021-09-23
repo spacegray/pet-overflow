@@ -7,6 +7,13 @@ window.addEventListener("load", (event)=>{
     search.addEventListener('click', async (e) => {
         e.preventDefault();
         const searchTerm = searchInput.value;
-        console.log('hey sup', searchTerm);
+        console.log('Searching for ... ', searchTerm);
+        const res = await fetch(`/questions/search`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({search: searchTerm}),
+        });
     });
 });
