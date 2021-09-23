@@ -8,6 +8,15 @@ html
         div(class='icons')
           img(id='hamburger' src="/images/menu.png" alt="Pet Overflow" style='width40px; height:40px;')
           img(id='logo' src="/images/over.png" alt="Pet Overflow" style='width50px; height:50px;')
+        form(id='search-global')
+          input(id='search-term' type='text' placeholder='Search petOverflow ...')
+          button(id='search-go' type='submit')
+            p='search'
+        if user
+          form(class='form-inline pr-4' action='/users/logout' method='post')
+            a(class='button' id='log-out' href='/users/logout') Logout
+        else
+          br
         div(class='navbar_text_buttons')
           if user
             a(class='button' id='log-out' href='/users/logout') Logout
