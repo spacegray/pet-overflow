@@ -12,7 +12,10 @@ html
                     each question in questions
                         div(class='question-box')  
                             div(class="stats-panel") 
-                            div(class="question-preview-panel")       
+                            div(class="question-preview-panel")  
+                                a(href=`/questions/${question.id}`) #{question.title}
+                                div(class="date-panel") #{question.createdAt}
+
             div(id="right-panel")
 
 
@@ -20,7 +23,7 @@ html
 
 
 
-//-  a(href=`/questions/${question.id}`) #{question.title}
+
 
 
 //- extends nav-bar
