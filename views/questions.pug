@@ -1,15 +1,17 @@
-link(rel="stylesheet" href="/stylesheets/index.css")
-h2 All Questions
-form(action=`/` method="get")
-    input(type="submit" value="Go Home")
-form(action="/questions/ask" method="get")
-    input(type="submit" value="Ask Question")
-div
-div#question-list
-    each question in questions
-        div
-            p views
-            p votes
-            a(href=`/questions/${question.id}` class="questionTitle") #{question.title}
-            p Friday
-            hr
+extends layout
+block content
+    html 
+        body
+        head 
+            h2 All Questions
+            form(action="/questions/newQuestion" method="get")
+                input(type="submit" value="Ask Question")
+            div(class='page-container')
+                div(class='mid-panel')
+                        <div>
+                div(class='left-panel')
+                div(class='right-panel')
+                div(class='question-table')
+                        each question in questions
+                            div(class='question-preview-box')
+                                    a(href=`/questions/${question.id}`) #{question.title}
