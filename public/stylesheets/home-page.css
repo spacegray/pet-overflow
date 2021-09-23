@@ -1,0 +1,11 @@
+.nav_bar{
+display: flex;
+flex-direction: row;
+}
+
+#logo {
+    justify-content: flex-start;
+}
+
+.navbar_text_buttons{
+}

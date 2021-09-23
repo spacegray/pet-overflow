@@ -7,6 +7,10 @@ const answer = require("../db/models/answer");
 const { Question } = db;
 const { Answer } = db;
 const router = express.Router();
+const {
+  loginUser,
+  logoutUser
+} = require("../auth");
 
 router.get(
   "/",
@@ -51,4 +55,14 @@ router.post(
   })
 );
 
+router.get(
+  "/demo",
+  asyncHandler(async (req, res) => {
+    const user = await db.User.findByPk(1);
+    console.log(user);
+    loginUser(req, res, user);
+    const questions = await db.Question.findAll();
+    res.render("questions", { questions });
+  })
+);
 module.exports = router;

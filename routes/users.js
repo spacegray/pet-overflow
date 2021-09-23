@@ -21,7 +21,9 @@ const router = express.Router();
 /* GET users listing. */
 router.get(
     "/",
-    asyncHandler(async (req, res) => {})
+    asyncHandler(async (req, res) => {
+        res.render("layout")
+    })
 );
 /// VALIDATORS
 const userValidators = [
@@ -226,17 +228,5 @@ router.get(
     })
 );
 
-router.get(
-    "/demo",
-    asyncHandler(async (req, res) => {
-        const user = await db.User.findByPk(1);
-        console.log(user)
-        loginUser(req, res, user);
-        const questions = await db.Question.findAll();
-        res.render("questions", {
-            questions
-        });
-    })
-);
 
 module.exports = router;

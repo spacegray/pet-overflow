@@ -1,20 +1,21 @@
 doctype html
+link(rel="stylesheet" href="/stylesheets/home-page.css")
 html
   head
       block head
+      div(class='nav_bar')
         title="Pet Overflow"
-        link(rel='stylesheet' href='./public/stylesheets/reset.css')
-
-        span(class='nav-bar-text px-4') Welcome to PetOverflow!
+        img(id='hamburger' src="/images/menu.png" alt="Pet Overflow" style='width40px; height:40px;')
+        img(id='logo' src="/images/over.png" alt="Pet Overflow" style='width50px; height:50px;')
         if user
           form(class='form-inline pr-4' action='/users/logout' method='post')
-            a(class='logout-button' href='/users/logout') Logout
+            a(class='button' id='log-out' href='/users/logout') Logout
         else
           br
-        span(class='navbar-text px-4')
-          a(class='btn btn-sm btn-dark mr-2' href='/users/login') Login
-          a(class='btn btn-sm btn-dark' href='/users/register') Register
-          a(class='btn btn-sm demo' href='/users/demo') Demo Login
+        div(class='navbar_text_buttons')
+          a(class='button' id='login' href='/users/login') Login
+          a(class='button' id='sign-up' href='/users/register') Register
+          a(class='button' id='demo' href='/questions/demo') Demo Login
 
   body
     block content
