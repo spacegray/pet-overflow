@@ -15,5 +15,6 @@ window.addEventListener("load", (event)=>{
             },
             body: JSON.stringify({search: searchTerm}),
         });
+        return;
     });
 });
