@@ -2,11 +2,17 @@ extends nav-bar
 block content
   link(rel="stylesheet", href="/stylesheets/home-page.css")
   div(class='main_page')
-    img(class='dogs' src='/images/dogs-playing.png' alt='dogs-playing' style='width:500px; height:350px')
-    img(class='paw' src='/images/paw.png' alt='paw' style='width:100px; height:100px')
+    img(class='dogs' src='/images/dogs-playing.png' alt='dogs-playing')
+    img(class='paw' src='/images/paw.png' alt='paw' style='')
     p(class='want') Want to find the answers to your pet questions and connect with others in the community?
-    img(class='pop_up' src='/images/Vector.png' alt='pop-up' style='width:450px; height:400px')
-    a(class='button' id='questions' href='/questions') Questions
+    img(class='pop_up' src='/images/Vector.png' alt='pop-up')
+    a(class='q_button' id='questions' href='/questions') Questions
     form(action="/questions/ask" method="get")
-      input(type="submit" value="Ask A Question")
+      input(class='vals_ask' type="submit" value="Ask A Question")
+    p(class='main_text') The community <span class='short'>to ask</span> all of your pet related questions, Pet Overflow
+  div(class='circle')
+  div(class='box1')
+  div(class='box2')
+  div(class='box3')
+  div(class='box4')
   body
