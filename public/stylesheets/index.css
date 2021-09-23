@@ -90,3 +90,37 @@
     width: 320px;
     height: 70px;
 }
+.formBtns {
+display: grid;
+grid-template-areas: "a b";
+}
+
+#backBtn {
+  grid-area: "a";
+  font-size: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: #50A1DB;
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  border-top-style: solid;
+  border-top-color: white;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
+}
+
+#homeBtn {
+  grid-area: "b";
+  font-size: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: #3A444A;
+  background-color: rgb(214, 214, 178);
+  border-radius: 10px;
+  border-top-style: solid;
+  border-top-color: white;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
+}

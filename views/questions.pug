@@ -44,7 +44,8 @@ div.modal
                     br
                     div
                       button(type='submit' id="question" class="button") Ask Question
-                form(action=`/` method="get")
-                  input(type="submit" value="Go Home")
-                form(action=`/questions` method="get")
-                  input(type="submit" value="Back To Questions")
+                div.formBtns
+                    form(action=`/questions` method="get")
+                        input(type="submit" id="backBtn" value="Back To Questions")
+                    form(action=`/` method="get")
+                      input(type="submit" id="homeBtn" value="Go Home")
