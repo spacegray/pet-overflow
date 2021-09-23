@@ -11,7 +11,7 @@ router.get('/', asyncHandler( async (req, res) => {
         const {userId} = req.session.auth;
         user = await db.User.findByPk(userId);
     }
-    res.render('index', user);
+    res.render('layout', user);
 }));
 
 module.exports = router;
