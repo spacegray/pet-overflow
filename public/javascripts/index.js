@@ -18,7 +18,6 @@ window.addEventListener("load", (event)=>{
 
         const response = await res.json();
         const questions = response.searchResults;
-        console.log(questions.length, questions);
 
         const returnContainer = document.createElement("div");
         returnContainer.setAttribute('id', 'search-drop');
@@ -32,7 +31,7 @@ window.addEventListener("load", (event)=>{
             containerLinks[i].href = `/questions/${linkId}`;
             returnContainer.appendChild(containerLinks[i]);
         }
-        const globalForm = document.getElementById('search-global');
+        const globalForm = document.getElementById('search-container');
         const oldDrop = document.getElementById('search-drop');
         if(oldDrop) globalForm.removeChild(oldDrop);
         if(e.target.value) globalForm.appendChild(returnContainer);

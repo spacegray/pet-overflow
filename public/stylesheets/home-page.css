@@ -3,7 +3,7 @@
     justify-content: flex-start;
 }
 
-.navbar_text_buttons .button{
+.navbar_text_buttons .button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,21 +15,22 @@
     border-style: solid;
     border-width: 1px;
     border-color: #ADADAD;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
 }
 
-.navbar_text_buttons{
+.navbar_text_buttons {
     display: flex;
     align-items: center;
     padding-right: 15px;
 
 
 }
-.navbar_text_buttons .button{
+
+.navbar_text_buttons .button {
     text-decoration: none;
 }
 
-#login{
+#login {
     background-color: #DDECF0;
     padding: 5px;
     margin-right: 5px;
@@ -38,10 +39,10 @@
     border-style: solid;
     border-width: 1px;
     border-color: #ADADAD;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
 }
 
-#sign-up{
+#sign-up {
     background-color: #50A1DB;
     padding: 5px;
     margin-right: 5px;
@@ -50,10 +51,10 @@
     border-style: solid;
     border-width: 1px;
     border-color: #ADADAD;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
 }
 
-#demo{
+#demo {
     background-color: #20c795;
     padding: 5px;
     margin-right: 5px;
@@ -62,17 +63,17 @@
     border-style: solid;
     border-width: 1px;
     border-color: #ADADAD;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
 }
 
-#welcome{
+#welcome {
     display: flex;
     justify-content: center;
     position: relative;
     font-size: 24px;
 }
 
-.try_out{
+.try_out {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -80,21 +81,22 @@
     border-width: 8px 0 0 0;
     border-radius: 10px;
     border-color: #54CBE5;
-    box-shadow: 0 0 15px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, .2);
     margin-bottom: 15px;
 }
 
-.icons{
+.icons {
     display: flex;
 
 }
-#hamburger{
+
+#hamburger {
     padding-top: 15px;
     padding-right: 5px;
     align-items: flex-start;
 }
 
-.main_page{
+.main_page {
     display: flex;
     justify-content: center;
     margin-top: 50px;
@@ -102,13 +104,13 @@
     height: 75%;
     width: 98%;
     position: absolute;
-    border-radius:20px;
+    border-radius: 20px;
     border-bottom-left-radius: 300% 150px;
     border-bottom-right-radius: -150% 150px;
     background: rgb(114, 110, 110);
 }
 
-.want{
+.want {
     width: 250px;
     text-align: center;
     margin-left: 640px;
@@ -117,7 +119,7 @@
     font-size: 20px;
 }
 
-.dogs{
+.dogs {
     margin-top: 40px;
     margin-right: 50px;
 }
@@ -126,7 +128,7 @@
     margin-top: 40px;
 }
 
-.main_page #ask{
+.main_page #ask {
     width: 180px;
     text-align: center;
     margin-left: 640px;
@@ -143,12 +145,33 @@
     border-top-style: solid;
     border-top-color: 3px rgb(255, 255, 255, 0.2);
     /* border-color: #ADADAD; */
-    box-shadow: 0 0 15px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, .2);
     text-decoration: none;
 }
 
-.paw{
+.paw {
     margin-top: 60px;
     margin-left: 630px;
     position: absolute;
+}
+
+#search-container {
+    position: relative;
+    display: inline-block;
+}
+
+#search-drop {
+    position: absolute;
+    display: inline-block;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border-top: none;
+    z-index: 2;
+}
+
+#search-drop a {
+    display: block;
+    padding: 12px 16px;
 }
