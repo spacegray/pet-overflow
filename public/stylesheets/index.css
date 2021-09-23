@@ -1,4 +1,10 @@
 #title {
     font-size:20px;
 }
+
+.votesBtn {
+    height: 30px;
+    width: 30px;
+    border: none;
+}
 /* this is a test */

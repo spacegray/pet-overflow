@@ -7,10 +7,10 @@ form(action=`/questions` method="get")
     input(type="submit" value="Back To Questions")
 hr
 form(action=`/questions/${questionId}/vote` method="post")
-input(type="submit" value="Upvote")
+  input(type="image" src="/images/upvote.png" class="votesBtn" value="Upvote" alt="submit")
 div #{question.votes} #{question.content}
 form(action=`/questions/${questionId}/downvote` method="post")
-input(type="submit" value="Downvote")
+  input(type="image" src="/images/downvote.png" class="votesBtn" value="Downvote" alt="submit")
 hr
 br
 div Answers
