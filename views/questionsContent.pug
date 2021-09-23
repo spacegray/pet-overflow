@@ -1,6 +1,8 @@
 link(rel="stylesheet" href="/stylesheets/index.css")
 h2=question.title
 div Asked 3 months ago Viewed #{question.views} times
+form(action=`/` method="get")
+    input(type="submit" value="Go Home")
 hr
 form(action=`/questions/${questionId}/vote` method="post")
 input(type="submit" value="Upvote")
