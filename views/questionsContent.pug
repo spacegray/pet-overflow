@@ -1,23 +1,28 @@
+head
+  script(src="/javascripts/questions.js" type="module" defer)
+
 link(rel="stylesheet" href="/stylesheets/index.css")
 h2=question.title
-div Views: #{question.views} Votes: #{question.votes}
+div
+  div Views: #{question.views}
+  div(id="qVotes") Votes: #{question.votes}
 p=question.content
 
-form(action=`/questions/${questionId}/vote` method="post")
-  input(type="submit" value="Upvote")
-form(action=`/questions/${questionId}/downvote` method="post")
-  input(type="submit" value="Downvote")
+button(id="vote-button" type='button')
+  p='UP VOTE'
+button(id="vote-down-button" type='button')
+  p='DOWN VOTE'
 
 div
   each answer in answers
     ul
       li
         p=answer.content
-        p=answer.votes
-        form(action=`/answer/${answer.id}/vote` method="post")
-          input(type="submit" value="Upvote")
-        form(action=`/answer/${answer.id}/downvote` method="post")
-          input(type="submit" value="Downvote")
+        div(id=`aVote-${answer.id}`) Votes: #{answer.votes}
+        button(value=answer.id class="answer-vote-button" type='button')
+          p='UP VOTE'
+        button(value=answer.id class="answer-down-button" type='button')
+          p='DOWN VOTE'
 
 form(method="post" action=`/questions/${questionId}`)
     input(type='hidden' name='_csrf' value=csrfToken)
