@@ -16,7 +16,13 @@
     color: black;
 }
 
-.answerList {
+.answerList{
     list-style-type: none;
 }
+
+.questionTitle {
+    color: #54A8E5;
+}
+
+
 /* this is a test */

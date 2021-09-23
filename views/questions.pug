@@ -1,9 +1,15 @@
+link(rel="stylesheet" href="/stylesheets/index.css")
 h2 All Questions
 form(action=`/` method="get")
     input(type="submit" value="Go Home")
 form(action="/questions/ask" method="get")
     input(type="submit" value="Ask Question")
-each question in questions
-    ul
-        li
-            a(href=`/questions/${question.id}`) #{question.title}
+div
+div#question-list
+    each question in questions
+        div
+            p views
+            p votes
+            a(href=`/questions/${question.id}` class="questionTitle") #{question.title}
+            p Friday
+            hr
