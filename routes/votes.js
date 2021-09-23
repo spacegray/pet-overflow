@@ -12,6 +12,7 @@ router.post(
     "/questions/:id(\\d+)/vote",
     requireAuth,
     asyncHandler(async (req, res) => {
+        const voteType = true;
         const { userId } = req.session.auth;
         const questionId = parseInt(req.params.id, 10);
         const question = await Question.findByPk(questionId);
@@ -22,36 +23,55 @@ router.post(
             console.log(`VOTING FOR QUESTION ${questionId}`);
             await Vote.create({
                 userId,
-                questionId
+                questionId,
+                voteType,
             });
             question.votes++;
             question.save();
-            res.status(200).json({
-                question
-            });
+        } else if (hasVoted && !hasVoted.voteType) {
+            console.log(hasVoted);
+            question.votes += 2;
+            hasVoted.voteType = true;
+            hasVoted.save();
+            question.save();
+        } else {
+            console.log(`\nUSER ${userId} ALREADY VOTED\n`);
         }
-        console.log('\nYOU ALREADY VOTED\n');
+        res.status(200).json({
+            question
+        });
     })
 );
 
 router.post(
     "/questions/:id(\\d+)/downvote",
     asyncHandler(async (req, res) => {
+        const voteType = false;
         const { userId } = req.session.auth;
         const questionId = parseInt(req.params.id, 10);
         const hasVoted = await Vote.findOne({
             where: { userId, questionId }
         });
         const question = await Question.findByPk(questionId);
-        if (hasVoted) {
-            console.log(`UNVOTING`);
-            await hasVoted.destroy();
+        if (!hasVoted) {
+            await Vote.create({
+                userId,
+                questionId,
+                voteType,
+            });
             question.votes--;
             question.save();
-            res.status(200).json({
-                question
-            });
+        } else if (hasVoted.voteType) {
+            question.votes -= 2;
+            hasVoted.voteType = false;
+            hasVoted.save();
+            question.save();
+        } else {
+            console.log(`\nUSER ${userId} ALREADY VOTED\n`);
         }
+        res.status(200).json({
+            question
+        });
         console.log('\nYOU ALREADY DOWNVOTED\n');
     })
 );

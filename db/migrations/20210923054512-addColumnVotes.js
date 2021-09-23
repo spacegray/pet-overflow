@@ -4,7 +4,7 @@ module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.addColumn(
                 'Votes',
-                'up',
+            'voteType',
                 Sequelize.BOOLEAN
             );
     },
