@@ -1,23 +1,25 @@
 link(rel="stylesheet" href="/stylesheets/index.css")
 h2=question.title
-div Views: #{question.views} Votes: #{question.votes}
-p=question.content
-
+div Asked 3 months ago Viewed #{question.views} times
+hr
 form(action=`/questions/${questionId}/vote` method="post")
-  input(type="submit" value="Upvote")
+input(type="submit" value="Upvote")
+div #{question.votes} #{question.content}
 form(action=`/questions/${questionId}/downvote` method="post")
-  input(type="submit" value="Downvote")
-
+input(type="submit" value="Downvote")
+hr
+br
+div Answers
 div
   each answer in answers
     ul
       li
-        p=answer.content
-        p=answer.votes
-        form(action=`/answer/${answer.id}/vote` method="post")
+          form(action=`/answer/${answer.id}/vote` method="post")
           input(type="submit" value="Upvote")
-        form(action=`/answer/${answer.id}/downvote` method="post")
+          div #{answer.votes} #{answer.content}
+          form(action=`/answer/${answer.id}/downvote` method="post")
           input(type="submit" value="Downvote")
+          hr
 
 form(method="post" action=`/questions/${questionId}`)
     input(type='hidden' name='_csrf' value=csrfToken)
