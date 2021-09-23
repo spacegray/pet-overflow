@@ -34,7 +34,7 @@ router.get(
 );
 
 router.get(
-  "/newQuestion",
+  "/ask",
   csrfProtection,
   asyncHandler(async (req, res) => {
     res.render("questionForm", { csrfToken: req.csrfToken() });
@@ -42,7 +42,7 @@ router.get(
 );
 
 router.post(
-  "/newQuestion",
+  "/ask",
   asyncHandler(async (req, res) => {
     const { title, content } = req.body;
     const { userId } = req.session.auth;

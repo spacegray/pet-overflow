@@ -16,6 +16,9 @@ html
           a(class='button' id='login' href='/users/login') Login
           a(class='button' id='sign-up' href='/users/register') Register
           a(class='button' id='demo' href='/questions/demo') Demo Login
+          a(class='button' id='questions' href='/questions') Questions
+          form(action="/questions/ask" method="get")
+            input(type="submit" value="Ask A Question")
 
   body
     block content
