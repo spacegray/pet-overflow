@@ -17,13 +17,14 @@ br
 div Answers
 div
   each answer in answers
-    ul
+    ul.answerList
       li
           form(action=`/answer/${answer.id}/vote` method="post")
-          input(type="submit" value="Upvote")
-          div #{answer.votes} #{answer.content}
+            input(type="image" src="/images/upvote.png" class="votesBtn" value="Upvote" alt="submit")
+          div#votes #{answer.votes} 
+            span.questionContent #{answer.content}
           form(action=`/answer/${answer.id}/downvote` method="post")
-          input(type="submit" value="Downvote")
+            input(type="image" src="/images/downvote.png" class="votesBtn" value="Downvote" alt="submit")
           hr
 
 form(method="post" action=`/questions/${questionId}`)

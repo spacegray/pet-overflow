@@ -15,4 +15,8 @@
 .questionContent {
     color: black;
 }
+
+.answerList {
+    list-style-type: none;
+}
 /* this is a test */
