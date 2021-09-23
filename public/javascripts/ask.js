@@ -1,13 +1,15 @@
-document.querySelector(".askForm").addEventListener("click", () => {
-//      window.open(
-//     "/questions/ask",
-//     "formpopup",
-//     "width=400,height=400,resizeable,scrollbars"
-//   )
-document.querySelector(".modal").style.display = "block";
-})
+document.querySelector("#question").addEventListener("click", () => {
+  //      window.open(
+  //     "/questions/ask",
+  //     "formpopup",
+  //     "width=400,height=400,resizeable,scrollbars"
+  //   )
+  document.querySelector(".modal").style.display = "block";
+  document.querySelector("body").style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+});
 
-// function target_popup(ask) {
-//  ;
-//   form.target = "formpopup";
-// }
+window.addEventListener("click", (e) => {
+if (e.target == modal) {
+    modal.style.display = "none";
+}
+})
