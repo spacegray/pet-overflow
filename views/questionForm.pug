@@ -2,17 +2,26 @@ link(rel="stylesheet" href="/stylesheets/index.css")
 html
     head
     body
-    h2 Ask A Question
-    form(method="post" action="/questions/newQuestion")
+    h2 Ask A Public Question
+    form(action=`/` method="get")
+      input(type="submit" value="Go Home")
+    form(action=`/questions` method="get")
+      input(type="submit" value="Back To Questions")
+    form(method="post" action="/questions/ask")
         input(type='hidden' name='_csrf' value=csrfToken)
         div
           label(for="title") Title
-          input(type="text" id="title-text" name="title")
+        span Be specific and imagine you’re asking a question to another person
+        div
+          input(type="text" id="title-text" name="title" placeholder="e.g. Is it possible to adopt all the dogs at the shelter?")
         div
           label(for="content") Body
+        span Include all the information someone would need to answer your question
+        div
           textarea(id="content" name="content")
         div
           label(for="tags") Tags
+        div
           input(type="text" id="tags" name="tags")
         div
-          button(type='submit') Submit
+          button(type='submit') Post Question

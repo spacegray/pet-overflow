@@ -4,19 +4,30 @@ link(rel="stylesheet" href="/stylesheets/questions-page.css")
 html
   head
       block head
-      div(class='nav_bar')
+      div(class='try_out')
         title="Pet Overflow"
-        img(id='hamburger' src="/images/menu.png" alt="Pet Overflow" style='width40px; height:40px;')
-        img(id='logo' src="/images/over.png" alt="Pet Overflow" style='width50px; height:50px;')
-        if user
-          form(class='form-inline pr-4' action='/users/logout' method='post')
-            a(class='button' id='log-out' href='/users/logout') Logout
-        else
-          br
+        div(class='icons')
+          img(id='hamburger' src="/images/menu.png" alt="Pet Overflow" style='width40px; height:40px;')
+          img(id='logo' src="/images/over.png" alt="Pet Overflow" style='width50px; height:50px;')
+        form(id='search-global')
+          input(id='search-term' type='text' placeholder='Search petOverflow ...')
+          button(id='search-go' type='submit')
+            p='search'
         div(class='navbar_text_buttons')
+          if user
+            a(class='button' id='log-out' href='/users/logout') Logout
+          else
+            br
           a(class='button' id='login' href='/users/login') Login
           a(class='button' id='sign-up' href='/users/register') Register
           a(class='button' id='demo' href='/questions/demo') Demo Login
-
+      div(class='main_page')
+        img(class='dogs' src='/images/dogs-playing.png' alt='dogs-playing' style='width:500px; height:350px')
+        img(class='paw' src='/images/paw.png' alt='paw' style='width:100px; height:100px')
+        p(class='want') Want to find the answers to your pet questions and connect with others in the community?
+        img(class='pop_up' src='/images/Vector.png' alt='pop-up' style='width:450px; height:400px')
+        a(class='button' id='questions' href='/questions') Questions
+        form(action="/questions/ask" method="get")
+          input(type="submit" value="Ask A Question")
   body
     block content
