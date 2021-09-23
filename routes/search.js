@@ -20,6 +20,7 @@ router.post('/search', asyncHandler(async (req, res) => {
         order: [
             ['views', 'DESC']
         ],
+        limit: 10
     });
 
     // Logging question results
