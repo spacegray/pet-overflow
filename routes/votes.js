@@ -45,6 +45,7 @@ router.post(
 
 router.post(
     "/questions/:id(\\d+)/downvote",
+    requireAuth,
     asyncHandler(async (req, res) => {
         const voteType = false;
         const { userId } = req.session.auth;
@@ -83,12 +84,12 @@ router.post(
         const voteType = true;
         const { userId } = req.session.auth;
         const answerId = parseInt(req.params.id, 10);
-        const answer = await Answer.findByPk(questionId);
+        const answer = await Answer.findByPk(answerId);
         const hasVoted = await Vote.findOne({
             where: { userId, answerId }
         });
         if (!hasVoted) {
-            console.log(`VOTING FOR ANSWER ${questionId}`);
+            console.log(`VOTING FOR ANSWER ${answerId}`);
             await Vote.create({
                 userId,
                 answerId,
@@ -113,6 +114,7 @@ router.post(
 
 router.post(
     "/answer/:id(\\d+)/downvote",
+    requireAuth,
     asyncHandler(async (req, res) => {
         const voteType = false;
         const { userId } = req.session.auth;

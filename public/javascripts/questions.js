@@ -54,9 +54,31 @@ window.addEventListener("load", ()=> {
             });
             const result = await res.json();
             const votes = result.answer.votes;
-            aVOTE_COUNT.innerText = votes;
-
+            aVOTE_COUNT.innerText = `Votes: ${votes}`;
         });
     });
+});
 
+// ANSWER FETCH UP ROUTE
+const aUP_VOTEs = document.getElementsByClassName('answer-vote-button');
+Object.values(aUP_VOTEs).forEach((button) => {
+    button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const aId = button.value;
+
+        /////////////////////////////////////////////////
+        /////// WOAH DADDY WATCH OUT HERE MY DUDE ///////
+        /////////////////////////////////////////////////
+        const aVOTE_COUNT = document.getElementById(`aVote-${aId}`);
+
+        const res = await fetch(`/answer/${aId}/vote`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const result = await res.json();
+        const votes = result.answer.votes;
+        aVOTE_COUNT.innerText = `Votes: ${votes}`;
+    });
 });
