@@ -67,7 +67,7 @@ Object.values(aUP_VOTEs).forEach((button) => {
         const aId = button.value;
 
         /////////////////////////////////////////////////
-        /////// WOAH DADDY WATCH OUT HERE MY DUDE ///////
+        /////// WATCH OUT HERE MY DUDE ///////
         /////////////////////////////////////////////////
         const aVOTE_COUNT = document.getElementById(`aVote-${aId}`);
 
