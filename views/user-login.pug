@@ -1,7 +1,5 @@
-extends layout.pug
-
+extends nav-bar
 //- include utils.pug
-
 block content
   form(action='/users/login' method='post')
     input(type='hidden' name='_csrf' value=csrfToken)
