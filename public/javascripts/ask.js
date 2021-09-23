@@ -5,7 +5,8 @@ document.querySelector("#question").addEventListener("click", () => {
   //     "width=400,height=400,resizeable,scrollbars"
   //   )
   document.querySelector(".modal").style.display = "block";
-  document.querySelector("body").style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  document.querySelector("body").style.backgroundColor = "rgba(0, 0, 0, 0.5)"
+//   document.querySelector("body").style.overflow = "scroll";
 });
 
 window.addEventListener("click", (e) => {

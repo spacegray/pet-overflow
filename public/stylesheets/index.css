@@ -29,21 +29,42 @@
 .questionTitle {
     color: #54A8E5;
 }
-
+.button {
+    background-color: #50A1DB;
+}
 .modal {
     display: none;
-    /* background-color: rgba(0, 0, 0, 0.5); */
+    position: fixed;
+    /* margin: 0 auto; */
+    top: 15;
+    left: 15;
 }
 
 .modalContent {
-    background-color: white;
-    margin: 0 auto;
+
+    background-color: #70D5EC;
+    color: #3A444A;
+    font-size: 20px;
+    /* font-family: Roboto Light; */
+    /* margin: 0 auto; */
     /* top: 0;
     left: 0; */
-    width: 50%;
-    height: 50%;
-    padding: 30px;
-    /* text-align: left; */
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    padding-left: 20px;
+    text-align: center;
     border-radius: 15%;
+    overflow: auto;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
     /* add box shadow */
+}
+
+.modalForm{
+    background-color: white;
+    text-align: left;
+    border-radius: 15%;
+    padding: 35px;
+    width: 80%;
+    height: 60%;
 }
