@@ -14,23 +14,23 @@ router.post(
     asyncHandler(async (req, res) => {
         const { userId } = req.session.auth;
         const questionId = parseInt(req.params.id, 10);
+        const question = await Question.findByPk(questionId);
         const hasVoted = await Vote.findOne({
             where: { userId, questionId }
         });
         if (!hasVoted) {
             console.log(`VOTING FOR QUESTION ${questionId}`);
-            const question = await Question.findByPk(questionId);
             await Vote.create({
                 userId,
                 questionId
             });
             question.votes++;
             question.save();
-            return req.session.save( () =>
-                res.redirect(`/questions/${questionId}`));
+            res.status(200).json({
+                question
+            });
         }
         console.log('\nYOU ALREADY VOTED\n');
-        res.redirect(`/questions/${questionId}`);
     })
 );
 
@@ -48,11 +48,11 @@ router.post(
             await hasVoted.destroy();
             question.votes--;
             question.save();
-            return req.session.save( () =>
-                res.redirect(`/questions/${questionId}/`));
+            res.status(200).json({
+                question
+            });
         }
         console.log('\nYOU ALREADY DOWNVOTED\n');
-        res.redirect(`/questions/${questionId}`);
     })
 );
 
