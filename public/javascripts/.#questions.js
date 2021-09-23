@@ -1,1 +1,0 @@
-ziggy@artixlinux.5999
