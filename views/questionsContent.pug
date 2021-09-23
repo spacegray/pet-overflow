@@ -1,16 +1,11 @@
-h2 Question
-  p=question.title
-  p=question.content
-  p=question.views
-form(action=`/questions/${questionId}/answer` method="get")
-  input(type="submit" value="Answer Question")
+h2=question.title
+div Views: #{question.views} Votes: #{question.votes}
+p=question.content
+
 form(action=`/questions/${questionId}/vote` method="post")
   input(type="submit" value="Upvote")
 form(action=`/questions/${questionId}/downvote` method="post")
   input(type="submit" value="Downvote")
-
-div
-  p(id='votes')=question.votes
 
 div
   each answer in answers
@@ -22,3 +17,12 @@ div
           input(type="submit" value="Upvote")
         form(action=`/answer/${answer.id}/downvote` method="post")
           input(type="submit" value="Downvote")
+
+form(method="post" action=`/questions/${questionId}`)
+    input(type='hidden' name='_csrf' value=csrfToken)
+    div
+      label(for="content") Your Answer
+    div
+      textarea(id="content" name="content" class="contentAnswer")
+    div
+      button(type='submit' class="button") Post Your Answer
