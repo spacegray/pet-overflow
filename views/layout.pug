@@ -30,7 +30,8 @@ html
         img(class='paw' src='/images/paw.png' alt='paw' style='width:100px; height:100px')
         p(class='want') Want to find the answers to your pet questions and connect with others in the community?
         img(class='pop_up' src='/images/Vector.png' alt='pop-up' style='width:450px; height:400px')
-        a(class='button' id='ask' href='/questions') ASK A QUESTION
-
+          a(class='button' id='questions' href='/questions') Questions
+          form(action="/questions/ask" method="get")
+            input(type="submit" value="Ask A Question")
   body
     block content

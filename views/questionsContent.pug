@@ -3,6 +3,21 @@ head
 
 link(rel="stylesheet" href="/stylesheets/index.css")
 h2=question.title
+div Asked 3 months ago Viewed #{question.views} times
+form(action=`/` method="get")
+    input(type="submit" value="Go Home")
+form(action=`/questions` method="get")
+    input(type="submit" value="Back To Questions")
+hr
+form(action=`/questions/${questionId}/vote` method="post")
+  input(type="image" src="/images/upvote.png" class="votesBtn" value="Upvote" alt="submit")
+div#votes #{question.votes}
+  span.questionContent #{question.content}
+form(action=`/questions/${questionId}/downvote` method="post")
+  input(type="image" src="/images/downvote.png" class="votesBtn" value="Downvote" alt="submit")
+hr
+br
+div Answers
 div
   div Views: #{question.views}
   div(id="qVotes") Votes: #{question.votes}
@@ -15,8 +30,15 @@ button(id="vote-down-button" type='button')
 
 div
   each answer in answers
-    ul
+    ul.answerList
       li
+          form(action=`/answer/${answer.id}/vote` method="post")
+            input(type="image" src="/images/upvote.png" class="votesBtn" value="Upvote" alt="submit")
+          div#votes #{answer.votes} 
+            span.questionContent #{answer.content}
+          form(action=`/answer/${answer.id}/downvote` method="post")
+            input(type="image" src="/images/downvote.png" class="votesBtn" value="Downvote" alt="submit")
+          hr
         p=answer.content
         div(id=`aVote-${answer.id}`) Votes: #{answer.votes}
         button(value=answer.id class="answer-vote-button" type='button')
