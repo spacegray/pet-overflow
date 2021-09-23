@@ -3,48 +3,34 @@ head
 
 link(rel="stylesheet" href="/stylesheets/index.css")
 h2=question.title
-div Asked 3 months ago Viewed #{question.views} times
+div Viewed #{question.views} times
 form(action=`/` method="get")
     input(type="submit" value="Go Home")
 form(action=`/questions` method="get")
     input(type="submit" value="Back To Questions")
 hr
 form(action=`/questions/${questionId}/vote` method="post")
-  input(type="image" src="/images/upvote.png" class="votesBtn" value="Upvote" alt="submit")
-div#votes #{question.votes}
+  input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
+div#votes
+  div#qVotes #{question.votes}
   span.questionContent #{question.content}
 form(action=`/questions/${questionId}/downvote` method="post")
-  input(type="image" src="/images/downvote.png" class="votesBtn" value="Downvote" alt="submit")
+  input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
 hr
 br
-div Answers
-div
-  div Views: #{question.views}
-  div(id="qVotes") Votes: #{question.votes}
-p=question.content
-
-button(id="vote-button" type='button')
-  p='UP VOTE'
-button(id="vote-down-button" type='button')
-  p='DOWN VOTE'
 
 div
   each answer in answers
     ul.answerList
       li
-          form(action=`/answer/${answer.id}/vote` method="post")
-            input(type="image" src="/images/upvote.png" class="votesBtn" value="Upvote" alt="submit")
-          div#votes #{answer.votes} 
-            span.questionContent #{answer.content}
-          form(action=`/answer/${answer.id}/downvote` method="post")
-            input(type="image" src="/images/downvote.png" class="votesBtn" value="Downvote" alt="submit")
-          hr
-        p=answer.content
-        div(id=`aVote-${answer.id}`) Votes: #{answer.votes}
-        button(value=answer.id class="answer-vote-button" type='button')
-          p='UP VOTE'
-        button(value=answer.id class="answer-down-button" type='button')
-          p='DOWN VOTE'
+        form(action=`/answer/${answer.id}/vote` method="post")
+          input(type="image" src="/images/upvote.png" class="answer-vote-button" value=answer.id alt="submit")
+        div(id=`aVote-${answer.id}`)
+          div#votes #{answer.votes}
+        span.questionContent #{answer.content}
+        form(action=`/answer/${answer.id}/downvote` method="post")
+          input(type="image" src="/images/downvote.png" class="answer-down-button" value=answer.id alt="submit")
+        hr
 
 form(method="post" action=`/questions/${questionId}`)
     input(type='hidden' name='_csrf' value=csrfToken)

@@ -15,7 +15,7 @@ window.addEventListener("load", ()=> {
         });
         const result = await res.json();
         const votes = result.question.votes;
-        VOTE_COUNT.innerText = `Votes: ${votes}`;
+        VOTE_COUNT.innerText = `${votes}`;
     });
 
     // QUESTION FETCH UP DOWN ROUTE
@@ -31,7 +31,7 @@ window.addEventListener("load", ()=> {
         });
         const result = await res.json();
         const votes = result.question.votes;
-        VOTE_COUNT.innerText = `Votes: ${votes}`;
+        VOTE_COUNT.innerText = `${votes}`;
     });
 
     // ANSWER FETCH UP DOWN ROUTE
@@ -54,7 +54,7 @@ window.addEventListener("load", ()=> {
             });
             const result = await res.json();
             const votes = result.answer.votes;
-            aVOTE_COUNT.innerText = `Votes: ${votes}`;
+            aVOTE_COUNT.innerText = `${votes}`;
         });
     });
 });
@@ -79,6 +79,6 @@ Object.values(aUP_VOTEs).forEach((button) => {
         });
         const result = await res.json();
         const votes = result.answer.votes;
-        aVOTE_COUNT.innerText = `Votes: ${votes}`;
+        aVOTE_COUNT.innerText = `${votes}`;
     });
 });

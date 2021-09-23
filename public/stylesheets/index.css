@@ -2,6 +2,12 @@
     font-size:20px;
 }
 
+.answer-vote-button, .answer-down-button {
+    height: 30px;
+    width: 30px;
+    border: none;
+}
+
 .votesBtn {
     height: 30px;
     width: 30px;
