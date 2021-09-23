@@ -35,7 +35,7 @@ window.addEventListener("load", (event)=>{
         const globalForm = document.getElementById('search-global');
         const oldDrop = document.getElementById('search-drop');
         if(oldDrop) globalForm.removeChild(oldDrop);
-        globalForm.appendChild(returnContainer);
+        if(e.target.value) globalForm.appendChild(returnContainer);
         console.log(returnContainer);
         // From search results construct div to attach to bottom of search bar
         // Inside div: create another series of links contain question titles
