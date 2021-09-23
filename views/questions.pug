@@ -1,7 +1,17 @@
-h2 All Questions
-form(action="/questions/newQuestion" method="get")
-    input(type="submit" value="Ask Question")
-each question in questions
-    ul
-        li
-            a(href=`/questions/${question.id}`) #{question.title}
+extends layout
+block content
+    html 
+        body
+        head 
+            h2 All Questions
+            div(class='page-container')
+                div(class='mid-panel')
+                    form(action="/questions/newQuestion" method="get")
+                        input(type="submit" value="Ask Question")
+                        <div>
+                div(class='left-panel')
+                div(class='right-panel')
+                div(class='question-table')
+                        each question in questions
+                            div(class='question-preview-box')
+                                    a(href=`/questions/${question.id}`) #{question.title}
