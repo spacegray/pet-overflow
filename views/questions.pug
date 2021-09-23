@@ -1,8 +1,9 @@
-link(rel="stylesheet" href="/stylesheets/questions-page.css")
+extends nav-bar
 block content
-    html 
+    link(rel="stylesheet" href="/stylesheets/questions-page.css")
+    html
         body
-        head 
+        head
             h2 All Questions
             form(action="/questions/newQuestion" method="get")
                 input(type="submit" value="Ask Question")
