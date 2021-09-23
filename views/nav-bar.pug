@@ -1,27 +1,29 @@
 doctype html
 html
-  head
-    meta(charset='utf-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    link( rel="preconnect" href="https://fonts.googleapis.com")
-    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-    link(href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600&display=swap" rel="stylesheet")
-    link(rel="stylesheet", href="/stylesheets/home-page.css")
-    block head
-  body
-    div(class='try_out')
-        title="Pet Overflow"
-        div(class='icons')
-            img(id='hamburger' src="/images/menu.png" alt="Pet Overflow" style='width40px; height:40px;')
-            img(id='logo' src="/images/over.png" alt="Pet Overflow" style='width50px; height:50px;')
-        form(id='search-global')
-            input(id='search-term' type='text' placeholder='Search petOverflow ...')
-        div(class='navbar_text_buttons')
-            if user
-                a(class='button' id='log-out' href='/users/logout') Logout
-            else
-            br
-            a(class='button' id='login' href='/users/login') Login
-            a(class='button' id='sign-up' href='/users/register') Register
-            a(class='button' id='demo' href='/questions/demo') Demo Login
-    block content
+    head
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        link( rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600&display=swap" rel="stylesheet")
+        link(rel="stylesheet", href="/stylesheets/home-page.css")
+        script(src="/javascripts/index.js" type="module" defer)
+        block head
+    body
+        div(class='try_out')
+            title="Pet Overflow"
+            div(class='icons')
+                img(id='hamburger' src="/images/menu.png" alt="Pet Overflow" style='width40px; height:40px;')
+                img(id='logo' src="/images/over.png" alt="Pet Overflow" style='width50px; height:50px;')
+                div(id='search-container')
+                form(id='search-global')
+                    input(id='search-term' autocomplete="off" type='text' placeholder='Search petOverflow ...')
+            div(class='navbar_text_buttons')
+                if user
+                    a(class='button' id='log-out' href='/users/logout') Logout
+                else
+                br
+                a(class='button' id='login' href='/users/login') Login
+                a(class='button' id='sign-up' href='/users/register') Register
+                a(class='button' id='demo' href='/questions/demo') Demo Login
+        block content
