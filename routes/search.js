@@ -14,7 +14,7 @@ router.post('/search', asyncHandler(async (req, res) => {
     const searchResults = await Question.findAll({
         where: {
             title: {
-                [Op.substring]: searchTerm
+                [Op.iLike]: `%${searchTerm}%`
             }
         },
         order: [
@@ -28,7 +28,9 @@ router.post('/search', asyncHandler(async (req, res) => {
     });
 
     // Why is this not rendering pug?
-    res.render("questions", {questions: searchResults});
+    res.json({
+        searchResults
+    });
 }));
 
 module.exports = router;
