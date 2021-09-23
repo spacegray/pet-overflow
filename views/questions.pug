@@ -1,11 +1,13 @@
-extends layout
+script(src='/javascripts/ask.js' type='module' defer)
+link(rel="stylesheet" href="/stylesheets/index.css")
 block content
     html 
         body
         head 
             h2 All Questions
-            form(action="/questions/newQuestion" method="get")
-                input(type="submit" value="Ask Question")
+            //- form(action="/questions/ask" method="get")
+            //-     input(type="submit" value="Ask Question" name="ask" class="askForm")
+            button(class="askForm") Ask A Question
             div(class='page-container')
                 div(class='mid-panel')
                         <div>
@@ -15,3 +17,28 @@ block content
                         each question in questions
                             div(class='question-preview-box')
                                     a(href=`/questions/${question.id}`) #{question.title}
+div.modal
+    div.modalContent
+        h2 Ask A Public Question
+        form(action=`/` method="get")
+          input(type="submit" value="Go Home")
+        form(action=`/questions` method="get")
+          input(type="submit" value="Back To Questions")
+        form(method="post" action="/questions/ask")
+            input(type='hidden' name='_csrf' value=csrfToken)
+            div
+              label(for="title") Title
+            span Be specific and imagine you’re asking a question to another person
+            div
+              input(type="text" id="title-text" name="title" placeholder="e.g. Is it possible to adopt all the dogs at the shelter?")
+            div
+              label(for="content") Body
+            span Include all the information someone would need to answer your question
+            div
+              textarea(id="content" name="content")
+            div
+              label(for="tags") Tags
+            div
+              input(type="text" id="tags" name="tags")
+            div
+              button(type='submit') Post Question

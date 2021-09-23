@@ -30,5 +30,7 @@
     color: #54A8E5;
 }
 
-
+.modal {
+    display: none;
+}
 /* this is a test */
