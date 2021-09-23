@@ -1,11 +1,61 @@
-h2 {
-  justify-content: center;
+div {
+  box-sizing: border-box;
+}
+
+#mid-panel-top h2 {
+  padding-left: 10px;
 }
 .page-container {
   display: flex;
   width: 100%;
   height: auto;
   justify-content: center;
+}
+
+#temp-nav {
+  background-color: indigo;
+  height: 70px;
+  width: 100%;
+}
+
+#content-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+#left-panel {
+  display: flex;
+  background-color: hotpink;
+  width: 25%;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+#right-panel {
+  background-color: green;
+  width: 25%;
+  height: 100%;
+}
+
+#mid-panel {
+  display: flex;
+  background-color: #ddecf0;
+  width: 50%;
+  height: auto;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+#mid-panel-top {
+  background-color: #e5e5e5;
+  height: 60px;
+  width: 100%;
+}
+#mid-panel-main {
+  background-color: darkblue;
+  height: 100%;
+  width: 100%;
 }
 
 .nav_bar {
@@ -23,16 +73,11 @@ h2 {
   align-content: flex-end;
 }
 
-.mid-panel {
+.question-box {
   display: flex;
-  background-color: #ddecf0;
-  width: 40%;
-  height: auto;
-  justify-content: center;
-}
-.question-preview-box {
-  display: flex;
-  border: 5px solid grey;
+  border-bottom: 3px solid grey;
+  border-left: 3px solid grey;
+  border-right: 3px solid grey;
   height: 100px;
   width: 100%;
 }
