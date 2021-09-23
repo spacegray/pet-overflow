@@ -1,0 +1,18 @@
+script(src='/javascripts/ask.js' type='module' defer)
+link(rel="stylesheet" href="/stylesheets/index.css")
+button(class="button" id="loginBtn") Login
+div.modal
+    div.modalContent
+        h2#login-form-h2 Welcome to Pet Overflow
+        div.modalForm
+            form(action='/users/login' method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            label(for = "email") Email
+            input(type = "text", name = "email")
+            label(for = "password") Password
+            input(type = "password", name = "password")
+            div(class='button')
+            button(type='submit' class='login_button') Login
+                a(href='/' class='cancel-button') Cancel
+                div
+                    p: a(href='/users/register') Don't have an account?
