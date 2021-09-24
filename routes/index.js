@@ -1,17 +1,21 @@
 var express = require('express');
 const { check, validationResult } = require("express-validator");
-const { asyncHandler } = require("./utils");
 const db = require('../db/models');
+const { csrfProtection, asyncHandler } = require("./utils");
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', asyncHandler( async (req, res) => {
+router.get('/',
+           csrfProtection,
+           asyncHandler( async (req, res) => {
     let user = {};
     if (req.session.auth) {
         const {userId} = req.session.auth;
         user = await db.User.findByPk(userId);
     }
-    res.render('layout', user);
+    res.render('layout', {
+        csrfToken: req.csrfToken()
+    });
 }));
 
 module.exports = router;
