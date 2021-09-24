@@ -26,26 +26,27 @@ block content
                         input(type='hidden' name='_csrf' value=csrfToken)
                         div
                         label(for="title" class="formTitle") Title
+                        div
                         span.formInfo Be specific and imagine you’re asking a question to another person
                         div
                         input(type="text" id="title-text" name="title" placeholder="e.g. Is it possible to adopt all the dogs at the shelter?")
-                        br
                         div
                         label(for="content" class="formTitle") Body
+                        div
                         span.formInfo  Include all the information someone would need to answer your question
-                        br
                         div
                         textarea(id="content" name="content" class="contentText")
-                        br
                         div
                         label(for="tags" class="formTitle") Tags
                         div
                         input(type="text" id="tags" name="tags")
-                        br
                         div
+                        br
                         button(type='submit' id="question" class="button") Ask Question
+                        div
+                        br
                     div.formBtns
                         form(action=`/questions` method="get")
                             input(type="submit" id="backBtn" value="Back To Questions")
                         form(action=`/` method="get")
-                        input(type="submit" id="homeBtn" value="Go Home")
+                            input(type="submit" id="homeBtn" value="Go Home")
