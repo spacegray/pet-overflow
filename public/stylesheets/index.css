@@ -41,8 +41,8 @@
   border-top-style: solid;
   border-top-color: white;
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
-} 
-.modal, .modalLoginMain {
+}
+.modal, .modalLoginMain, .modalregistermain {
     display: none;
     position: fixed;
     /* margin: 0 auto; */
@@ -65,7 +65,7 @@
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.modalForm, .modalLogin {
+.modalForm, .modalLogin, .modalregister{
     background-color: white;
     border-radius: 15%;
     margin: 0 auto;
@@ -129,4 +129,3 @@ grid-template-areas: "a b";
 .alert {
     color: red;
 }
-
