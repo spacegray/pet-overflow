@@ -38,18 +38,12 @@ html
                 div.modalLogin
                     form(action='/users/login' method='post')
                         input(type='hidden' name='_csrf' value=csrfToken)
-                        div
-                            label(for = "email") Email
-                        div
-                            input(type = "text", name = "email")
-                        div
-                            br
-                            label(for = "password") Password
-                        div
-                            input(type = "password", name = "password")
-                        div
-                            br
+                        label(for = "email") Email
+                        input(type = "text", name = "email")
+                        label(for = "password") Password
+                        input(type = "password", name = "password")
+                        div(class='button')
                             button(type='submit' class='login_button') Login
+                            a(href='/' class='cancel-button') Cancel
                     div
                         p: a(href='/users/register') Don't have an account?
-                        a(href='/' class='cancel-button') Cancel
