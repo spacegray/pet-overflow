@@ -1,0 +1,14 @@
+.answer-box {
+  display: flex;
+  border-bottom: 2px solid grey;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  height: 100px;
+  width: 100%;
+}
+
+#question-display {
+    height: 200px;
+    width: 400px;
+    background-color: hotpink;
+}
