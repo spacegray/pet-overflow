@@ -1,4 +1,5 @@
 extends nav-bar
+include utils.pug
 block head
     script(src="/javascripts/questions.js" type="module" defer)
 block content
@@ -32,6 +33,7 @@ block content
               input(type="image" src="/images/downvote.png" class="answer-down-button" value=answer.id alt="submit")
             hr
 
+    +validationErrorSummary(errors)
     form(method="post" action=`/questions/${questionId}`)
         input(type='hidden' name='_csrf' value=csrfToken)
         div

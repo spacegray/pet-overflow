@@ -1,9 +1,13 @@
 link(rel="stylesheet" href="/stylesheets/index.css")
+
+include utils.pug
+
 html
     head
     body
         div.modalContent
           h2#question-form-h2 Ask A Public Question
+          +validationErrorSummary(errors)
           div.modalForm
             form(method="post" action="/questions/ask")
                 input(type='hidden' name='_csrf' value=csrfToken)
