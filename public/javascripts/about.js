@@ -3,7 +3,10 @@ document.querySelector("#aboutUs").addEventListener("click", (e) => {
     // document.querySelector(".dogs").style.display = "none";
     document.querySelector("#question").style.display = "none";
     document.querySelector(".paw").style.display = "none";
-    document.querySelector(".want").innerHTML = "About Us"
+    document.querySelector(".want").innerHTML = `<p>About Us</p>
+    <p>Ayla worked on this</P>
+    <p>Valeria worked on this</P>
+    <p>David worked on this</P>`;
     const newEle = document.createElement("div");
     document.querySelector(".welcome").appendChild(newEle);
     newEle.innerHTML= "HELLO IS THIS OWRKING?!"
