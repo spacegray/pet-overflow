@@ -1,4 +1,5 @@
 extends nav-bar
+include utils.pug
 block head
     script(src='/javascripts/ask.js' type='module' defer)
     script(src='/javascripts/questions.js' type='module' defer)
@@ -13,49 +14,54 @@ block content
             div(id="mid-panel-top")
                 h2 Top Questions
                 button(class="button" id="question") Ask A Question
+                div.modal
+                    div.modalContent
+                        h2#question-form-h2 Ask A Public Question
+                        div.modalForm
+                            div
+                                form(method="post" action="/questions/ask")
+                                    input(type='hidden' name='_csrf' value=csrfToken)
+                                    div
+                                        label(for="title" class="formTitle") Title
+                                    span.formInfo Be specific and imagine you’re asking a question to another person
+                                    div
+                                        input(type="text" id="title-text" name="title" placeholder="e.g. Is it possible to adopt all the dogs at the shelter?")
+                                    div
+                                        br
+                                        label(for="content" class="formTitle") Body
+                                    span.formInfo  Include all the information someone would need to answer your question
+                                    div
+                                        textarea(id="content" name="content" class="contentText")
+                                    div
+                                    br
+                                    button(type='submit' id="question" class="button") Ask Question
+                                    div
+                                    br
+                                div.formBtns
+                                    form(action=`/questions` method="get")
+                                        input(type="submit" id="backBtn" value="Back To Questions")
+                                    form(action=`/` method="get")
+                                        input(type="submit" id="homeBtn" value="Go Home")
             div(id="mid-panel-main")
                 each question in questions
                     div(class='question-box')  
                         div(class="stats-panel")
                             form(action=`/questions/${question.id}/vote` method="post")
-                            input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
+                            input(type="image" src="/images/upvote.png" class="votesBtn votes-up" value=question.id alt="submit")
                             div#votes
-                            div#qVotes #{question.votes}
+                            div(id=`qVote-${question.id}`) #{question.votes}
                             form(action=`/questions/${questionid}/downvote` method="post")
-                            input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit") 
+                            input(type="image" src="/images/downvote.png" class="votesBtn votes-down" value=question.id alt="submit") 
                             div#view-panel 
                                 div#view-number #{question.views}
                                 div#views Views  
                         div(class="question-preview-panel")  
+                            div(id="edit-delete")
+                              if userId === question.userId
+                                button(class="edit-q") edit
+                                  p(class="hidden-info") #{question.id}
+                                button(class="delete-q") delete
+                                  p(class="hidden-info") #{question.id}
                             a(href=`/questions/${question.id}`) #{question.title}
                             div(id="date-panel") #{question.createdAt}
-        div(id="right-panel")      
-    div.modal
-        div.modalContent
-            h2#question-form-h2 Ask A Public Question
-            div.modalForm
-                div
-                    form(method="post" action="/questions/ask")
-                        input(type='hidden' name='_csrf' value=csrfToken)
-                        div
-                          label(for="title" class="formTitle") Title
-                        span.formInfo Be specific and imagine you’re asking a question to another person
-                        div
-                          input(type="text" id="title-text" name="title" placeholder="e.g. Is it possible to adopt all the dogs at the shelter?")
-                        div
-                          label(for="content" class="formTitle") Body
-                        span.formInfo  Include all the information someone would need to answer your question
-                        div
-                          textarea(id="content" name="content" class="contentText")
-                        div
-                        br
-                        button(type='submit' id="question" class="button") Ask Question
-                        div
-                        br
-                    div.formBtns
-                        form(action=`/questions` method="get")
-                            input(type="submit" id="backBtn" value="Back To Questions")
-                        form(action=`/` method="get")
-                        input(type="submit" id="homeBtn" value="Go Home")
-
-        
+        div(id="right-panel")
