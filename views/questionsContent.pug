@@ -4,6 +4,7 @@ block head
   script(src="/javascripts/questions.js" type="module" defer)
   link(rel="stylesheet" href="/stylesheets/index.css")
   link(rel="stylsheet" href="/stylesheets/quesiton-view-page.css")
+  link(rel="stylsheet" href="/stylesheets/questions-page.css")
 block content
   div(class="content-container")
     div(id="left-panel")
@@ -26,12 +27,12 @@ block content
           button(type='submit' class="button") Post Your Answer
       div(id="mid-panel-main")
         div(class="stats-panel")
-        form(action=`/questions/${questionId}/vote` method="post")
-          input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
-        div#qVotes #{question.votes}
-          span.questionContent #{question.content}
-        form(action=`/questions/${questionId}/downvote` method="post")
-          input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
+          form(action=`/questions/${questionId}/vote` method="post")
+            input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
+          div#qVotes #{question.votes}
+            //- span.questionContent #{question.content}
+          form(action=`/questions/${questionId}/downvote` method="post")
+            input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
         div#view-panel
           div#view-number #{question.views}
           div#views Views
