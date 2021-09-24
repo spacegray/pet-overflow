@@ -130,6 +130,7 @@ border-radius: 6px;
   height: 100px;
   width: 100%;
 }
+
 .stats-panel {
   background-color: white;
   display: flex;
@@ -169,6 +170,10 @@ border-radius: 6px;
   height: 100%;
   border-left: 2px solid grey;
 }
+
+.question-preview-panel:hover > a {
+    padding-top: 0;
+}
 .question-preview-panel a {
   display: flex;
   padding-top: 20px;
@@ -185,6 +190,40 @@ border-radius: 6px;
 
 }
 
+#edit-delete {
+    display: none;
+    width: 100%;
+    height: 20px;
+}
 
+.question-preview-panel:hover > #edit-delete {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
 
+#delete-q {
+    display: flex;
+}
+#edit-q {
+    display: flex;
+}
+.edit-q:hover{
+    background-color: lightgreen;
+}
+.delete-q:hover {
+    background-color: crimson;
+}
 
+.hidden-info {
+    display: none;
+}
+
+.edit-modal {
+    display: absolute;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+}
