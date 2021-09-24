@@ -1,24 +1,28 @@
+/* #temp-nav {
+  background-color: indigo;
+  height: 70px;
+  width: 100%;
+} */
+.nav_bar {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: 100%;
+}
+
+#logo {
+  justify-content: flex-start;
+}
+
+.navbar_text_buttons {
+  align-content: flex-end;
+  padding-right: 5%
+}
 body {
   font-family: "Red Hat Display";
 }
 div {
   box-sizing: border-box;
-}
-
-#mid-panel-top {
-  display: flex;
-  justify-content: space-around;
-  height: 100px;
-}
-
-#mid-panel-top h2 {
-  padding-left: 10px;
-  padding-right: 10px;
-  font-family:"Red Hat Display"; 
-  font-weight: bold;
-}
-#mid-panel-top button {
-  padding-bottom: 10px;
 }
 .page-container {
   display: flex;
@@ -27,50 +31,92 @@ div {
   justify-content: center;
 }
 
-/* #temp-nav {
-  background-color: indigo;
-  height: 70px;
+#mid-panel-top {
+  background-color: #e5e5e5;
+  height: 50px;
   width: 100%;
-} */
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  border-left: 3px solid grey;
+}
+
+#mid-panel-top h2 {
+  /* padding-left: 5px; */
+  display: flex;
+  /* align-content: flex-end; */
+  margin-left: 15px;
+  margin-top: 40px;
+  padding-right: 15px;
+  font-family: 'Red Hat Display';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  color: #3A444A;
+
+}
+#mid-panel-top .button {
+  display: flex;
+  /* padding-bottom: 10px;
+  padding-left: 20px; */
+  margin: 30px;
+  background: #50A1DB;
+border: 1px solid #ADADAD;
+box-sizing: border-box;
+box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25), inset 0px 4px 4px #E5E5E5;
+border-radius: 6px;
+}
 
 .content-container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
 
 #left-panel {
   display: flex;
-  background-color: hotpink;
-  width: 25%;
-  height: 100%;
+  background-color: #ddecf0;
+  width: 200px;
+  height: auto;
   justify-content: flex-start;
+}
+.left-panel-links {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  padding-top: 30px;
+  align-items: center;
+}
+.left-panel-links a {
+  text-decoration: none;
+  padding-top: 5%;
 }
 
 #mid-panel {
   display: flex;
-  background-color: #ddecf0;
+  /* background-color: #ddecf0; */
   width: 600px;
   height: auto;
-  justify-content: center;
-  align-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 }
 
 #right-panel {
   background-color: green;
-  width: 25%;
+  width: 100px;
   height: 100%;
 }
 
-#mid-panel-top {
+/* #mid-panel-top {
   background-color: #e5e5e5;
   height: 60px;
   width: 100%;
-}
+} */
 #mid-panel-main {
-  background-color: darkblue;
+  /* background-color: darkblue; */
   height: 100%;
   width: 100%;
 }
@@ -87,19 +133,29 @@ div {
   display: flex;
   width: 250px;
   height: 100%;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  /* flex-direction: row;  */
+  align-items: center; 
   padding: 5px
 }
 #votes {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
+  font-size: 11pt;
 }
 #view-panel {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  padding: 5%;
 }
+/* #views {
+  display: flex;
+  justify-content: center;
+} */
 .question-preview-panel {
   background-color: white;
   display: flex;
@@ -127,20 +183,6 @@ div {
 
 }
 
-.nav_bar {
-  display: flex;
-  flex-direction: row;
-  height: 100px;
-  width: 100%;
-}
 
-#logo {
-  justify-content: flex-start;
-}
-
-.navbar_text_buttons {
-  align-content: flex-end;
-  padding-right: 5%
-}
 
 

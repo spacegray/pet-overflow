@@ -4,6 +4,11 @@ block head
     script(src='/javascripts/questions.js' type='module' defer)
 block content
     div(class="content-container")
+        div(id="left-panel")
+            div(class="left-panel-links") 
+                a(href=`/`) Home
+                a(href=`/`) About 
+                a(href=`/questions/ask`) Ask a Question
         div(id="mid-panel")
             div(id="mid-panel-top")
                 h2 Top Questions
@@ -19,15 +24,12 @@ block content
                             form(action=`/questions/${questionid}/downvote` method="post")
                             input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit") 
                             div#view-panel 
-                                div#views Views  #{question.views}
+                                div#view-number #{question.views}
+                                div#views Views  
                         div(class="question-preview-panel")  
                             a(href=`/questions/${question.id}`) #{question.title}
                             div(id="date-panel") #{question.createdAt}
-                div(id="left-panel")
-                    div(class="left-panel-links") 
-                        a(href=`/`) Home
-                        a(href=``)
-                
+        div(id="right-panel")      
     div.modal
         div.modalContent
             h2#question-form-h2 Ask A Public Question
