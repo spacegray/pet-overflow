@@ -1,0 +1,27 @@
+include utils.pug
+
+html
+    head
+    body
+    h2 Ask A Public Question
+    +validationErrorSummary(errors)
+    form(action=`/` method="get")
+      input(type="submit" value="Go Home")
+    form(action=`/questions` method="get")
+      input(type="submit" value="Back To Questions")
+    form(method="post" action=`/questions/${question.id}/edit`)
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div
+          label(for="title") Title
+        div
+          input(type="text" id="title-text" name="title" value=question.title)
+        div
+          label(for="content") Body
+        div
+          textarea(id="content" name="content")= question.content
+        div
+          label(for="tags") Tags
+        div
+          input(type="text" id="tags" name="tags")
+        div
+          button(type='submit') Save Edits

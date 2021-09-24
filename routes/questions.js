@@ -101,4 +101,39 @@ router.get(
         });
     })
 );
+
+// EDIT QUESTIONS
+router.get(
+    "/:id(\\d+)/edit",
+    asyncHandler(async (req, res) => {
+        const questionId = parseInt(req.params.id, 10);
+        const question = await Question.findByPk(questionId);
+        res.render('edit-form', {question});
+    })
+);
+
+router.post(
+    "/:id(\\d+)/edit",
+    questionValidators,
+    asyncHandler(async (req, res) => {
+        const questionId = parseInt(req.params.id, 10);
+        const { title, content } = req.body;
+        const { userId } = req.session.auth;
+
+        const validatorErrors = validationResult(req);
+
+        if (validatorErrors.isEmpty()) {
+            const question = await Question.findByPk(questionId);
+            question.title = title;
+            question.content = content;
+            question.save();
+            return req.session.save(() => res.redirect(`/questions/${questionId}`));
+        }
+        const errors = validatorErrors.array().map((error) => error.msg);
+        res.render('edit-form', {
+            errors,
+        });
+    })
+);
+
 module.exports = router;
