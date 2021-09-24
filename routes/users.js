@@ -213,18 +213,25 @@ router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
         // loginUser(req,res,user);
         console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
         loginUser(req, res, user);
-        return req.session.save(() => res.redirect('/'));
+        return req.session.save(() => res.redirect('/questions'));
         //csrfToken: req.csrfToken(),
     } else {
         console.log(`Login unsuccessful`);
     }
 }));
 
+// DEMO LOGIN
+router.get("/demo", asyncHandler(async (req, res) => {
+    const user = await db.User.findByPk(1);
+    loginUser(req, res, user);
+    return req.session.save(() => res.redirect('/questions'));
+}));
+
 router.get(
     "/logout",
     asyncHandler(async (req, res) => {
-        logoutUser(req, res)
-        res.redirect('/users/login')
+        logoutUser(req, res);
+        return req.session.save(() => res.redirect('/users/login'));
     })
 );
 
