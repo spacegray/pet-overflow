@@ -214,13 +214,13 @@
   border-top-color: white;
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
   position: absolute;
-  margin-left: -355px;
+  margin-left: 675px;
   margin-top: 305px;
 }
 
 @media screen and (max-width: 1366px) {
   .vals_ask {
-    margin-left: -262px;
+    margin-left: 530px;
     margin-top: 250px;
     padding-top: 5px;
     padding-bottom: 5px;
