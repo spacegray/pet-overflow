@@ -11,6 +11,7 @@ html
         link(rel="stylesheet" href="/stylesheets/questions-page.css")
         link(rel="stylesheet" href="/stylesheets/welcome.css")
         script(src="/javascripts/index.js" type="module" defer)
+        script(src="/javascripts/ask.js" type="module" defer)
         block head
     body
         div(class='try_out')
@@ -24,9 +25,6 @@ html
                             a(href='https://github.com/spacegray/pet-overflow/wiki') ABOUT
                 a(href='/')
                     img(id='logo' src="/images/over.png" alt="Pet Overflow" style='width50px; height:50px;')
-                div(id='search-container')
-                    form(id='search-global')
-                        input(id='search-term' autocomplete="off" type='text' placeholder='Search petOverflow ...')
             div(class='navbar_text_buttons')
               div(id='search-container')
                 form(id='search-global')
@@ -34,7 +32,22 @@ html
               if user
                   a(class='button' id='log-out' href='/users/logout') Logout
               else
-                a(class='button' id='login' href='/users/login') Login
+                button(class='button' id='login') Login
                 a(class='button' id='sign-up' href='/users/register') Register
                 a(class='button' id='demo' href='/users/demo') Demo Login
         block content
+        div.modalLoginMain
+            div.modalContent
+                h2#login-form-h2 Welcome to Pet Overflow
+                div.modalLogin
+                    form(action='/users/login' method='post')
+                        input(type='hidden' name='_csrf' value=csrfToken)
+                        label(for = "email") Email
+                        input(type = "text", name = "email")
+                        label(for = "password") Password
+                        input(type = "password", name = "password")
+                        div(class='button')
+                            button(type='submit' class='login_button') Login
+                            a(href='/' class='cancel-button') Cancel
+                    div
+                        p: a(href='/users/register') Don't have an account?

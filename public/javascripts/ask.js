@@ -9,8 +9,9 @@ document.querySelector("#question").addEventListener("click", () => {
 //     modal.style.display = "none";
 // }
 // })
-document.querySelector("#loginBtn").addEventListener("click", () => {
-  document.querySelector(".modal").style.display = "block";
+document.querySelector("#login").addEventListener("click", () => {
+  document.querySelector(".modalLoginMain").style.display = "block";
   document.querySelector("body").style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  console.log("it works")
   //   document.querySelector("body").style.overflow = "scroll";
 });

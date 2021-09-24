@@ -3,6 +3,7 @@ block content
   script(src="/javascripts/index.js" type="module" defer)
 
   link(rel="stylesheet", href="/stylesheets/home-page.css")
+  script(src='/javascripts/ask.js' type='module' defer)
   h1= title
   if user
     p(id="welcome") Welcome #{user.userName}!
@@ -14,8 +15,7 @@ block content
     p(class='want') Want to find the answers to your pet questions and connect with others in the community?
     img(class='pop_up' src='/images/Vector.png' alt='pop-up')
     a(class='q_button' id='questions' href='/questions') Questions
-    form(action="/questions/ask" method="get")
-      input(class='vals_ask' type="submit" value="Ask A Question")
+    button(class="vals_ask" id="question") Ask A Question
     p(class='main_text') The community <span class='short'>to ask</span> all of your pet related questions, Pet Overflow
   div(class='circle')
   div(class='box1')
@@ -23,3 +23,31 @@ block content
   div(class='box3')
   div(class='box4')
   body
+      div.modal
+        div.modalContent
+            h2#question-form-h2 Ask A Public Question
+            div.modalForm
+                div
+                    form(method="post" action="/questions/ask")
+                        input(type='hidden' name='_csrf' value=csrfToken)
+                        div
+                          label(for="title" class="formTitle") Title
+                        span.formInfo Be specific and imagine you’re asking a question to another person
+                        div
+                          input(type="text" id="title-text" name="title" placeholder="e.g. Is it possible to adopt all the dogs at the shelter?")
+                        div
+                          br
+                          label(for="content" class="formTitle") Body
+                        span.formInfo  Include all the information someone would need to answer your question
+                        div
+                          textarea(id="content" name="content" class="contentText")
+                        div
+                        br
+                        button(type='submit' id="question" class="button") Ask Question
+                        div
+                        br
+                    div.formBtns
+                        form(action=`/questions` method="get")
+                            input(type="submit" id="backBtn" value="Go To Questions")
+                        form(action=`/` method="get")
+                            input(type="submit" id="homeBtn" value="Go Back Home")

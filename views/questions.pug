@@ -38,25 +38,20 @@ block content
                     form(method="post" action="/questions/ask")
                         input(type='hidden' name='_csrf' value=csrfToken)
                         div
-                        label(for="title" class="formTitle") Title
+                          label(for="title" class="formTitle") Title
                         span.formInfo Be specific and imagine you’re asking a question to another person
                         div
-                        input(type="text" id="title-text" name="title" placeholder="e.g. Is it possible to adopt all the dogs at the shelter?")
-                        br
+                          input(type="text" id="title-text" name="title" placeholder="e.g. Is it possible to adopt all the dogs at the shelter?")
                         div
-                        label(for="content" class="formTitle") Body
+                          label(for="content" class="formTitle") Body
                         span.formInfo  Include all the information someone would need to answer your question
+                        div
+                          textarea(id="content" name="content" class="contentText")
+                        div
                         br
-                        div
-                        textarea(id="content" name="content" class="contentText")
-                        br
-                        div
-                        label(for="tags" class="formTitle") Tags
-                        div
-                        input(type="text" id="tags" name="tags")
-                        br
-                        div
                         button(type='submit' id="question" class="button") Ask Question
+                        div
+                        br
                     div.formBtns
                         form(action=`/questions` method="get")
                             input(type="submit" id="backBtn" value="Back To Questions")

@@ -20,10 +20,10 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get(
-    "/",
-    asyncHandler(async (req, res) => {
-        res.render("layout")
-    })
+  "/",
+  asyncHandler(async (req, res) => {
+    res.render("layout");
+  })
 );
 /// VALIDATORS
 const userValidators = [
@@ -205,7 +205,7 @@ router.post("/register", csrfProtection, userValidators, asyncHandler(async (req
     }
 }));
 
-// LOGIN
+// LOGIN SAMS WORKING LOGIN
 router.get("/login", csrfProtection, asyncHandler(async (req, res) => {
     console.log("did this work");
     res.render("user-login", {
