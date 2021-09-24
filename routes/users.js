@@ -106,6 +106,25 @@ const userValidators = [
         return true;
     }),
 ];
+
+const loginValidators = [
+    check("email")
+    .exists({
+        checkFalsy: true
+    })
+    .withMessage("Enter your email.")
+    .isLength({
+        max: 50
+    })
+    .withMessage("Email Address must not be more than 50 characters long")
+    .isEmail()
+    .withMessage("Email Address is not a valid email"),
+    check("password")
+    .exists({
+        checkFalsy: true
+    })
+    .withMessage("Enter your password")
+];
 ////////////////////////////////////////////////////////////////////////////////
 
 // LIST USERS
@@ -195,30 +214,50 @@ router.get("/login", csrfProtection, asyncHandler(async (req, res) => {
     });
 }));
 
-router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
-    const {
-        email,
-        password
-    } = req.body;
-    const user = await db.User.findOne({
-        where: {
+router.post("/login",
+    csrfProtection,
+    loginValidators,
+    asyncHandler(async (req, res) => {
+        let errors = [];
+        const {
             email,
-        },
-    });
-    const passwordMatch = await bcrypt.compare(
-        password,
-        user.hashedPassword.toString()
-    );
-    if (passwordMatch) {
-        // loginUser(req,res,user);
-        console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
-        loginUser(req, res, user);
-        return req.session.save(() => res.redirect('/questions'));
-        //csrfToken: req.csrfToken(),
-    } else {
-        console.log(`Login unsuccessful`);
-    }
-}));
+            password
+        } = req.body;
+        const validatorErrors = validationResult(req);
+
+        if (validatorErrors.isEmpty()) {
+            const user = await db.User.findOne({
+                where: {
+                    email,
+                },
+            });
+            const passwordMatch = await bcrypt.compare(
+                password,
+                user.hashedPassword.toString()
+            );
+            if (passwordMatch) {
+                // loginUser(req,res,user);
+                console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
+                loginUser(req, res, user);
+                return req.session.save(() => res.redirect('/questions'));
+                //csrfToken: req.csrfToken(),
+            }
+            console.log(`Login unsuccessful`);
+            errors.push('Login failed: password or email is incorrect.');
+            res.render('user-login', {
+                errors,
+                csrfToken: req.csrfToken()
+            });
+        } else {
+            errors = validatorErrors.array().map((error) => error.msg);
+            console.log("\n\n\n\n!!!");
+            console.log(errors);
+            res.render('user-login', {
+                errors,
+                csrfToken: req.csrfToken()
+            });
+        }
+    }));
 
 // DEMO LOGIN
 router.get("/demo", asyncHandler(async (req, res) => {
