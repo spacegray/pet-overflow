@@ -133,6 +133,7 @@ router.post(
 
         if (validatorErrors.isEmpty()) {
             question.title = title;
+            question.save();
             question.content = content;
             question.save();
             return req.session.save(() => res.redirect(`/questions/${questionId}`));
