@@ -12,11 +12,11 @@ div {
   justify-content: center;
 }
 
-#temp-nav {
+/* #temp-nav {
   background-color: indigo;
   height: 70px;
   width: 100%;
-}
+} */
 
 #content-container {
   display: flex;
@@ -32,12 +32,6 @@ div {
   justify-content: flex-start;
 }
 
-#right-panel {
-  background-color: green;
-  width: 25%;
-  height: 100%;
-}
-
 #mid-panel {
   display: flex;
   background-color: #ddecf0;
@@ -47,6 +41,13 @@ div {
   align-content: center;
   flex-direction: column;
 }
+
+#right-panel {
+  background-color: green;
+  width: 25%;
+  height: 100%;
+}
+
 #mid-panel-top {
   background-color: #e5e5e5;
   height: 60px;
@@ -62,6 +63,9 @@ div {
   display: flex;
   width: 250px;
   height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .question-preview-panel {
   background-color: yellow;
