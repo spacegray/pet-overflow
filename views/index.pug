@@ -1,13 +1,12 @@
-extends layout
+extends nav-bar
 
 block content
   //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/home-page.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
     h1= title
     if user
-      p(id="welcome") Welcome #{user.userName}!
+      p(class="home_stuff") Welcome #{user.userName}!
     else
-      p(id="welcome") Welcome To Pet Overflow!
+      p(class="home_stuff") Welcome To Pet Overflow!
