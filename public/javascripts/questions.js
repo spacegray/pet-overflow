@@ -22,9 +22,26 @@ window.addEventListener("load", ()=> {
         const qId = editor.children[0].innerText;
         editor.addEventListener('click', async(e) => {
             e.preventDefault();
-            const res = await fetch(`/questions/${qId}/edit`, {
-                method: "GET",
-            });
+            window.location.href = `/questions/${qId}/edit`;
+            // // CONSTRUCTING MODAL
+            // const body = document.querySelector("body");
+            // const modal = document.createElement('div');
+            // modal.setAttribute('id', 'modal');
+            // modal.style.display = 'flex';
+            // body.appendChild(modal);
+            // // MODAL CONTENT
+            // const FORM_HTML = `
+            //     <div><div><h1>edit your question</h1></div>
+            //     <div><input id="modal-title" type="text" name="title"></div>
+            //     <div><textarea rows="8" cols="30" name="content"></textarea></div>
+            //     <div><button>
+            //     <a href="/questions/${qId}/edit" method="post">Submit</a>
+            //     </button></div></div>
+            // `;
+            // const modalContent = document.createElement('div');
+            // modalContent.setAttribute('id', 'modal-content');
+            // modalContent.innerHTML = FORM_HTML;
+            // modal.appendChild(modalContent);
         });
     });
 
