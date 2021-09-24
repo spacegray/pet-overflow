@@ -1,8 +1,12 @@
 link(rel="stylesheet" href="/stylesheets/index.css")
+
+include utils.pug
+
 html
     head
     body
     h2 Ask A Public Question
+    +validationErrorSummary(errors)
     form(action=`/` method="get")
       input(type="submit" value="Go Home")
     form(action=`/questions` method="get")
