@@ -56,8 +56,9 @@ block content
                                 div#views Views  
                         div(class="question-preview-panel")  
                             div(id="edit-delete")
-                              button(id="edit-q") edit
-                              button(id="delete-q") delete
+                              if userId === question.userId
+                                button(id="edit-q") edit
+                                button(id="delete-q") delete
                             a(href=`/questions/${question.id}`) #{question.title}
                             div(id="date-panel") #{question.createdAt}
         div(id="right-panel")      
