@@ -29,6 +29,98 @@
 .questionTitle {
     color: #54A8E5;
 }
+.button {
+  font-size: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: #F7F7F7;
+  background-color: #50A1DB;
+  border-radius: 10px;
+  border-top-style: solid;
+  border-top-color: white;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
+} 
+.modal {
+    display: none;
+    position: fixed;
+    /* margin: 0 auto; */
+    top: 15;
+    left: 15;
+}
 
+#question-form-h2 {
+    color: #3A444A;
+    font-size: 20px;
+    text-align: center; 
+}
+.modalContent {
+    background-color: #70D5EC;
+    width: 500px;
+    height: 500px;
+    border-radius: 15%;
+    overflow: auto;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
+}
 
-/* this is a test */
+.modalForm{
+    background-color: white;
+    border-radius: 15%;
+    margin: 0 auto;
+    padding: 18px;
+    padding-top: 25px;
+    padding-bottom: 0px;
+    width: 400px;
+    height: 400px;
+}
+
+.formTitle {
+    font-weight: bold;
+}
+.formInfo {
+    color: rgba(0, 0, 0, 0.80);
+    font-size: 14px;
+}
+#title-text {
+    width: 80%;
+}
+
+.contentText {
+    width: 320px;
+    height: 70px;
+}
+.formBtns {
+display: grid;
+grid-template-areas: "a b";
+}
+
+#backBtn {
+  grid-area: "a";
+  font-size: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: #50A1DB;
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  border-top-style: solid;
+  border-top-color: white;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
+}
+
+#homeBtn {
+  grid-area: "b";
+  font-size: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: #3A444A;
+  background-color: rgb(214, 214, 178);
+  border-radius: 10px;
+  border-top-style: solid;
+  border-top-color: white;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
+}

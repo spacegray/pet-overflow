@@ -1,15 +1,3 @@
-.try_out {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  border-style: solid;
-  border-width: 8px 0 0 0;
-  border-radius: 10px;
-  border-color: #54cbe5;
-  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
-  margin-bottom: 15px;
-}
-
 #logo {
   display: flex;
   justify-content: flex-start;
@@ -31,6 +19,7 @@
 }
 
 .navbar_text_buttons {
+  font-family: "Red Hat Display", sans-serif;
   display: flex;
   align-items: center;
   padding-right: 15px;
@@ -82,6 +71,17 @@
   font-size: 24px;
 }
 
+.try_out {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-style: solid;
+  border-width: 8px 0 0 0;
+  border-radius: 10px;
+  border-color: #54cbe5;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
 
 .icons {
   display: flex;
@@ -96,32 +96,142 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  margin-left: 3px;
-  height: 75%;
-  width: 98%;
+  margin-left: 55px;
+  margin-right: 55px;
+  height: 800px;
+  width: 1780px;
   position: absolute;
   border-radius: 20px;
-  border-bottom-left-radius: 300% 150px;
-  border-bottom-right-radius: -150% 150px;
   background: rgb(114, 110, 110);
 }
 
-.want {
-  width: 250px;
-  text-align: center;
-  margin-left: 640px;
-  margin-top: 175px;
-  position: absolute;
-  font-size: 20px;
+@media screen and (max-width: 1366px) {
+  .main_page {
+    height: 530px;
+    width: 1230px;
+  }
 }
 
 .dogs {
-  margin-top: 40px;
-  margin-right: 50px;
+  width: 700px;
+  height: 350px;
+  margin-top: 75px;
+  margin-right: 5%;
+}
+
+@media screen and (max-width: 1366px) {
+  .dogs {
+    width: 450px;
+    height: 250px;
+  }
 }
 
 .pop_up {
-  margin-top: 40px;
+  margin-right: 40px;
+  margin-top: 75px;
+  width: 550px;
+  height: 400px;
+}
+
+@media screen and (max-width: 1366px) {
+  .pop_up {
+    width: 350px;
+    height: 300px;
+  }
+}
+
+.paw {
+  width: 100px;
+  height: 100px;
+  margin-top: 95px;
+  margin-left: 825px;
+  position: absolute;
+}
+@media screen and (max-width: 1366px) {
+  .paw {
+    margin-top: 95px;
+    margin-left: 530px;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.want {
+  width: 340px;
+  text-align: center;
+  margin-left: 825px;
+  margin-top: 210px;
+  position: absolute;
+  font-size: 22px;
+  font-family: "Red Hat Display", sans-serif;
+}
+
+@media screen and (max-width: 1366px) {
+  .want {
+    width: 250px;
+    text-align: center;
+    margin-left: 530px;
+    margin-top: 175px;
+    position: absolute;
+    font-size: 20px;
+  }
+}
+
+.q_button {
+  font-family: "Red Hat Display", sans-serif;
+  color: #f7f7f7;
+  border-top-style: solid;
+  border-top-color: #50a1db;
+  border-bottom-style: solid;
+  border-bottom-color: #50a1db;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #20c795;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  position: absolute;
+  text-decoration: none;
+  margin-left: 1520px;
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 1366px) {
+  .q_button {
+    margin-left: 1090px;
+    margin-top: 30px;
+  }
+}
+
+.vals_ask {
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: #f7f7f7;
+  background-color: #50a1db;
+  border-radius: 10px;
+  border-top-style: solid;
+  border-top-color: white;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  margin-left: -355px;
+  margin-top: 305px;
+}
+
+@media screen and (max-width: 1366px) {
+  .vals_ask {
+    margin-left: -262px;
+    margin-top: 250px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 18px;
+  }
 }
 
 .main_page #ask {
@@ -136,22 +246,126 @@
   margin-right: 5px;
   border-radius: 5px;
   color: #f7f7f7;
-  /* border-style: solid; */
   border-width: 1px;
   border-top-style: solid;
   border-top-color: 3px rgb(255, 255, 255, 0.2);
-  /* border-color: #ADADAD; */
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
   text-decoration: none;
 }
 
-.paw {
-  margin-top: 60px;
-  margin-left: 630px;
+.main_text {
+  font-family: "Red Hat Display", sans-serif;
+  color: #ffffff;
   position: absolute;
+  margin-top: 500px;
+  font-size: 70px;
+  width: 65%;
 }
 
-.footer {
-  background-color: hotpink;
-  width: 100%;
+@media screen and (max-width: 1366px) {
+  .main_text {
+    margin-top: 375px;
+    font-size: 50px;
+    width: 70%;
+  }
+}
+
+.circle {
+  margin-top: 750px;
+  margin-left: 85px;
+  height: 230px;
+  width: 1720px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  position: fixed;
+}
+
+@media screen and (max-width: 1366px) {
+  .circle {
+    margin-top: 555px;
+    margin-left: 75px;
+    height: 130px;
+    width: 1200px;
+  }
+}
+
+.short {
+  font-family: "Red Hat Display", sans-serif;
+  color: #70d5ec;
+}
+
+.box1 {
+  margin-top: 80px;
+  margin-left: 85px;
+  border-radius: 10px;
+  position: absolute;
+  background-color: #54cbe5;
+  height: 80px;
+  width: 80px;
+}
+
+.box2 {
+  margin-top: 135px;
+  margin-left: 20px;
+  border-radius: 10px;
+  position: absolute;
+  background-color: #54cae58c;
+  height: 80px;
+  width: 80px;
+}
+
+.box3 {
+  margin-top: 700px;
+  margin-left: 1800px;
+  border-radius: 10px;
+  position: absolute;
+  background-color: #54cae58c;
+  height: 80px;
+  width: 80px;
+}
+
+.box4 {
+  margin-top: 640px;
+  margin-left: 1740px;
+  border-radius: 10px;
+  position: absolute;
+  background-color: #54cbe5;
+  height: 80px;
+  width: 80px;
+}
+
+@media screen and (max-width: 1366px) {
+  .box3 {
+    margin-top: 440px;
+    margin-left: 1240px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .box4 {
+    margin-top: 380px;
+    margin-left: 1180px;
+  }
+}
+
+#search-container {
+  position: relative;
+  display: inline-block;
+}
+
+#search-drop {
+  position: absolute;
+  display: inline-block;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-top: none;
+  z-index: 2;
+}
+
+#search-drop a {
+  display: block;
+  padding: 12px 16px;
 }
