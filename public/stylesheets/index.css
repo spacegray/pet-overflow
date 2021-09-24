@@ -1,3 +1,7 @@
+body {
+    font-family: 'red hat display';
+}
+
 #title {
     font-size:20px;
 }
@@ -54,26 +58,27 @@
     color: #3A444A;
     font-size: 20px;
     text-align: center;
+    justify-content: center;
     /* font-family: Red Hat; */
 }
 .modalContent {
     background-color: #70D5EC;
-    width: 500px;
-    height: 500px;
-    border-radius: 15%;
+    width: 600px;
+    height: 600px;
+    border-radius: 5%;
     overflow: auto;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .modalForm, .modalLogin {
     background-color: white;
-    border-radius: 15%;
+    border-radius: 5%;
     margin: 0 auto;
     padding: 18px;
     padding-top: 25px;
     padding-bottom: 0px;
-    width: 410px;
-    height: 410px;
+    width: 450px;
+    height: 450px;
 }
 
 .formTitle {
@@ -93,7 +98,7 @@
 }
 .formBtns {
 display: grid;
-grid-template-areas: "a b";
+grid-template-areas: ". a . . b .";
 }
 
 #backBtn {
