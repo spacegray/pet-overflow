@@ -42,7 +42,7 @@
   border-top-color: white;
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
 } 
-.modal {
+.modal, .modalLoginMain {
     display: none;
     position: fixed;
     /* margin: 0 auto; */
@@ -50,11 +50,11 @@
     left: 15;
 }
 
-#question-form-h2 {
+#question-form-h2, #login-form-h2 {
     color: #3A444A;
     font-size: 20px;
     text-align: center;
-    font-family: Red Hat;
+    /* font-family: Red Hat; */
 }
 .modalContent {
     background-color: #70D5EC;
@@ -65,7 +65,7 @@
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.modalForm{
+.modalForm, .modalLogin {
     background-color: white;
     border-radius: 15%;
     margin: 0 auto;

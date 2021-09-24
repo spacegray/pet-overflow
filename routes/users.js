@@ -211,7 +211,7 @@ router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
     );
     if (passwordMatch) {
         // loginUser(req,res,user);
-        console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
+        // console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
         loginUser(req, res, user);
         return req.session.save(() => res.redirect('/'));
         //csrfToken: req.csrfToken(),

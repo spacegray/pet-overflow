@@ -10,6 +10,7 @@ html
         link(rel="stylesheet" href="/stylesheets/index.css")
         link(rel="stylesheet" href="/stylesheets/questions-page.css")
         script(src="/javascripts/index.js" type="module" defer)
+        script(src="/javascripts/ask.js" type="module" defer)
         block head
     body
         div(class='try_out')
@@ -25,7 +26,30 @@ html
                     a(class='button' id='log-out' href='/users/logout') Logout
                 else
                 br
-                a(class='button' id='login' href='/users/login') Login
+                //- form(action="/users/login" method="get")
+                //-     input(type="submit" value="login pls" id="login")
+                button(class="button" id="login") Login
                 a(class='button' id='sign-up' href='/users/register') Register
                 a(class='button' id='demo' href='/questions/demo') Demo Login
         block content
+        div.modalLoginMain
+            div.modalContent
+                h2#login-form-h2 Welcome to Pet Overflow
+                div.modalLogin
+                    form(action='/users/login' method='post')
+                        input(type='hidden' name='_csrf' value=csrfToken)
+                        div
+                            label(for = "email") Email
+                        div
+                            input(type = "text", name = "email")
+                        div
+                            br
+                            label(for = "password") Password
+                        div
+                            input(type = "password", name = "password")
+                        div
+                            br
+                            button(type='submit' class='login_button') Login
+                    div
+                        p: a(href='/users/register') Don't have an account?
+                        a(href='/' class='cancel-button') Cancel
