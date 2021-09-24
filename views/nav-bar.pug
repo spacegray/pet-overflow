@@ -1,3 +1,4 @@
+include utils.pug
 doctype html
 html
     head
@@ -41,6 +42,7 @@ html
             div.modalContent
                 h2#login-form-h2 Welcome to Pet Overflow
                 div.modalLogin
+                    +validationErrorSummary(errors)
                     form(action='/users/login' method='post')
                         input(type='hidden' name='_csrf' value=csrfToken)
                         div
@@ -66,6 +68,7 @@ html
             div.modalContent
                 h2#login-form-h2 Welcome to Pet Overflow
                 div.modalregister
+                    +validationErrorSummary(errors)
                     form(action='/users/register' method='post')
                         input(type='hidden' name='_csrf' value=csrfToken)
                         div
