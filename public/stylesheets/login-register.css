@@ -1,0 +1,51 @@
+.login_button {
+    background-color: #ddecf0;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    color: #3a444a;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #adadad;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .register_buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+    ". a b .";
+  }
+
+.cancel-button {
+  grid-area: "a";
+    background-color: #a6aaad;
+    padding: 6px;
+    margin-right: 5px;
+    border-radius: 5px;
+    color: #f7f7f7;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #adadad;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  }
+
+.link{
+  margin-left: 60px;
+  width: 250px;
+  text-align: center;
+}
+
+.new_demo{
+  margin-right: 100px;
+  grid-area: "b";
+}
+
+.what{
+    color: #50a1db;
+    text-decoration: none;
+}
+
+.already{
+  text-decoration: none;
+}
