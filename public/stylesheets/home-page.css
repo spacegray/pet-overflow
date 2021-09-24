@@ -352,12 +352,13 @@
 #search-container {
   position: relative;
   display: inline-block;
+  margin-right: 5px;
 }
 
 #search-drop {
   position: absolute;
   display: inline-block;
-  border: 2px solid black;
+  border: 2px solid darkgray;
   background-color: white;
   color: black;
   text-decoration: none;
@@ -365,7 +366,35 @@
   z-index: 2;
 }
 
+
+#search-term {
+    padding: 12px 16px;
+    border-radius: 5px;
+    height: 4px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #adadad;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+#search-term:focus {
+    outline: none;
+    border: 2px solid darkgray;
+}
+
 #search-drop a {
   display: block;
+  text-decoration: none;
+  color: darkgray;
+  border-width: 5px;
+  border-color: black;
   padding: 12px 16px;
+}
+
+#search-drop a:visited {
+    color: gray;
+}
+
+#search-drop a:hover {
+    background-color: #ddecf0;
 }
