@@ -1,3 +1,5 @@
+include utils.pug
+
 head
   script(src="/javascripts/questions.js" type="module" defer)
 
@@ -32,6 +34,7 @@ div
           input(type="image" src="/images/downvote.png" class="answer-down-button" value=answer.id alt="submit")
         hr
 
++validationErrorSummary(errors)
 form(method="post" action=`/questions/${questionId}`)
     input(type='hidden' name='_csrf' value=csrfToken)
     div
