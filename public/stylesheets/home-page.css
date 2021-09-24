@@ -65,13 +65,15 @@
 }
 
 #welcome {
+    font-family: "Red Hat Display", sans-serif;
   display: flex;
   justify-content: center;
   position: relative;
-  font-size: 24px;
+  font-size: 30px;
 }
 
 .try_out {
+    background-color: #F7F7F7;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -86,16 +88,10 @@
 .icons {
   display: flex;
 }
-#hamburger {
-  padding-top: 15px;
-  padding-right: 5px;
-  align-items: flex-start;
-}
 
 .main_page {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
   margin-left: 55px;
   margin-right: 55px;
   height: 800px;
@@ -113,7 +109,7 @@
 }
 
 .dogs {
-  width: 700px;
+  width: 30%;
   height: 350px;
   margin-top: 75px;
   margin-right: 5%;
@@ -144,7 +140,7 @@
   width: 100px;
   height: 100px;
   margin-top: 95px;
-  margin-left: 825px;
+  margin-left: 675px;
   position: absolute;
 }
 @media screen and (max-width: 1366px) {
@@ -159,7 +155,7 @@
 .want {
   width: 340px;
   text-align: center;
-  margin-left: 825px;
+  margin-left: 675px;
   margin-top: 210px;
   position: absolute;
   font-size: 22px;
@@ -168,12 +164,12 @@
 
 @media screen and (max-width: 1366px) {
   .want {
-    width: 250px;
+    width: 260px;
     text-align: center;
     margin-left: 530px;
     margin-top: 175px;
     position: absolute;
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -397,4 +393,81 @@
 
 #search-drop a:hover {
     background-color: #ddecf0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hamburger_button {
+    width: 40px;
+  height: 40px;
+    position: relative;
+    top: 5px;
+    background: center/cover url("/images/menu.png") no-repeat;
+    background-color: #F7F7F7;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.hamburger_list {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.hamburger_list a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: verdana;
+}
+
+.hamburger_list a:hover {
+    background-color: #ddd;
+}
+
+.hamburger:hover .hamburger_list {
+    display: block;
+}
+
+.hamburger:hover .hamburger_button {
+    background-color: #595963;
+}
+
+.hamburger{
+
+    margin: 10px;
+>>>>>>> main
 }
