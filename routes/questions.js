@@ -145,6 +145,7 @@ router.post(
     })
 );
 
+// DELETE
 router.get(
     "/:id(\\d+)/delete",
     requireAuth,
