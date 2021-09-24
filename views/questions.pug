@@ -1,4 +1,5 @@
 extends nav-bar
+include utils.pug
 block head
     script(src='/javascripts/ask.js' type='module' defer)
     script(src='/javascripts/questions.js' type='module' defer)
@@ -46,17 +47,21 @@ block content
                     div(class='question-box')  
                         div(class="stats-panel")
                             form(action=`/questions/${question.id}/vote` method="post")
-                            input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
-                            div#qVotes #{question.votes}
+                            input(type="image" src="/images/upvote.png" class="votesBtn votes-up" value=question.id alt="submit")
+                            div#votes
+                            div(id=`qVote-${question.id}`) #{question.votes}
                             form(action=`/questions/${questionid}/downvote` method="post")
-                            input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit") 
+                            input(type="image" src="/images/downvote.png" class="votesBtn votes-down" value=question.id alt="submit") 
                             div#view-panel 
                                 div#view-number #{question.views}
                                 div#views Views  
                         div(class="question-preview-panel")  
+                            div(id="edit-delete")
+                              if userId === question.userId
+                                button(class="edit-q") edit
+                                  p(class="hidden-info") #{question.id}
+                                button(class="delete-q") delete
+                                  p(class="hidden-info") #{question.id}
                             a(href=`/questions/${question.id}`) #{question.title}
                             div(id="date-panel") #{question.createdAt}
-        div(id="right-panel")      
-    
-
-        
+        div(id="right-panel")
