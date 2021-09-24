@@ -46,8 +46,8 @@
     display: none;
     position: fixed;
     /* margin: 0 auto; */
-    top: 15;
-    left: 15;
+    top: 210px;
+    left: 38%;
 }
 
 #question-form-h2, #login-form-h2 {

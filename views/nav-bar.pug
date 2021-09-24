@@ -44,37 +44,56 @@ html
                     form(action='/users/login' method='post')
                         input(type='hidden' name='_csrf' value=csrfToken)
                         div
-                            label(for = "email") Email
+                            label(for = "email" class='email') Email
                         div
                             input(type = "text", name = "email")
                         br
                         div
-                            label(for = "password") Password
+                            label(for = "password" class='password') Password
                         div
                             input(type = "password", name = "password")
                         br
                         div()
                             button(type='submit' class='login_button') Login
-                            a(href='/' class='cancel-button') Cancel
+                        br
+                            //- a(href='/' class='cancel-button') Cancel
+                    form(action=`/` method="get")
+                        input(type="submit" value="Cancel" class='cancel-button')
+
                     div
-                        p: a(href='/users/register') Don't have an account?
+                        p Don't have an account? <a href='/users/register' class='what'>Sign Up</a>!
         div.modalregistermain
             div.modalContent
                 h2#login-form-h2 Welcome to Pet Overflow
                 div.modalregister
                     form(action='/users/register' method='post')
                         input(type='hidden' name='_csrf' value=csrfToken)
-                        label(for="userName") Username
-                        input(type="text", name="userName")
-                        label(for="email") Email
-                        input(type="text", name="email")
-                        label(for="password") Password
-                        input(type="password", name="password")
-                        label(for="confirmPassword") Confirm Password
-                        input(type="password", name="confirmPassword")
-                        div(class='py-4')
-                        button(type='submit' class='btn btn-register') Register
-                        a(href='/' class='btn btn-cancel') Cancel
-                    div
-                        p: a(href='/users/login') Already have an account?
-                        p: a(href='/users/demo') Login as a Demo User
+                        div
+                            label(for="userName") Username
+                        div
+                            input(type="text", name="userName")
+                        br
+                        div
+                            label(for="email") Email
+                        div
+                            input(type="text", name="email")
+                        br
+                        div
+                            label(for="password") Password
+                        div
+                            input(type="password", name="password")
+                        br
+                        div
+                            label(for="confirmPassword") Confirm Password
+                        div
+                            input(type="password", name="confirmPassword")
+                        br
+                        div
+                            button(type='submit' class='button' id='sign-up') Register
+                        br
+                    div.register_buttons
+                        form(action=`/` method="get")
+                            input(type="submit" value="Cancel" class='cancel-button')
+                        form(action='/users/demo' method="get")
+                            input(type="submit" value="Demo Login" id='demo' class='new_demo')
+                    p.link Already have an account? <a href='/users/login' class='what'>Sign in</a>!
