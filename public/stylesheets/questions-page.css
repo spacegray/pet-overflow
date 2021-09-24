@@ -170,15 +170,28 @@ border-radius: 6px;
   height: 100%;
   border-left: 2px solid grey;
 }
+
 #edit-delete {
     display: none;
-    background-color: blue;
     width: 100%;
     height: 20px;
 }
+
 .question-preview-panel:hover > #edit-delete {
     display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
+
+#delete-q {
+    display: flex;
+    background-color:red;
+}
+#edit-q {
+    display: flex;
+}
+
 .question-preview-panel:hover > a {
     padding-top: 0;
 }
