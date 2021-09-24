@@ -35,6 +35,7 @@ router.get(
 
 router.get(
   "/ask",
+  requireAuth,
   csrfProtection,
   asyncHandler(async (req, res) => {
     res.render("questionForm", { csrfToken: req.csrfToken() });
