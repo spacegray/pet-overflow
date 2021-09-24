@@ -3,27 +3,31 @@ block head
     script(src='/javascripts/ask.js' type='module' defer)
     script(src='/javascripts/questions.js' type='module' defer)
 block content
-    div(id="content-container")
-        div(id="left-panel")
+    div(class="content-container")
         div(id="mid-panel")
             div(id="mid-panel-top")
                 h2 Top Questions
+                button(class="button" id="question") Ask A Question
             div(id="mid-panel-main")
                 each question in questions
                     div(class='question-box')  
                         div(class="stats-panel")
-                            div#views Views  #{question.views}
                             form(action=`/questions/${question.id}/vote` method="post")
                             input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
                             div#votes
                             div#qVotes #{question.votes}
                             form(action=`/questions/${questionid}/downvote` method="post")
                             input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit") 
+                            div#view-panel 
+                                div#views Views  #{question.views}
                         div(class="question-preview-panel")  
                             a(href=`/questions/${question.id}`) #{question.title}
-                            div(class="date-panel") #{question.createdAt}
-        div(id="right-panel")
-    button(class="button" id="question") Ask A Question
+                            div(id="date-panel") #{question.createdAt}
+                div(id="left-panel")
+                    div(class="left-panel-links") 
+                        a(href=`/`) Home
+                        a(href=``)
+                
     div.modal
         div.modalContent
             h2#question-form-h2 Ask A Public Question
@@ -56,3 +60,5 @@ block content
                             input(type="submit" id="backBtn" value="Back To Questions")
                         form(action=`/` method="get")
                         input(type="submit" id="homeBtn" value="Go Home")
+
+        
