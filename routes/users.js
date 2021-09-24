@@ -137,17 +137,6 @@ router.get('/', asyncHandler(async (req, res) => {
     });
     // LIST USERS
 }));
-// router.get(
-//   "/",
-//   asyncHandler(async (req, res) => {
-//     console.log("hello from user router");
-//     const users = await db.User.findAll({
-//       attributes: ["userName", "email"],
-//     });
-//     users.forEach((user) => console.log(user.userName, user.email));
-//     res.send("hi");
-//   })
-// );
 
 // USER INFO
 router.get(
