@@ -53,7 +53,8 @@
 #question-form-h2 {
     color: #3A444A;
     font-size: 20px;
-    text-align: center; 
+    text-align: center;
+    font-family: Red Hat;
 }
 .modalContent {
     background-color: #70D5EC;
