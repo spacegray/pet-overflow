@@ -262,6 +262,12 @@ router.post("/login",
 // DEMO LOGIN
 router.get("/demo", asyncHandler(async (req, res) => {
     const user = await db.User.findByPk(1);
+    const votes = await db.Vote.findAll({
+        where: {
+            userId: user.id
+        }
+    });
+    votes.forEach( vote => vote.destroy() );
     loginUser(req, res, user);
     return req.session.save(() => res.redirect('/questions'));
 }));
