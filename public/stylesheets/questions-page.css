@@ -38,7 +38,9 @@ div {
   display: flex;
   justify-content: space-between;
   height: 100px;
-  border-left: 3px solid grey;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  border-bottom: 2px solid grey;
 }
 
 #mid-panel-top h2 {
@@ -122,9 +124,9 @@ border-radius: 6px;
 }
 .question-box {
   display: flex;
-  border-bottom: 3px solid grey;
-  border-left: 3px solid grey;
-  border-right: 3px solid grey;
+  border-bottom: 2px solid grey;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
   height: 100px;
   width: 100%;
 }
