@@ -9,14 +9,21 @@ html
         link(rel="stylesheet", href="/stylesheets/home-page.css")
         link(rel="stylesheet" href="/stylesheets/index.css")
         link(rel="stylesheet" href="/stylesheets/questions-page.css")
+        link(rel="stylesheet" href="/stylesheets/welcome.css")
         script(src="/javascripts/index.js" type="module" defer)
         block head
     body
         div(class='try_out')
             title="Pet Overflow"
             div(class='icons')
-                img(id='hamburger' src="/images/menu.png" alt="Pet Overflow" style='width40px; height:40px;')
-                img(id='logo' src="/images/over.png" alt="Pet Overflow" style='width50px; height:50px;')
+                div(class='hamburger')
+                    button(class='hamburger_button')
+                        div(class='hamburger_list')
+                            a(href='/') HOME
+                            a(href='/questions') QUESTIONS
+                            a(href='https://github.com/spacegray/pet-overflow/wiki') ABOUT
+                a(href='/')
+                    img(id='logo' src="/images/over.png" alt="Pet Overflow" style='width50px; height:50px;')
                 div(id='search-container')
                     form(id='search-global')
                         input(id='search-term' autocomplete="off" type='text' placeholder='Search petOverflow ...')
