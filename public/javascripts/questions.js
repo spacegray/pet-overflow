@@ -126,3 +126,42 @@ Object.values(aUP_VOTEs).forEach((button) => {
         aVOTE_COUNT.innerText = `${votes}`;
     });
 });
+
+//QUESTIONS PAGE UP VOTES
+const QP_UPS = document.getElementsByClassName('votes-up');
+Object.values(QP_UPS).forEach((button) => {
+    button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const qId = button.value;
+        const qVOTE_COUNT = document.getElementById(`qVote-${qId}`);
+
+        const res = await fetch(`/questions/${qId}/vote`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const result = await res.json();
+        const votes = result.question.votes;
+        qVOTE_COUNT.innerText = `${votes}`;
+    });
+});
+
+const QP_DOWNS = document.getElementsByClassName('votes-down');
+Object.values(QP_DOWNS).forEach((button) => {
+    button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const qId = button.value;
+        const qVOTE_COUNT = document.getElementById(`qVote-${qId}`);
+
+        const res = await fetch(`/questions/${qId}/downvote`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const result = await res.json();
+        const votes = result.question.votes;
+        qVOTE_COUNT.innerText = `${votes}`;
+    });
+});

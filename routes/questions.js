@@ -73,6 +73,7 @@ router.post(
     asyncHandler(async (req, res) => {
         const { title, content } = req.body;
         const { userId } = req.session.auth;
+        const votes = 0;
 
         const validatorErrors = validationResult(req);
 
@@ -81,6 +82,7 @@ router.post(
                 title,
                 content,
                 userId,
+                votes
             });
             return req.session.save(() => res.redirect("/questions"));
         }
