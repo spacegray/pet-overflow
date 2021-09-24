@@ -47,7 +47,6 @@ block content
                         div(class="stats-panel")
                             form(action=`/questions/${question.id}/vote` method="post")
                             input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
-                            div#votes
                             div#qVotes #{question.votes}
                             form(action=`/questions/${questionid}/downvote` method="post")
                             input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit") 

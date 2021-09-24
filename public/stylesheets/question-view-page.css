@@ -6,3 +6,9 @@
   height: 100px;
   width: 100%;
 }
+
+#question-display {
+    height: 200px;
+    width: 400px;
+    background-color: hotpink;
+}
