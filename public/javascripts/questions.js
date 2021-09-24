@@ -1,6 +1,33 @@
 window.addEventListener("load", ()=> {
     console.log("hello from QUESTIONS!");
 
+    // DELETE QUESTIONS
+    const DELETES = document.getElementsByClassName('delete-q');
+    const deleters = Object.values(DELETES);
+    deleters.forEach((deleter) => {
+        const qId = deleter.children[0].innerText;
+        deleter.addEventListener('click', async(e) => {
+            e.preventDefault();
+            const res = await fetch(`/questions/${qId}/delete`, {
+                method: "GET",
+            });
+            location.reload();
+        });
+    });
+
+    // EDIT QUESTIONS
+    const EDITS = document.getElementsByClassName('edit-q');
+    const editors = Object.values(EDITS);
+    editors.forEach((editor) => {
+        const qId = editor.children[0].innerText;
+        editor.addEventListener('click', async(e) => {
+            e.preventDefault();
+            const res = await fetch(`/questions/${qId}/edit`, {
+                method: "GET",
+            });
+        });
+    });
+
     // QUESTION FETCH UP VOTE ROUTE
     const UP_VOTE = document.getElementById('vote-button');
     const VOTE_COUNT = document.getElementById('qVotes');
