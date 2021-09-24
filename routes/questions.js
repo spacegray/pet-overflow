@@ -144,4 +144,22 @@ router.post(
     })
 );
 
+router.get(
+    "/:id(\\d+)/delete",
+    requireAuth,
+    asyncHandler(async (req, res) => {
+        const questionId = parseInt(req.params.id, 10);
+        const { title, content } = req.body;
+        const { userId } = req.session.auth;
+        const question = await Question.findByPk(questionId);
+
+        if (userId !== question.userId)
+            throw new Error('WHAT ARE YOU DOING MY DUDE?');
+
+        question.destroy();
+        return req.session.save(() => res.redirect(`/questions`));
+    })
+);
+
+
 module.exports = router;
