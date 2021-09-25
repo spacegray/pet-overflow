@@ -88,14 +88,20 @@ border-radius: 6px;
 .left-panel-links {
   display: flex;
   flex-direction: column;
-  padding-left: 40px;
-  padding-top: 30px;
+  padding-left: 60px;
+  padding-top: 40px;
   align-items: center;
 }
+
 .left-panel-links a {
+  padding-top: 10%;
+  color: #3A444A;
   text-decoration: none;
-  padding-top: 5%;
 }
+.left-panel-links a:hover {
+  color: #50A1DB;
+}
+
 
 #mid-panel {
   display: flex;
@@ -285,7 +291,7 @@ border-radius: 6px;
   padding: 10px
 }
 .answer-preview-panel {
-  background-color: white;
+  background-color: yellow;
   display: flex;
   padding-left: 15px;
   align-items: flex-start;
