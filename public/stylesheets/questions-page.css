@@ -142,13 +142,23 @@ border-radius: 6px;
   align-items: center; 
   padding: 5px
 }
-#votes {
+/* .stats-panel {
+  background-color: white;
   display: flex;
+  width: 250px;
+  height: 100%;
+  justify-content: center;
   justify-content: space-around;
-  flex-direction: column;
+  align-items: center; 
+  padding: 5px
+} */
+.votes {
+  display: flex;
+  /* justify-content: space-around; */
+  flex-direction: row;
   font-size: 11pt;
 }
-#view-panel {
+.view-panel {
   display: flex;
   flex-direction: column;
   justify-content: center;
