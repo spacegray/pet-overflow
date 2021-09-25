@@ -1,10 +1,6 @@
 # PET OVERFLOW
 https://pet-overflow.herokuapp.com/ 
 
-Pet Overflow is a clone of Stack Overflow with a pet theme. Features include account creation, question and answer CRUD operations, and search bar with autocomplete
-
----
-# **Welcome to the PetOverflow Project WIKI**
 ---
 _PetOverflow is a clone of StackOverflow with a pet theme. Features include account creation, question and answer CRUD operations, and search bar with autocomplete._
 
