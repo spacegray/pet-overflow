@@ -238,3 +238,53 @@ border-radius: 6px;
     top: 0;
     left: 0;
 }
+
+
+/* question view page */
+
+.content-container {
+  background-color: paleturquoise;
+}
+
+#questionContent {
+  height: 100px
+}
+
+#post-answer-on-question {
+  display: flex;
+  flex-direction: flex-end;
+  background-color: indigo;
+
+}
+.answer-box {
+  display: flex;
+  border-bottom: 2px solid grey;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  height: 100px;
+  width: 100%;
+  background-color: yellow;
+}
+
+.question-stats-panel {
+  background-color: white;
+  display: flex;
+  width: 250px;
+  height: 100%;
+  justify-content: center;
+  justify-content: space-around;
+  /* flex-direction: row;  */
+  align-items: center; 
+  padding: 10px
+}
+.answer-preview-panel {
+  background-color: white;
+  display: flex;
+  padding-left: 15px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-left: 2px solid grey;
+}

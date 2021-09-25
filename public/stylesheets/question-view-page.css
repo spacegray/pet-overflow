@@ -1,3 +1,6 @@
+.content-container {
+  background-color: paleturquoise;
+}
 .answer-box {
   display: flex;
   border-bottom: 2px solid grey;
@@ -12,8 +15,4 @@
   display: flex;
   flex-direction: flex-end;
   background-color: indigo;
-}
-
-span questionContent {
-  background-color: orchid;
 }
