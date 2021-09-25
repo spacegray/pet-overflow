@@ -18,4 +18,9 @@ router.get('/',
     });
 }));
 
+router.get("/about", asyncHandler(async (req, res) => {
+res.render("about-us");
+  })
+);
+
 module.exports = router;
