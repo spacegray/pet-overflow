@@ -1,7 +1,7 @@
 if (document.querySelector("#question") !== null) {
   document.querySelector("#question").addEventListener("click", (e) => {
     e.stopPropagation();
-    document.querySelector(".modal").style.display = "block";
+    document.querySelector(".modal").style.display = "flex";
     document.querySelector("body").style.backgroundColor = "rgba(0, 0, 0, 0.5)";
     if (
       document.querySelector(
@@ -43,7 +43,7 @@ if (document.querySelector("#question") !== null) {
 if (document.querySelector("#login") !== null) {
   document.querySelector("#login").addEventListener("click", (e) => {
     e.stopPropagation();
-    document.querySelector(".modalLoginMain").style.display = "block";
+    document.querySelector(".modalLoginMain").style.display = "flex";
     document.querySelector("body").style.backgroundColor = "rgba(0, 0, 0, 0.5)";
     if (
       document.querySelector(
@@ -79,7 +79,7 @@ if (document.querySelector("#login") !== null) {
 }
 if (document.querySelector("#sign-up") !== null) {
   document.querySelector("#sign-up").addEventListener("click", (e) => {
-    document.querySelector(".modalregistermain").style.display = "block";
+    document.querySelector(".modalregistermain").style.display = "flex";
     document.querySelector("body").style.backgroundColor = "rgba(0, 0, 0, 0.5)";
     e.stopPropagation();
     if (
