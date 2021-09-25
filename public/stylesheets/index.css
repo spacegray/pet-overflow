@@ -46,7 +46,7 @@ body {
   border-top-color: white;
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
 }
-.modal, .modalLoginMain, .modalregistermain, .modalAbout {
+.modal, .modalLoginMain, .modalregistermain, .modalAbout, .modalAbout {
     display: none;
     position: fixed;
     /* margin: 0 auto; */
@@ -142,4 +142,9 @@ grid-template-areas: ". a . . b .";
 
 #edit-form {
     margin: 5px;
+}
+
+.linkNames {
+text-decoration: none;
+color: rgb(109, 80, 109);
 }
