@@ -18,6 +18,7 @@ const answerValidators = [
 
 router.post(
     "/:id(\\d+)",
+    requireAuth,
     answerValidators,
     asyncHandler(async (req, res) => {
         const { content } = req.body;
