@@ -25,7 +25,7 @@ html
                         div(class='hamburger_list')
                             a(href='/') HOME
                             a(href='/questions') QUESTIONS
-                            a(href= "/about" id="aboutUs") ABOUT
+                            a(href= "/" id="aboutUs") ABOUT
                 a(href='/')
                     img(id='logo' src="/images/over.png" alt="Pet Overflow" style='width50px; height:50px;')
             div(class='navbar_text_buttons')
@@ -101,3 +101,9 @@ html
                         form(action='/users/demo' method="get")
                             input(type="submit" value="Demo Login" id='demo' class='new_demo')
                     p.link Already have an account? <a href='/users/login' class='what'>Sign in</a>!
+        div.modalAbout
+            div.modalContent
+                h2#question-form-h2 About
+                div.modalForm
+                    div
+                    p BLAH BLAH BLAH
