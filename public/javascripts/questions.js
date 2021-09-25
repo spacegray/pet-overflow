@@ -45,38 +45,40 @@ window.addEventListener("load", ()=> {
         });
     });
 
-    // QUESTION FETCH UP VOTE ROUTE
-    const UP_VOTE = document.getElementById('vote-button');
-    const VOTE_COUNT = document.getElementById('qVotes');
-    UP_VOTE.addEventListener('click', async(e) => {
-        e.preventDefault();
-        const qId = window.location.pathname.split('/')[2];
-        const res = await fetch(`/questions/${qId}/vote`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+    if (document.getElementById('vote-button')
+        && document.getElementById('vote-down-button')) {
+        const UP_VOTE = document.getElementById('vote-button');
+        const VOTE_COUNT = document.getElementById('qVotes');
+        UP_VOTE.addEventListener('click', async(e) => {
+            e.preventDefault();
+            const qId = window.location.pathname.split('/')[2];
+            const res = await fetch(`/questions/${qId}/vote`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const result = await res.json();
+            const votes = result.question.votes;
+            VOTE_COUNT.innerText = `${votes}`;
         });
-        const result = await res.json();
-        const votes = result.question.votes;
-        VOTE_COUNT.innerText = `${votes}`;
-    });
 
-    // QUESTION FETCH UP DOWN ROUTE
-    const DOWN_VOTE = document.getElementById('vote-down-button');
-    DOWN_VOTE.addEventListener('click', async(e) => {
-        e.preventDefault();
-        const qId = window.location.pathname.split('/')[2];
-        const res = await fetch(`/questions/${qId}/downvote`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+        // QUESTION FETCH UP DOWN ROUTE
+        const DOWN_VOTE = document.getElementById('vote-down-button');
+        DOWN_VOTE.addEventListener('click', async(e) => {
+            e.preventDefault();
+            const qId = window.location.pathname.split('/')[2];
+            const res = await fetch(`/questions/${qId}/downvote`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const result = await res.json();
+            const votes = result.question.votes;
+            VOTE_COUNT.innerText = `${votes}`;
         });
-        const result = await res.json();
-        const votes = result.question.votes;
-        VOTE_COUNT.innerText = `${votes}`;
-    });
+    }
 
     // ANSWER FETCH UP DOWN ROUTE
     const aDOWN_VOTEs = document.getElementsByClassName('answer-down-button');
@@ -153,6 +155,7 @@ Object.values(QP_DOWNS).forEach((button) => {
         e.preventDefault();
         const qId = button.value;
         const qVOTE_COUNT = document.getElementById(`qVote-${qId}`);
+        console.log(qVOTE_COUNT);
 
         const res = await fetch(`/questions/${qId}/downvote`, {
             method: "POST",
