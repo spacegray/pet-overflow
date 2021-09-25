@@ -152,11 +152,12 @@ border-radius: 6px;
   align-items: center; 
   padding: 5px
 } */
-.votes {
+#votes {
   display: flex;
   /* justify-content: space-around; */
   flex-direction: row;
   font-size: 11pt;
+  background-color: orange
 }
 .view-panel {
   display: flex;

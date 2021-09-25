@@ -11,45 +11,44 @@ block content
       div(class="left-panel-links") 
         a(href=`/`) Home
         a(href=`/`) About 
-        a(href=`/questions/ask`) Ask a Question
+        a(href=`/questions`) Questions
     div(id="mid-panel")
       div(id="mid-panel-top")
-      div(id="question-display")
-        h2=question.title
-      +validationErrorSummary(errors)
-      form(method="post" action=`/questions/${questionId}`)
-        input(type='hidden' name='_csrf' value=csrfToken)
-        div
-          label(for="content") Your Answer
-        div
-          textarea(id="content" name="content" class="contentAnswer")
-        div
-          button(type='submit' class="button") Post Your Answer
-      div(id="mid-panel-main")
-        div(class="stats-panel")
-          form(action=`/questions/${questionId}/vote` method="post")
-            input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
-          div#qVotes #{question.votes}
-            //- span.questionContent #{question.content}
-          form(action=`/questions/${questionId}/downvote` method="post")
-            input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
-        div#view-panel
-          div#view-number #{question.views}
-          div#views Views
-          form(action=`/` method="get")
-              input(type="submit" value="Go Home")
-          form(action=`/questions` method="get")
-              input(type="submit" value="Back To Questions")
+          h2=question.title
+      span.questionContent #{question.content}
+      div(id="post-answer-on-question")
+        //- form(action=`/` method="get")
+        //-     input(type="submit" value="Go Home")
+        //- form(action=`/questions` method="get")
+        //-     input(type="submit" value="Back To Questions")
+        +validationErrorSummary(errors)
+        form(method="post" action=`/questions/${questionId}`)
+          input(type='hidden' name='_csrf' value=csrfToken)
           div
-            each answer in answers
-              div(class='answer-box')
-                form(action=`/answer/${answer.id}/vote` method="post")
-                  input(type="image" src="/images/upvote.png" class="answer-vote-button" value=answer.id alt="submit")
-                div(id=`aVote-${answer.id}`)
-                  div#votes #{answer.votes}
-                span.questionContent #{answer.content}
-                form(action=`/answer/${answer.id}/downvote` method="post")
-                input(type="image" src="/images/downvote.png" class="answer-down-button" value=answer.id alt="submit")
+            label(for="content") Your Answer
+          div
+            textarea(id="content" name="content" class="contentAnswer")
+          div
+            button(type='submit' class="button") Post Your Answer
+      div(id="mid-panel-main")
+        each answer in answers
+          div(class='answer-box')
+            form(action=`/answer/${answer.id}/vote` method="post")
+              input(type="image" src="/images/upvote.png" class="answer-vote-button" value=answer.id alt="submit")
+            div(id=`aVote-${answer.id}`)
+              div#votes #{answer.votes}
+            span.questionContent #{answer.content}
+            form(action=`/answer/${answer.id}/downvote` method="post")
+            input(type="image" src="/images/downvote.png" class="answer-down-button" value=answer.id alt="submit")
+            //- div(class="stats-panel")
+            //-   form(action=`/questions/${questionId}/vote` method="post")
+            //-     input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
+            //-   div#qVotes #{question.votes}
+            //-   form(action=`/questions/${questionId}/downvote` method="post")
+            //-     input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
+            //- div#view-panel
+            //-   div#view-number #{question.views}
+            //-   div#views Views
 
 
 

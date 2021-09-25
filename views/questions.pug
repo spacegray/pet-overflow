@@ -46,7 +46,7 @@ block content
                 each question in questions
                     div(class='question-box')  
                         div(class="stats-panel")
-                            div.votes
+                            div#votes
                             form(action=`/questions/${qId}/vote` method="post")
                             input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn votes-up" value=question.id alt="submit")
                             div(id=`qVote-${question.id}`) #{question.votes}
