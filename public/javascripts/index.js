@@ -1,6 +1,4 @@
 window.addEventListener("load", (event)=>{
-    console.log("hello from javascript!");
-
     // Search bar
     const search = document.getElementById('search-go');
     const searchInput = document.getElementById('search-term');

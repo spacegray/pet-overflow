@@ -1,6 +1,4 @@
 window.addEventListener("load", ()=> {
-    console.log("hello from QUESTIONS!");
-
     // DELETE QUESTIONS
     const DELETES = document.getElementsByClassName('delete-q');
     const deleters = Object.values(DELETES);
