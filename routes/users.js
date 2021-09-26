@@ -214,33 +214,42 @@ router.post("/login",
         } = req.body;
         const validatorErrors = validationResult(req);
 
-        if (validatorErrors.isEmpty()) {
-            const user = await db.User.findOne({
-                where: {
-                    email,
-                },
-            });
-            const passwordMatch = await bcrypt.compare(
-                password,
-                user.hashedPassword.toString()
-            );
-            if (passwordMatch) {
-                // loginUser(req,res,user);
-                console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
-                loginUser(req, res, user);
-                return req.session.save(() => res.redirect('/questions'));
-                //csrfToken: req.csrfToken(),
-            }
+        try {
+            if (validatorErrors.isEmpty()) {
+                const user = await db.User.findOne({
+                    where: {
+                        email,
+                    },
+                });
+                const passwordMatch = await bcrypt.compare(
+                    password,
+                    user.hashedPassword.toString()
+                );
+                if (passwordMatch) {
+                    // loginUser(req,res,user);
+                    console.log(`hello ${user.userName}, ${user.email} from LOGIN ROUTE`);
+                    loginUser(req, res, user);
+                    return req.session.save(() => res.redirect('/questions'));
+                    //csrfToken: req.csrfToken(),
+                }
+                console.log(`Login unsuccessful`);
+                errors.push('Login failed: password or email is incorrect.');
+                res.render('user-login', {
+                    errors,
+                    csrfToken: req.csrfToken()
+                });
+            } else {
+                errors = validatorErrors.array().map((error) => error.msg);
+                console.log("\n\n\n\n!!!");
+                console.log(errors);
+                res.render('user-login', {
+                    errors,
+                    csrfToken: req.csrfToken()
+                });
+        }
+        } catch(err) {
             console.log(`Login unsuccessful`);
             errors.push('Login failed: password or email is incorrect.');
-            res.render('user-login', {
-                errors,
-                csrfToken: req.csrfToken()
-            });
-        } else {
-            errors = validatorErrors.array().map((error) => error.msg);
-            console.log("\n\n\n\n!!!");
-            console.log(errors);
             res.render('user-login', {
                 errors,
                 csrfToken: req.csrfToken()
