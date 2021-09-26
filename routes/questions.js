@@ -95,7 +95,7 @@ router.post(
             return req.session.save(() => res.redirect("/questions"));
         }
         const errors = validatorErrors.array().map((error) => error.msg);
-        res.render('questionForm', {
+        res.render('questions', {
             errors,
         });
     })
