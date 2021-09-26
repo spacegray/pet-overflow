@@ -15,15 +15,17 @@ block content
     div(id="mid-panel")
       div(id="mid-panel-top")
           h2=question.title
-      div(id="questionContent") 
-        div(id="question-vote-form")
-          form(action=`/questions/${questionId}/vote` method="post")
-            input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
-          div#votes
-            div#qVotes #{question.votes}
-          form(action=`/questions/${questionId}/downvote` method="post")
-            input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
-        div(id="questionBody") #{question.content}
+      div(id="questionContent")
+          div(class="question-stats-panel")
+            div(id="question-vote-form")
+              form(action=`/questions/${questionId}/vote` method="post")
+                input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
+              div#votes
+                div#qVotes #{question.votes}
+              form(action=`/questions/${questionId}/downvote` method="post")
+                input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
+          div(class="answer-preview-panel")
+            div(id="questionBody") #{question.content}
 
       div(id="post-answer-on-question")
         //- form(action=`/` method="get")
@@ -49,9 +51,9 @@ block content
                   div(id=`qVote-${question.id}`) #{question.votes}
                   form(action=`/questions/${questionid}/downvote` method="post")
                   input(type="image" src="/images/downvote.png" class="votesBtn votes-down" value=question.id alt="submit") 
-              div(class="question-preview-panel")  
-                div(id="answerContent") #{answer.content}
-                div(id="date-panel") #{answer.createdAt}
+            div(class="question-preview-panel")  
+              div(id="answerContent") #{answer.content}
+              div(id="date-panel") #{answer.createdAt}
 
 
 
