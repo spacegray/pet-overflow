@@ -46,6 +46,7 @@ router.get(
 
 router.get(
     "/:id(\\d+)",
+    csrfProtection,
     asyncHandler(async (req, res) => {
         const questionId = parseInt(req.params.id, 10);
         const question = await Question.findByPk(questionId);
@@ -60,7 +61,8 @@ router.get(
         res.render("questionsContent", {
             question,
             questionId,
-            answers
+            answers,
+            csrfToken: req.csrfToken(),
         });
     })
 );
