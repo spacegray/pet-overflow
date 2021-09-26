@@ -1,6 +1,6 @@
 document.querySelector("#aboutUs").addEventListener("click", (e) => {
      e.preventDefault();
-     document.querySelector(".modalAbout").style.display = "block";
+    document.querySelector(".modalAbout").style.display = "flex";
      document.querySelector("body").style.backgroundColor =
        "rgba(0, 0, 0, 0.5)";
           if (
