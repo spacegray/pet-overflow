@@ -25,6 +25,7 @@ const questionValidators = [
 
 router.get(
     "/",
+    csrfProtection,
     asyncHandler(async (req, res) => {
         if(req.session.auth) {
             const { userId } = req.session.auth;
@@ -37,6 +38,7 @@ router.get(
             const questions = await db.Question.findAll();
             res.render("questions", {
                 questions,
+                csrfToken: req.csrfToken(),
             });
         }
     })
