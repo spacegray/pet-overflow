@@ -50,15 +50,19 @@ window.addEventListener("load", ()=> {
         UP_VOTE.addEventListener('click', async(e) => {
             e.preventDefault();
             const qId = window.location.pathname.split('/')[2];
-            const res = await fetch(`/questions/${qId}/vote`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            const result = await res.json();
-            const votes = result.question.votes;
-            VOTE_COUNT.innerText = `${votes}`;
+            try {
+                const res = await fetch(`/questions/${qId}/vote`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                const result = await res.json();
+                const votes = result.question.votes;
+                VOTE_COUNT.innerText = `${votes}`;
+            } catch(err) {
+                window.location.replace('/users/login');
+            }
         });
 
         // QUESTION FETCH UP DOWN ROUTE
@@ -66,15 +70,19 @@ window.addEventListener("load", ()=> {
         DOWN_VOTE.addEventListener('click', async(e) => {
             e.preventDefault();
             const qId = window.location.pathname.split('/')[2];
-            const res = await fetch(`/questions/${qId}/downvote`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            const result = await res.json();
-            const votes = result.question.votes;
-            VOTE_COUNT.innerText = `${votes}`;
+            try {
+                const res = await fetch(`/questions/${qId}/downvote`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                const result = await res.json();
+                const votes = result.question.votes;
+                VOTE_COUNT.innerText = `${votes}`;
+            } catch(err) {
+                window.location.replace('/users/login');
+            }
         });
     }
 
@@ -89,16 +97,19 @@ window.addEventListener("load", ()=> {
             /////// WOAH DADDY WATCH OUT HERE MY DUDE ///////
             /////////////////////////////////////////////////
             const aVOTE_COUNT = document.getElementById(`aVote-${aId}`);
-
-            const res = await fetch(`/answer/${aId}/downvote`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            const result = await res.json();
-            const votes = result.answer.votes;
-            aVOTE_COUNT.innerText = `${votes}`;
+            try {
+                const res = await fetch(`/answer/${aId}/downvote`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                const result = await res.json();
+                const votes = result.answer.votes;
+                aVOTE_COUNT.innerText = `${votes}`;
+            } catch(err) {
+                window.location.replace('/users/login');
+            }
         });
     });
 });
@@ -114,16 +125,19 @@ Object.values(aUP_VOTEs).forEach((button) => {
         /////// WATCH OUT HERE MY DUDE ///////
         /////////////////////////////////////////////////
         const aVOTE_COUNT = document.getElementById(`aVote-${aId}`);
-
-        const res = await fetch(`/answer/${aId}/vote`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        const result = await res.json();
-        const votes = result.answer.votes;
-        aVOTE_COUNT.innerText = `${votes}`;
+        try {
+            const res = await fetch(`/answer/${aId}/vote`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const result = await res.json();
+            const votes = result.answer.votes;
+            aVOTE_COUNT.innerText = `${votes}`;
+        } catch(err) {
+            window.location.replace('/users/login');
+        }
     });
 });
 
@@ -134,16 +148,19 @@ Object.values(QP_UPS).forEach((button) => {
         e.preventDefault();
         const qId = button.value;
         const qVOTE_COUNT = document.getElementById(`qVote-${qId}`);
-
-        const res = await fetch(`/questions/${qId}/vote`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        const result = await res.json();
-        const votes = result.question.votes;
-        qVOTE_COUNT.innerText = `${votes}`;
+        try {
+            const res = await fetch(`/questions/${qId}/vote`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const result = await res.json();
+            const votes = result.question.votes;
+            qVOTE_COUNT.innerText = `${votes}`;
+        } catch(err) {
+            window.location.replace('/users/login');
+        }
     });
 });
 
@@ -154,15 +171,18 @@ Object.values(QP_DOWNS).forEach((button) => {
         const qId = button.value;
         const qVOTE_COUNT = document.getElementById(`qVote-${qId}`);
         console.log(qVOTE_COUNT);
-
-        const res = await fetch(`/questions/${qId}/downvote`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        const result = await res.json();
-        const votes = result.question.votes;
-        qVOTE_COUNT.innerText = `${votes}`;
+        try {
+            const res = await fetch(`/questions/${qId}/downvote`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const result = await res.json();
+            const votes = result.question.votes;
+            qVOTE_COUNT.innerText = `${votes}`;
+        } catch(err) {
+            window.location.replace('/users/login');
+        }
     });
 });
