@@ -26,11 +26,11 @@ const questionValidators = [
 router.get(
     "/",
     asyncHandler(async (req, res) => {
-        const { userId } = req.session.auth;
+        // const { userId } = req.session.auth;
         const questions = await db.Question.findAll();
         res.render("questions", {
             questions,
-            userId
+            // userId
         });
     })
 );
@@ -69,6 +69,7 @@ router.get(
 
 router.post(
     "/ask",
+    requireAuth,
     questionValidators,
     asyncHandler(async (req, res) => {
         const { title, content } = req.body;
