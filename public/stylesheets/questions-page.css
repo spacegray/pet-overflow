@@ -53,7 +53,7 @@ div {
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 32px;
   color: #3a444a;
 }
@@ -183,6 +183,7 @@ div {
   align-content: center;
   padding: 5%;
 }
+
 /* #views {
   display: flex;
   justify-content: center;
@@ -279,20 +280,24 @@ div {
   border-right: 2px solid grey;
   height: 100px;
   width: 100%;
-  background-color: white;
+  background-color: #ddecf0;
 }
-
-
 
 #question-vote-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #ddecf0;
 }
 #questionBody {
   margin: 0 25px;
   font-size: 1.2em;
+}
+
+#questionContent > .question-stats-panel {
+  background-color:#ddecf0;
+
 }
 
 #post-answer-on-question {
@@ -307,8 +312,6 @@ div {
   /* justify-content: center; */
 }
 
-
-
 #post-answer-on-question > form {
   display: flex;
   justify-content: center;
@@ -316,6 +319,8 @@ div {
   align-items: center;
   width: 100%;
   height: 100%;
+  font-size: 14pt;
+  background-color: #e5e5e5;
   /* margin: 0 25px; */
 }
 
@@ -323,8 +328,9 @@ div {
   min-width: 80%;
   min-height: 200px;
   max-width: 80%;
-  max-height: 200px;
+  max-height: 150px;
   resize: none;
+  font-size: 12pt;
 }
 
 #post-answer-on-question .button {
@@ -342,7 +348,7 @@ div {
 }
 
 .question-stats-panel {
-  background-color: white;
+  background-color:white;
   display: flex;
   width: 250px;
   height: 100%;
@@ -362,4 +368,3 @@ div {
   height: 100%;
   border-left: 2px solid grey;
 }
-
