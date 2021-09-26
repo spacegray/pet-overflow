@@ -15,7 +15,16 @@ block content
     div(id="mid-panel")
       div(id="mid-panel-top")
           h2=question.title
-      div(id="questionContent") #{question.content}
+      div(id="questionContent") 
+        div(id="question-vote-form")
+          form(action=`/questions/${questionId}/vote` method="post")
+            input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
+          div#votes
+            div#qVotes #{question.votes}
+          form(action=`/questions/${questionId}/downvote` method="post")
+            input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
+        div(id="questionBody") #{question.content}
+
       div(id="post-answer-on-question")
         //- form(action=`/` method="get")
         //-     input(type="submit" value="Go Home")
@@ -26,8 +35,7 @@ block content
           input(type='hidden' name='_csrf' value=csrfToken)
           div
             label(for="content") Your Answer
-          div
-            textarea(id="content" name="content" class="contentAnswer")
+          textarea(id="content" name="content" class="contentAnswer")
           div
             button(type='submit' class="button") Post Your Answer
       div(id="mid-panel-main")
@@ -42,6 +50,8 @@ block content
               input(type="image" src="/images/downvote.png" class="answer-down-button" value=answer.id alt="submit")
             div(class="question-preview-panel")  
               div(id="answerContent") #{answer.content}
+              div(id="date-panel") #{answer.createdAt}
+              
             //- div(class="stats-panel")
             //-   form(action=`/questions/${questionId}/vote` method="post")
             //-     input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
