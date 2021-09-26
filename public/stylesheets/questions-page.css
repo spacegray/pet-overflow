@@ -16,7 +16,7 @@
 
 .navbar_text_buttons {
   align-content: flex-end;
-  padding-right: 5%
+  padding-right: 5%;
 }
 body {
   font-family: "Red Hat Display";
@@ -50,51 +50,56 @@ div {
   margin-left: 15px;
   margin-top: 40px;
   padding-right: 15px;
-  font-family: 'Red Hat Display';
+  font-family: "Red Hat Display";
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 32px;
-  color: #3A444A;
-
+  color: #3a444a;
 }
 #mid-panel-top .button {
   display: flex;
   /* padding-bottom: 10px;
   padding-left: 20px; */
   margin: 30px;
-  background: #50A1DB;
-border: 1px solid #ADADAD;
-box-sizing: border-box;
-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25), inset 0px 4px 4px #E5E5E5;
-border-radius: 6px;
+  background: #50a1db;
+  border: 1px solid #adadad;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25), inset 0px 4px 4px #e5e5e5;
+  border-radius: 6px;
 }
 
 .content-container {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  /* align-items: center; */
+  margin: auto;
   width: 100%;
   height: 100%;
 }
 
 #left-panel {
   display: flex;
+  justify-content: flex-start;
   background-color: #ddecf0;
   width: 200px;
   height: auto;
-  justify-content: flex-start;
 }
 .left-panel-links {
   display: flex;
   flex-direction: column;
-  padding-left: 40px;
-  padding-top: 30px;
+  padding-left: 60px;
+  padding-top: 40px;
   align-items: center;
 }
+
 .left-panel-links a {
+  padding-top: 10%;
+  color: #3a444a;
   text-decoration: none;
-  padding-top: 5%;
+}
+.left-panel-links a:hover {
+  color: #50a1db;
 }
 
 #mid-panel {
@@ -137,24 +142,48 @@ border-radius: 6px;
   width: 250px;
   height: 100%;
   justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+}
+#vote-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 25px;
+}
+#vote-panel > form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* .stats-panel {
+  background-color: white;
+  display: flex;
+  width: 250px;
+  height: 100%;
+  justify-content: center;
   justify-content: space-around;
-  /* flex-direction: row;  */
   align-items: center; 
   padding: 5px
-}
+} */
 #votes {
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
+  /* justify-content: space-around; */
+  /* flex-direction: row; */
   font-size: 11pt;
 }
-#view-panel {
+.view-panel {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   padding: 5%;
 }
+
 /* #views {
   display: flex;
   justify-content: center;
@@ -172,12 +201,18 @@ border-radius: 6px;
 }
 
 .question-preview-panel:hover > a {
-    padding-top: 0;
+  padding-top: 0;
 }
 .question-preview-panel a {
   display: flex;
   padding-top: 20px;
+  color: #3a444a;
 }
+.question-preview-panel a:hover {
+  display: flex;
+  color: #50a1db;
+}
+
 #date-panel {
   display: flex;
   align-items: flex-end;
@@ -186,44 +221,150 @@ border-radius: 6px;
   font-size: 9pt;
   height: 20px;
   background-color: white;
-  color: #ADADAD;
-
+  color: #adadad;
 }
 
 #edit-delete {
-    display: none;
-    width: 100%;
-    height: 20px;
+  display: none;
+  width: 100%;
+  height: 20px;
 }
 
 .question-preview-panel:hover > #edit-delete {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 #delete-q {
-    display: flex;
+  display: flex;
 }
 #edit-q {
-    display: flex;
+  display: flex;
 }
-.edit-q:hover{
-    background-color: lightgreen;
+.edit-q:hover {
+  background-color: lightgreen;
 }
 .delete-q:hover {
-    background-color: crimson;
+  background-color: crimson;
 }
 
 .hidden-info {
-    display: none;
+  display: none;
 }
 
 .edit-modal {
-    display: absolute;
-    z-index: 2;
-    background-color: rgba(0,0,0,0.5);
-    top: 0;
-    left: 0;
+  display: absolute;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+}
+
+/* question view page */
+
+/* .content-container {
+  background-color: paleturquoise;
+} */
+
+#questionContent {
+  /* display: flex;
+  flex-direction: row;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  padding: 10px; */
+  display: flex;
+  border-bottom: 2px solid grey;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  height: 100px;
+  width: 100%;
+  background-color: #ddecf0;
+}
+
+#question-vote-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ddecf0;
+}
+#questionBody {
+  margin: 0 25px;
+  font-size: 1.2em;
+}
+
+#questionContent > .question-stats-panel {
+  background-color:#ddecf0;
+
+}
+
+#post-answer-on-question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: indigo; */
+  border-bottom: 2px solid grey;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  /* justify-content: center; */
+}
+
+#post-answer-on-question > form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 14pt;
+  background-color: #e5e5e5;
+  /* margin: 0 25px; */
+}
+
+#post-answer-on-question #content {
+  min-width: 80%;
+  min-height: 200px;
+  max-width: 80%;
+  max-height: 150px;
+  resize: none;
+  font-size: 12pt;
+}
+
+#post-answer-on-question .button {
+  margin: 10px 0;
+}
+
+.answer-box {
+  display: flex;
+  border-bottom: 2px solid grey;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  height: 100px;
+  width: 100%;
+  background-color: white;
+}
+
+.question-stats-panel {
+  background-color:white;
+  display: flex;
+  width: 250px;
+  height: 100%;
+  justify-content: center;
+  justify-content: space-around;
+  /* flex-direction: row;  */
+  align-items: center;
+  padding: 10px;
+}
+.answer-preview-panel {
+  display: flex;
+  padding-left: 15px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-left: 2px solid grey;
 }
