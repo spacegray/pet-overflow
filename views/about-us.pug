@@ -1,2 +1,24 @@
 extends nav-bar
-h1 this is a test
+block content
+  script(src="/javascripts/index.js" type="module" defer)
+
+  link(rel="stylesheet", href="/stylesheets/home-page.css")
+  script(src='/javascripts/ask.js' type='module' defer)
+  h1= title
+  if user
+    p(id="welcome") Welcome #{user.userName}!
+  else
+    p(id="welcome") Welcome To Pet Overflow!
+  div(class='main_page')
+    img(class='dogs' src='/images/dogs-playing.png' alt='dogs-playing')
+    //- img(class='paw' src='/images/paw.png' alt='paw' style='')
+    p(class='aboutUs') About us
+    img(class='pop_up' src='/images/Vector.png' alt='pop-up')
+    a(class='q_button' id='questions' href='/questions') Questions
+    p(class='main_text') The community <span class='short'>to ask</span> all of your pet related questions, Pet Overflow
+  div(class='circle')
+  div(class='box1')
+  div(class='box2')
+  div(class='box3')
+  div(class='box4')
+  body
