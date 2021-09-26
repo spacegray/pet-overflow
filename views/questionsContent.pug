@@ -42,16 +42,23 @@ block content
         each answer in answers
           div(class='answer-box')
             div(class="question-stats-panel")
-              form(action=`/answer/${answer.id}/vote` method="post")
-                input(type="image" src="/images/upvote.png" class="answer-vote-button" value=answer.id alt="submit")
-              div(id=`aVote-${answer.id}`)
-                div#votes #{answer.votes}
-              form(action=`/answer/${answer.id}/downvote` method="post")
-              input(type="image" src="/images/downvote.png" class="answer-down-button" value=answer.id alt="submit")
-            div(class="question-preview-panel")  
-              div(id="answerContent") #{answer.content}
-              div(id="date-panel") #{answer.createdAt}
+              div(id="vote-panel")
               
+
+
+
+
+          //- votes before refactoring
+            //-   form(action=`/answer/${answer.id}/vote` method="post")
+            //-     input(type="image" src="/images/upvote.png" class="answer-vote-button" value=answer.id alt="submit")
+            //-   div(id=`aVote-${answer.id}`)
+            //-     div#votes #{answer.votes}
+            //-   form(action=`/answer/${answer.id}/downvote` method="post")
+            //-   input(type="image" src="/images/downvote.png" class="answer-down-button" value=answer.id alt="submit")
+            //- div(class="question-preview-panel")  
+            //-   div(id="answerContent") #{answer.content}
+            //-   div(id="date-panel") #{answer.createdAt}
+
             //- div(class="stats-panel")
             //-   form(action=`/questions/${questionId}/vote` method="post")
             //-     input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
