@@ -26,12 +26,19 @@ const questionValidators = [
 router.get(
     "/",
     asyncHandler(async (req, res) => {
-        // const { userId } = req.session.auth;
-        const questions = await db.Question.findAll();
-        res.render("questions", {
-            questions,
-            // userId
-        });
+        if(req.session.auth) {
+            const { userId } = req.session.auth;
+            const questions = await db.Question.findAll();
+            res.render("questions", {
+                questions,
+                userId
+            });
+        } else {
+            const questions = await db.Question.findAll();
+            res.render("questions", {
+                questions,
+            });
+        }
     })
 );
 
