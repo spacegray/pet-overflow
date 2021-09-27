@@ -2,7 +2,7 @@
 https://pet-overflow.herokuapp.com/ 
 
 ---
-_PetOverflow is a clone of StackOverflow with a pet theme. Features include account creation, question and answer CRUD operations, and search bar with autocomplete._
+_PetOverflow is a clone of StackOverflow with a pet theme. Features include account creation, question CRUD operations, and search bar with autocomplete._
 
 ### [Feature List](https://github.com/spacegray/pet-overflow/wiki/MVP-Feature-List)
 * Comprehensive list of features
