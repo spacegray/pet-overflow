@@ -45,11 +45,11 @@ block content
             div(class="question-stats-panel")
               div(id="vote-panel")
                 form(action=`/answer/${answer.id}/vote` method="post")
-                  input(type="image" src="/images/upvote.png" class="votesBtn votes-up" value=question.id alt="submit")
+                  input(type="image" src="/images/upvote.png" class="votesBtn answer-vote-button" value=answer.id alt="submit")
                   div#votes
-                  div(id=`qVote-${question.id}`) #{question.votes}
-                  form(action=`/questions/${questionid}/downvote` method="post")
-                  input(type="image" src="/images/downvote.png" class="votesBtn votes-down" value=question.id alt="submit") 
+                  div(id=`aVote-${answer.id}`) #{answer.votes}
+                  form(action=`/answer/${answer.id}/downvote` method="post")
+                  input(type="image" src="/images/downvote.png" class="votesBtn answer-down-button" value=answer.id alt="submit") 
             div(class="question-preview-panel")  
               div(id="answerContent") #{answer.content}
               div(id="date-panel") #{answer.createdAt}
