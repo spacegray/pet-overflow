@@ -177,7 +177,6 @@ div {
 #date-panel {
   display: flex;
   align-items: flex-end;
-  /* justify-content: flex-end; */
   padding-top: 40px;
   font-size: 9pt;
   height: 20px;
@@ -341,5 +340,4 @@ padding-right: 15px;
 #answerContent {
   width: 95%;
   overflow: hidden;
-  /* box-sizing: content-box; */
 }
