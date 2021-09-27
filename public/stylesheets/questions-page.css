@@ -1,9 +1,3 @@
-/* .nav_bar {
-  display: flex;
-  flex-direction: row;
-  height: 100px;
-  width: 100%;
-} */
 
 #logo {
   justify-content: flex-start;
@@ -106,11 +100,6 @@ div {
   height: 100%;
 }
 
-/* #mid-panel-top {
-  background-color: #e5e5e5;
-  height: 60px;
-  width: 100%;
-} */
 #mid-panel-main {
   height: 100%;
   width: 100%;
@@ -188,7 +177,6 @@ div {
 #date-panel {
   display: flex;
   align-items: flex-end;
-  /* justify-content: flex-end; */
   padding-top: 40px;
   font-size: 9pt;
   height: 20px;
@@ -241,6 +229,8 @@ div {
   border-right: 2px solid grey;
   height: 100px;
   width: 100%;
+  min-height: fit-content;
+  min-width: fit-content;
   background-color: #ddecf0;
 }
 
@@ -252,6 +242,11 @@ div {
   background-color: #ddecf0;
 }
 #questionBody {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding-right:17px;
+  box-sizing: content-box;
   margin: 0 25px;
   font-size: 1.2em;
 }
@@ -276,6 +271,7 @@ div {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding-top: 5px;
   width: 100%;
   height: 100%;
   font-size: 14pt;
@@ -325,7 +321,23 @@ div {
   height: 100%;
   border-left: 2px solid grey;
 }
-
+.question-content-preview-panel {
+  display: flex;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-left: 2px solid grey;
+  overflow: hidden;
+}
+#questionBody {
+padding-right: 15px;
+}
 #answerContent {
   width: 95%;
+  overflow: hidden;
 }

@@ -2,6 +2,7 @@ extends nav-bar
 include utils.pug
 block head
   script(src="/javascripts/questions.js" type="module" defer)
+  script(src="/javascripts/about.js" type="module" defer)
   link(rel="stylesheet" href="/stylesheets/index.css")
   link(rel="stylsheet" href="/stylesheets/questions-page.css")
 block content
@@ -9,8 +10,8 @@ block content
     div(id="left-panel")
       div(class="left-panel-links") 
         a(href=`/`) Home
-        a(href=`/`) About 
         a(href=`/questions`) Questions
+        a(href=`/about` id="aboutUs") About 
     div(id="mid-panel")
       div(id="mid-panel-top")
           h2=question.title
@@ -23,7 +24,7 @@ block content
                 div#qVotes #{question.votes}
               form(action=`/questions/${questionId}/downvote` method="post")
                 input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
-          div(class="answer-preview-panel")
+          div(class="question-content-preview-panel")
             div(id="questionBody") #{question.content}
 
       div(id="post-answer-on-question")
@@ -47,6 +48,6 @@ block content
                   form(action=`/answer/${answer.id}/downvote` method="post")
                   input(type="image" src="/images/downvote.png" class="votesBtn answer-down-button" value=answer.id alt="submit") 
             div(class="answer-preview-panel")
-              div(id="answerContent" style="overflow:scroll; height: 500px width: 200px") #{answer.content}
+              div(id="answerContent") #{answer.content}
               div(id="date-panel") #{answer.createdAt}
 

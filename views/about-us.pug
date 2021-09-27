@@ -1,23 +1,23 @@
 extends nav-bar
 block content
   script(src="/javascripts/index.js" type="module" defer)
-
   link(rel="stylesheet", href="/stylesheets/home-page.css")
   script(src='/javascripts/ask.js' type='module' defer)
-  h1= title
-  if user
-    p(id="welcome") Welcome #{user.userName}!
-  else
-    p(id="welcome") Welcome To Pet Overflow!
-  div(class='main_page')
-    img(class='dogs' src='/images/dogs-playing.png' alt='dogs-playing')
-    p(class='aboutUs') About us
-    img(class='pop_up' src='/images/Vector.png' alt='pop-up')
-    a(class='q_button' id='questions' href='/questions') Questions
-    p(class='main_text') The community <span class='short'>to ask</span> all of your pet related questions, Pet Overflow
-  div(class='circle')
-  div(class='box1')
-  div(class='box2')
-  div(class='box3')
-  div(class='box4')
+  div.modalContent
+    h2#question-form-h2 About
+    div.modalForm
+        div
+        p This website is about asking pet related questions. For all your pet related needs.
+        p Our Team 
+        a(href="https://github.com/spacegray" class="linkNames") Ayla Basha
+        div
+        a(href="https://github.com/Alsm867" class="linkNames") Sam Ortega
+        div
+        a(href="https://github.com/valeriareynososf" class="linkNames") Valeria Reynoso
+        div
+        a(href="https://github.com/9ziggy9" class="linkNames") David Rogers
+        div
+        br
+        form(action=`/` method="get")
+            input(type="submit" value="Back Home" class='button')
   body
