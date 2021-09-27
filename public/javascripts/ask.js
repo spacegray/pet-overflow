@@ -30,16 +30,9 @@ if (document.querySelector("#question") !== null) {
       document.querySelector(".box4").style.display = "none";
       document.querySelector(".q_button").style.display = "none";
     }
-    // document.querySelector(".dogs", ".paw").style.display= "none";
-    //   document.querySelector("body").style.overflow = "scroll";
   });
 }
 
-// window.addEventListener("click", (e) => {
-// if (e.target == body) {
-//     modal.style.display = "none";
-// }
-// })
 if (document.querySelector("#login") !== null) {
   document.querySelector("#login").addEventListener("click", (e) => {
     e.stopPropagation();
@@ -74,7 +67,7 @@ if (document.querySelector("#login") !== null) {
     document.querySelector(".q_button").style.display = "none";
     console.log("it works");
     }
-    //   document.querySelector("body").style.overflow = "scroll";
+
   });
 }
 if (document.querySelector("#sign-up") !== null) {
@@ -110,7 +103,6 @@ if (document.querySelector("#sign-up") !== null) {
     document.querySelector(".box4").style.display = "none";
     document.querySelector(".q_button").style.display = "none";
     console.log("sign up works");
-    //   document.querySelector("body").style.overflow = "scroll";
     }
   });
 }

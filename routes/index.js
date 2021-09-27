@@ -4,7 +4,6 @@ const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require("./utils");
 var router = express.Router();
 
-/* GET home page. */
 router.get('/',
            csrfProtection,
            asyncHandler( async (req, res) => {
