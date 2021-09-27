@@ -1,9 +1,3 @@
-/* .nav_bar {
-  display: flex;
-  flex-direction: row;
-  height: 100px;
-  width: 100%;
-} */
 
 #logo {
   justify-content: flex-start;
@@ -106,11 +100,6 @@ div {
   height: 100%;
 }
 
-/* #mid-panel-top {
-  background-color: #e5e5e5;
-  height: 60px;
-  width: 100%;
-} */
 #mid-panel-main {
   height: 100%;
   width: 100%;
