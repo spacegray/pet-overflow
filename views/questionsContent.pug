@@ -47,6 +47,6 @@ block content
                   form(action=`/answer/${answer.id}/downvote` method="post")
                   input(type="image" src="/images/downvote.png" class="votesBtn answer-down-button" value=answer.id alt="submit") 
             div(class="answer-preview-panel")
-              div(id="answerContent" style="overflow:scroll; height: 500px") #{answer.content}
+              div(id="answerContent" style="overflow:scroll; height: 500px width: 200px") #{answer.content}
               div(id="date-panel") #{answer.createdAt}
 
