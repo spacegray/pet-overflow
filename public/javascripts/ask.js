@@ -65,7 +65,6 @@ if (document.querySelector("#login") !== null) {
     document.querySelector(".box3").style.display = "none";
     document.querySelector(".box4").style.display = "none";
     document.querySelector(".q_button").style.display = "none";
-    console.log("it works");
     }
 
   });
@@ -102,7 +101,6 @@ if (document.querySelector("#sign-up") !== null) {
     document.querySelector(".box3").style.display = "none";
     document.querySelector(".box4").style.display = "none";
     document.querySelector(".q_button").style.display = "none";
-    console.log("sign up works");
     }
   });
 }
