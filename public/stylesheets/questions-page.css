@@ -325,3 +325,7 @@ div {
   height: 100%;
   border-left: 2px solid grey;
 }
+
+#answerContent {
+  width: 95%;
+}
