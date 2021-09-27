@@ -28,7 +28,6 @@ router.post('/search', asyncHandler(async (req, res) => {
         console.log(result.id, result.title);
     });
 
-    // Why is this not rendering pug?
     res.json({
         searchResults
     });

@@ -27,10 +27,6 @@ block content
             div(id="questionBody") #{question.content}
 
       div(id="post-answer-on-question")
-        //- form(action=`/` method="get")
-        //-     input(type="submit" value="Go Home")
-        //- form(action=`/questions` method="get")
-        //-     input(type="submit" value="Back To Questions")
         +validationErrorSummary(errors)
         form(method="post" action=`/questions/${questionId}`)
           input(type='hidden' name='_csrf' value=csrfToken)
@@ -54,79 +50,3 @@ block content
               div(id="answerContent") #{answer.content}
               div(id="date-panel") #{answer.createdAt}
 
-
-
-          //- votes before refactoring
-            //-   form(action=`/answer/${answer.id}/vote` method="post")
-            //-     input(type="image" src="/images/upvote.png" class="answer-vote-button" value=answer.id alt="submit")
-            //-   div(id=`aVote-${answer.id}`)
-            //-     div#votes #{answer.votes}
-            //-   form(action=`/answer/${answer.id}/downvote` method="post")
-            //-   input(type="image" src="/images/downvote.png" class="answer-down-button" value=answer.id alt="submit")
-            //- div(class="question-preview-panel")  
-            //-   div(id="answerContent") #{answer.content}
-            //-   div(id="date-panel") #{answer.createdAt}
-
-            //- div(class="stats-panel")
-            //-   form(action=`/questions/${questionId}/vote` method="post")
-            //-     input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
-            //-   div#qVotes #{question.votes}
-            //-   form(action=`/questions/${questionId}/downvote` method="post")
-            //-     input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
-            //- div#view-panel
-            //-   div#view-number #{question.views}
-            //-   div#views Views
-
-
-
-
-
-
-
-
-
-//- Copy of previous code 
-//- extends nav-bar
-//- include utils.pug
-//- block head
-//-     script(src="/javascripts/questions.js" type="module" defer)
-//- block content
-//-     link(rel="stylesheet" href="/stylesheets/index.css")
-//-     h2=question.title
-//-     div Viewed #{question.views} times
-//-     form(action=`/` method="get")
-//-         input(type="submit" value="Go Home")
-//-     form(action=`/questions` method="get")
-//-         input(type="submit" value="Back To Questions")
-//-     hr
-//-     form(action=`/questions/${questionId}/vote` method="post")
-//-       input(type="image" src="/images/upvote.png" id="vote-button" class="votesBtn" value="Upvote" alt="submit")
-//-     div#votes
-//-       div#qVotes #{question.votes}
-//-       span.questionContent #{question.content}
-//-     form(action=`/questions/${questionId}/downvote` method="post")
-//-       input(type="image" src="/images/downvote.png" id="vote-down-button" class="votesBtn" value="Downvote" alt="submit")
-//-     hr
-//-     br
-//-     div
-//-       each answer in answers
-//-         ul.answerList
-//-           li
-//-             form(action=`/answer/${answer.id}/vote` method="post")
-//-               input(type="image" src="/images/upvote.png" class="answer-vote-button" value=answer.id alt="submit")
-//-             div(id=`aVote-${answer.id}`)
-//-               div#votes #{answer.votes}
-//-             span.questionContent #{answer.content}
-//-             form(action=`/answer/${answer.id}/downvote` method="post")
-//-               input(type="image" src="/images/downvote.png" class="answer-down-button" value=answer.id alt="submit")
-//-             hr
-
-//-     +validationErrorSummary(errors)
-//-     form(method="post" action=`/questions/${questionId}`)
-//-         input(type='hidden' name='_csrf' value=csrfToken)
-//-         div
-//-           label(for="content") Your Answer
-//-         div
-//-           textarea(id="content" name="content" class="contentAnswer")
-//-         div
-//-           button(type='submit' class="button") Post Your Answer
