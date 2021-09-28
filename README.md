@@ -15,9 +15,9 @@ Account creation composed of following:
 * Logged out users are directed back to home.
 
 ### Search Feature
-Users may search the site for revelant terms
-* A drop down appears with results
-* Auto-completes search term when they match questions posted
+Users may search the site for revelant terms.
+* A drop down appears with results.
+* Auto-completes search term when they match questions posted.
 
 ### General Navigation
 Navigation consists of the following features:
