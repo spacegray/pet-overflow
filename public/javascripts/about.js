@@ -31,3 +31,17 @@ document.querySelector("#aboutUs").addEventListener("click", (e) => {
             document.querySelector(".q_button").style.display = "none";
           }
 })
+
+const modala = document.querySelector(".modalAbout");
+window.addEventListener("click", (e) => {
+  if (e.target == modala) {
+    console.log("helighfhf ");
+    modala.style.display = "none";
+  }
+})
+// window.onclick = function (event) {
+//   if (event.target === modala) {
+//     console.log("helighfhf ");
+//     modal.style.display = "none";
+//   }
+// };
