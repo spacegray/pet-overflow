@@ -46,6 +46,9 @@ body {
   border-top-color: white;
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
 }
+.button:hover {
+    cursor: pointer;
+}
 .modal, .modalLoginMain, .modalregistermain, .modalAbout {
     display: none;
 		left: 0;
