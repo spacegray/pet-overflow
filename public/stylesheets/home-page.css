@@ -3,7 +3,10 @@
   justify-content: flex-start;
 }
 
-
+.main_page {
+  display: flex;
+  flex-grow: 1 auto;
+}
 
 .navbar_text_buttons .button {
   display: flex;
@@ -105,8 +108,16 @@
 
 @media screen and (max-width: 1366px) {
   .main_page {
+    justify-content: center;
     height: 530px;
     width: 1230px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .main_page {
+    height: 530px;
+    width: 800px;
   }
 }
 

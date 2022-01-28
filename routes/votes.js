@@ -30,7 +30,7 @@ router.post(
             question.save();
         } else if (hasVoted && !hasVoted.voteType) {
             console.log(hasVoted);
-            question.votes += 2;
+            question.votes += 1;
             hasVoted.voteType = true;
             hasVoted.save();
             question.save();
@@ -63,7 +63,7 @@ router.post(
             question.votes--;
             question.save();
         } else if (hasVoted.voteType) {
-            question.votes -= 2;
+            question.votes -= 1;
             hasVoted.voteType = false;
             hasVoted.save();
             question.save();
@@ -99,7 +99,7 @@ router.post(
             answer.save();
         } else if (hasVoted && !hasVoted.voteType) {
             console.log(hasVoted);
-            answer.votes += 2;
+            answer.votes += 1;
             hasVoted.voteType = true;
             hasVoted.save();
             answer.save();
@@ -132,7 +132,7 @@ router.post(
             answer.votes--;
             answer.save();
         } else if (hasVoted.voteType) {
-            answer.votes -= 2;
+            answer.votes -= 1;
             hasVoted.voteType = false;
             hasVoted.save();
             answer.save();
